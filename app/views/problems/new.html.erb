@@ -1,0 +1,8 @@
+<h4><%= fa_icon('pencil') %> New Problem</h4>
+<%= image_tag("thirdspace.jpg", class: 'w-100') %>
+<form style="margin-top: 5px;">
+  <div class="form-group">
+    <textarea class="form-control" placeholder="Write problem name here" rows="3"></textarea>
+  </div>
+</form>
+<%= link_to "Next", problem_path(page: 'adaptability'), class: 'btn btn-primary btn-block' %>

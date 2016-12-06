@@ -1,0 +1,10 @@
+<h4>Review</h4>
+<p>Here is "Your Statement of Photo" again </p>
+<%= image_tag("thirdspace.jpg", class: 'w-100') %>
+<form style="margin-top: 5px;">
+  <div class="form-group">
+    <textarea class="form-control" placeholder="What is ACEIT solution?" rows="3"></textarea>
+  </div>
+</form>
+<%= link_to "Next", problem_path(page: 'tst_stream'), class: 'btn btn-primary btn-block' %>
+<%= link_to "Go Back", problem_path(page: 'thinking'), class: 'btn btn-default btn-block' %>

@@ -1,0 +1,24 @@
+<style>
+  .col-xs {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+</style>
+<hr/>
+<div class="row" style="text-align: center;">
+  <div class="col-xs">
+    <a href="<%= problem_path(page: 'adaptability') %>" class='btn btn-outline-primary <%= 'active' if params[:page] == 'adaptability' %>'>A</a>
+  </div>
+  <div class="col-xs">
+    <a href="<%= problem_path(page: 'cultural') %>" class='btn btn-outline-success <%= 'active' if params[:page] == 'cultural' %>'>C</a>
+  </div>
+  <div class="col-xs">
+    <a href="<%= problem_path(page: 'empathy') %>" class='btn btn-outline-info <%= 'active' if params[:page] == 'empathy' %>'>E</a>
+  </div>
+  <div class="col-xs">
+    <a href="<%= problem_path(page: 'intellectual') %>" class='btn btn-outline-warning <%= 'active' if params[:page] == 'intellectual' %>'>I</a>
+  </div>
+  <div class="col-xs">
+    <a href="<%= problem_path(page: 'thinking') %>" class='btn btn-outline-danger <%= 'active' if params[:page] == 'thinking' %>'>T</a>
+  </div>
+</div>

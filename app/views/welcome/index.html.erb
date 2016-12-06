@@ -1,4 +1,28 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <%= image_tag("thirdspace.jpg", class: 'w-100') %>
+      <div class="carousel-caption">
+        <p>Welcome to TST intro wizard...#1</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("thirdspace.jpg", class: 'w-100') %>
+      <div class="carousel-caption">
+        <p>Welcome to TST intro wizard...#2</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag("thirdspace.jpg", class: 'w-100') %>
+      <div class="carousel-caption">
+        <p>Welcome to TST intro wizard...#3</p>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to 'Skip', problem_path(page: 'new'), class: 'btn btn-primary btn-block' %>
