@@ -1,10 +1,43 @@
-<h4>Review</h4>
-<p>Here is "Your Statement of Photo" again </p>
+<nav class="navbar navbar-light" style="background-color: #fe4153;">
+  <span class="navbar-brand" style="color: white;">Review</span>
+</nav>
+
+<div class="card-block">Here is "Your Statement of Photo" again</div>
+
 <%= image_tag("thirdspace.jpg", class: 'w-100') %>
-<form style="margin-top: 5px;">
-  <div class="form-group">
-    <textarea class="form-control" placeholder="What is ACEIT solution?" rows="3"></textarea>
+<div class="card-header" role="tab" id="review-head" style="margin-top: 2px;">
+  <a class="collapsed" data-toggle="collapse" href="#review-textarea" aria-expanded="false" aria-controls="review-textarea">
+    <span class="pull-right"><%= fa_icon('chevron-down') %></span>
+    <span id="review-head-input" style="text-decoration: none;">Use ACEIT to write one final solution</span>
+  </a>
+</div>
+<div id="review-textarea" class="collapse" role="tabpanel" aria-labelledby="review-head">
+  <form>
+    <div class="form-group">
+      <textarea style="border-radius: 0px;" id="review-input" class="form-control" placeholder="Write solution here" rows="20"></textarea>
+    </div>
+  </form>
+</div>
+
+<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+  <div class="row">
+    <div class="col-xs"><%= link_to "Go Back", problem_path(page: 'review'), class: 'btn btn-link' %></div>
+    <div class="col-xs"><%= link_to "Next", problem_path(page: 'tst_stream'), class: 'btn btn-link pull-right' %></div>
   </div>
-</form>
-<%= link_to "Next", problem_path(page: 'tst_stream'), class: 'btn btn-primary btn-block' %>
-<%= link_to "Go Back", problem_path(page: 'thinking'), class: 'btn btn-default btn-block' %>
+</nav>
+
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    $('#review-textarea').on('shown.bs.collapse', function () {
+      $('.fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+      $('#review-head-input').html('What is your ACEIT solution?');
+      $('html, body').animate({
+        scrollTop: $("#review-head").offset().top
+      }, 500);
+    });
+    $('#review-textarea').on('hidden.bs.collapse', function () {
+      $('.fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+      $('#review-head-input').html('Use ACEIT to write one final solution');
+    });
+  });
+</script>

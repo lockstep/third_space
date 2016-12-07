@@ -12,7 +12,7 @@
 
   <body class='<%= "#{action_name} #{controller_name}" %>'>
     <nav class="navbar navbar-full navbar-light bg-faded">
-      <div class="container"><h1 class="navbar-brand" href="#">TST APP</h1></div>
+      <a class="navbar-brand pull-right" href="<%= root_path %>"><%= image_tag('3s-logo.svg', width: 65) %></a>
     </nav>
     <div class="container">
       <%= yield %>

@@ -1,3 +1,7 @@
 $enable-flex: true;
 @import "bootstrap";
 @import "font-awesome";
+
+a:visited { 
+  text-decoration: none;
+}

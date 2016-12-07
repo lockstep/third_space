@@ -1,5 +1,10 @@
-<p class="h4 text-xs-center">Intellectual Curiosity</p>
-<%= image_tag("thirdspace.jpg", class: 'w-100') %>
+<nav id="intellectual-panel" class="navbar navbar-full navbar-light bg-warning">
+  <button type="button" class="close" aria-label="Close">
+    <a style="color: white;" href="<%= problem_path(page: 'new') %>"><span aria-hidden="true">&times;</span></a>
+  </button>
+  <span class="nav-item" style="color: white;"><%= image_tag('intellectual_icon.svg', width: 30) %> Intellectual Curiosity</span>
+</nav>
+<%= image_tag("intellectual.jpg", class: 'w-100') %>
 <%= render "problems/solution_form" %>
-<%= link_to "Next", problem_path(page: 'thinking'), class: 'btn btn-primary btn-block' %>
+<%#= link_to "Next", problem_path(page: 'thinking'), class: 'btn btn-primary btn-block' %>
 <%= render "problems/active_bar" %>

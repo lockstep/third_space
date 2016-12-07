@@ -1,4 +1,12 @@
-<h4>Review</h4>
-<p>Great work! Now its time to consider the problem through all the lense. This will help you communicate your solution better</p>
-<%= link_to "Next", problem_path(page: 'review_photo'), class: 'btn btn-primary btn-block' %>
-<%= link_to "Go Back", problem_path(page: 'thinking'), class: 'btn btn-default btn-block' %>
+<nav class="navbar navbar-light" style="background-color: #fe4153;">
+  <span class="navbar-brand" style="color: white;">Review</span>
+</nav>
+
+<div class="card-block">Great work! Now its time to consider the problem through all the lense. This will help you communicate your solution better</div>
+
+<%= link_to "Next", problem_path(page: 'review_photo'), class: 'btn btn-primary btn-block', style: "border-radius: 0px;" %>
+<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+  <div class="row">
+    <div class="col-xs"><%= link_to "Go Back", problem_path(page: 'thinking'), class: 'btn btn-link' %></div>
+  </div>
+</nav>

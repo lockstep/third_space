@@ -1,24 +1,33 @@
-<style>
-  .col-xs {
-    padding-left: 1px;
-    padding-right: 1px;
-  }
-</style>
-<hr/>
-<div class="row" style="text-align: center;">
-  <div class="col-xs">
-    <a href="<%= problem_path(page: 'adaptability') %>" class='btn btn-outline-primary <%= 'active' if params[:page] == 'adaptability' %>'>A</a>
+<nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded" style="display: none;">
+  <div class="row">
+    <div class="col-xs">
+      <center><%= link_to 'Next', problem_path(page: 'review'), class: 'btn btn-link' %></center>
+    </div>
   </div>
-  <div class="col-xs">
-    <a href="<%= problem_path(page: 'cultural') %>" class='btn btn-outline-success <%= 'active' if params[:page] == 'cultural' %>'>C</a>
+</nav>
+<nav id="aceit-bar" class="navbar navbar-fixed-bottom navbar-light bg-inverse">
+  <div class="row">
+    <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
+      <center>
+      <a href="<%= problem_path(page: 'adaptability') %>" class='navbar-text btn btn-outline-primary <%= 'active' if params[:page] == 'adaptability' %>'>A</a>
+      </center>
+    </div>
+    <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
+      <center>
+      <a href="<%= problem_path(page: 'cultural') %>" class='navbar-text btn btn-outline-success <%= 'active' if params[:page] == 'cultural' %>'>C</a></center>
+    </div>
+    <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
+      <center>
+      <a href="<%= problem_path(page: 'empathy') %>" class='navbar-text btn btn-outline-info <%= 'active' if params[:page] == 'empathy' %>'>E</a></center>
+    </div>
+    <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
+      <center>
+      <a href="<%= problem_path(page: 'intellectual') %>" class='navbar-text btn btn-outline-warning <%= 'active' if params[:page] == 'intellectual' %>'>I</a></center>
+    </div>
+    <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
+      <center>
+      <a href="<%= problem_path(page: 'thinking') %>" class='navbar-text btn btn-outline-danger <%= 'active' if params[:page] == 'thinking' %>'>T</a>
+      </center>
+    </div>
   </div>
-  <div class="col-xs">
-    <a href="<%= problem_path(page: 'empathy') %>" class='btn btn-outline-info <%= 'active' if params[:page] == 'empathy' %>'>E</a>
-  </div>
-  <div class="col-xs">
-    <a href="<%= problem_path(page: 'intellectual') %>" class='btn btn-outline-warning <%= 'active' if params[:page] == 'intellectual' %>'>I</a>
-  </div>
-  <div class="col-xs">
-    <a href="<%= problem_path(page: 'thinking') %>" class='btn btn-outline-danger <%= 'active' if params[:page] == 'thinking' %>'>T</a>
-  </div>
-</div>
+</nav>
