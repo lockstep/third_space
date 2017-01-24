@@ -27,14 +27,17 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'tether-rails'
 gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'capybara', '~> 2.7.0'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'poltergeist'
+  gem 'launchy'
 end
 
 group :development do
