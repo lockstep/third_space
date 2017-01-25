@@ -2,9 +2,9 @@
   <button type="button" class="close" aria-label="Close">
     <a style="color: white;" href="<%= new_problem_path %>"><span aria-hidden="true">&times;</span></a>
   </button>
-  <span class="nav-item" style="color: white;"><%= image_tag('adaptability_icon.svg', width: 30) %> Adaptability</span>
+  <span class="nav-item" style="color: white;"><%= image_tag("#{@page}_icon.svg", width: 30) %> <%= @page.humanize.titleize %></span>
 </nav>
-<%= image_tag("adapt.jpg", class: 'w-100') %>
+<%= image_tag("#{@page}.jpg", class: 'w-100') %>
 <%= render "problems/solution_form" %>
 <%#= link_to "Next", problems_path(id: @problem.id, page: 'cultural'), class: 'btn btn-link btn-block' %>
 <%= render "problems/active_bar" %>

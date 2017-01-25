@@ -25,10 +25,16 @@ feature 'User completes solving process' do
       @input = create(:input)
     end
     scenario 'finalizes it' do
-      visit '/problems/1/adaptability'
     end
 
     scenario 'goes back and edits' do
+      visit "/problems/#{@problem.id}/#{@input.lens}"
+      expect(page).to have_content @input.input_text
+      find(:href, "result-textarea").click
+      fill_in 'result-input', with: 'Updated text'
+      find(:href, "result-textarea").click
+      expect(page).to have_content 'Updated text'
+      expect(page).not_to have_content @input.input_text
     end
 
     scenario 'edits from search' do

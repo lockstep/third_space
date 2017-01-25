@@ -4,7 +4,7 @@
     <span id="solution-head-input" style="text-decoration: none;">What is a solution through this lens?</span>
   </a>
 </div>
-<div id="solution-textarea" class="collapse" role="tabpanel" aria-labelledby="solution-head">
+<div id="solution-textarea" class="input-textarea collapse" role="tabpanel" aria-labelledby="solution-head">
   <form>
     <div class="form-group">
       <textarea style="border-radius: 0px;" id="solution-input" class="form-control" placeholder="Write solution here" rows="20"></textarea>
@@ -18,7 +18,7 @@
     <span id="result-head-input" style="text-decoration: none;">What is your expected result?</span>
   </a>
 </div>
-<div id="result-textarea" class="collapse" role="tabpanel" aria-labelledby="result-head">
+<div id="result-textarea" class="input-textarea collapse" role="tabpanel" aria-labelledby="result-head">
   <form>
     <div class="form-group">
       <textarea style="border-radius: 0px;" id="result-input" class="form-control" placeholder="Write expected result here" rows="20"></textarea>
@@ -27,36 +27,6 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    // Solution
-    $('#solution-textarea').on('shown.bs.collapse', function () {
-      $('#solution-head .fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-      $('html, body').animate({
-        scrollTop: $("#solution-head").offset().top
-      }, 500);
-      $('#next-bar').show();
-      $('#aceit-bar').hide();
-    });
-    $('#solution-textarea').on('hidden.bs.collapse', function () {
-      $('#solution-head .fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-      $('#next-bar').hide();
-      $('#aceit-bar').show();
-    });
-
-    // Result
-    $('#result-textarea').on('shown.bs.collapse', function () {
-      $('#result-head .fa-chevron-down').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-      $('html, body').animate({
-        scrollTop: $("#result-head").offset().top
-      }, 500);
-      $('#next-bar').show();
-      $('#aceit-bar').hide();
-    });
-
-    $('#result-textarea').on('hidden.bs.collapse', function () {
-      $('#result-head .fa-chevron-up').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-      $('#next-bar').hide();
-      $('#aceit-bar').show();
-    });
-  });
+var id = '<%= @problem.id %>';
+var lens = '<%= @page %>';
 </script>

@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20170124083836) do
 
   create_table "inputs", force: :cascade do |t|
     t.integer  "problem_id"
-    t.string   "lense"
-    t.text     "solution"
-    t.text     "result"
+    t.string   "lens"
+    t.string   "input_type"
+    t.text     "input_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["problem_id"], name: "index_inputs_on_problem_id", using: :btree
