@@ -29,6 +29,8 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'tether-rails'
 gem 'font-awesome-rails'
+gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk' 
 
 group :development, :test do
   gem 'pry-rails'
@@ -38,6 +40,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development do
