@@ -1,7 +1,7 @@
 <nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded" style="display: none;">
   <div class="row">
     <div class="col-xs">
-      <center><%= link_to 'Next', view_problems_path(id: @problem.id, page: 'review'), class: 'btn btn-link' %></center>
+      <center><%= link_to 'Next', view_problems_path(@problem.id, 'next'), class: 'btn btn-link' %></center>
     </div>
   </div>
 </nav>
@@ -9,24 +9,24 @@
   <div class="row">
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'adaptability') %>" class='navbar-text btn btn-outline-primary <%= 'active' if params[:page] == 'adaptability' %>'>A</a>
+      <a href="<%= view_problems_path(@problem.id, 'adaptability') %>" class='aceit-link navbar-text btn btn-outline-primary <%= 'active' if request.url.include? 'adaptability' %>'>A</a>
       </center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'cultural') %>" class='navbar-text btn btn-outline-success <%= 'active' if params[:page] == 'cultural' %>'>C</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'cultural_competence') %>" class='aceit-link navbar-text btn btn-outline-success <%= 'active' if request.url.include? 'cultural' %>'>C</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'empathy') %>" class='navbar-text btn btn-outline-info <%= 'active' if params[:page] == 'empathy' %>'>E</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'empathy') %>" class='aceit-link navbar-text btn btn-outline-info <%= 'active' if request.url.include? 'empathy' %>'>E</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'intellectual') %>" class='navbar-text btn btn-outline-warning <%= 'active' if params[:page] == 'intellectual' %>'>I</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'intellectual_curiosity') %>" class='aceit-link navbar-text btn btn-outline-warning <%= 'active' if request.url.include? 'intellectual' %>'>I</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'thinking') %>" class='navbar-text btn btn-outline-danger <%= 'active' if params[:page] == 'thinking' %>'>T</a>
+      <a href="<%= view_problems_path(@problem.id, 'thinking') %>" class='aceit-link navbar-text btn btn-outline-danger <%= 'active' if request.url.include? 'thinking' %>'>T</a>
       </center>
     </div>
   </div>
