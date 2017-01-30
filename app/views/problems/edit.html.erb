@@ -1,4 +1,5 @@
-  <div class="row">
+<nav class="navbar navbar-light" style="background-color: #fe4153; color: white;">
+ <div class="row">
     <div class="col-xs" style="padding-right: 0px;">
       <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
       <div class="collapse navbar-toggleable-md" id="navbarResponsive">
@@ -27,7 +28,8 @@
 </div>
 <div id="new-problem-textarea" class="collapse" role="tabpanel" aria-labelledby="new-problem-head">
   <%= form_for @problem, html: {id:"problem-form"} do |f| %>
-    <%= f.file_field :image, id:"image-upload", style:"visability: hidden;", accept:"image/*" %>
+    <%= f.hidden_field :id %>
+    <%= f.file_field :image, id:"image-upload", style:"display: none;", accept:"image/*" %>
     <div class="form-group">
       <%= f.text_area :name, style:"border-radius: 0px;", id:"new-problem-input", class:"form-control", rows:"20", placeholder:"Write problem name here" %>
     </div>
