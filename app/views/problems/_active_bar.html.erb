@@ -9,24 +9,24 @@
   <div class="row">
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'adaptability') %>" class='aceit-link navbar-text btn btn-outline-primary <%= 'active' if request.url.include? 'adaptability' %>'>A</a>
+      <a href="<%= view_problems_path(@problem.id, 'adaptability') %>" class='aceit-link navbar-text btn btn-outline-primary <%= 'active' if request.fullpath.include? 'adaptability' %>'>A</a>
       </center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'cultural_competence') %>" class='aceit-link navbar-text btn btn-outline-success <%= 'active' if request.url.include? 'cultural' %>'>C</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'cultural_competence') %>" class='aceit-link navbar-text btn btn-outline-success <%= 'active' if request.fullpath.include? 'cultural' %>'>C</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'empathy') %>" class='aceit-link navbar-text btn btn-outline-info <%= 'active' if request.url.include? 'empathy' %>'>E</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'empathy') %>" class='aceit-link navbar-text btn btn-outline-info <%= 'active' if request.fullpath.include? 'empathy' %>'>E</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'intellectual_curiosity') %>" class='aceit-link navbar-text btn btn-outline-warning <%= 'active' if request.url.include? 'intellectual' %>'>I</a></center>
+      <a href="<%= view_problems_path(@problem.id, 'intellectual_curiosity') %>" class='aceit-link navbar-text btn btn-outline-warning <%= 'active' if request.fullpath.include? 'intellectual' %>'>I</a></center>
     </div>
     <div class="col-xs" style="padding-left: 5px; padding-right: 5px;">
       <center>
-      <a href="<%= view_problems_path(@problem.id, 'thinking') %>" class='aceit-link navbar-text btn btn-outline-danger <%= 'active' if request.url.include? 'thinking' %>'>T</a>
+      <a href="<%= view_problems_path(@problem.id, 'thinking') %>" class='aceit-link navbar-text btn btn-outline-danger <%= 'active' if request.fullpath.include? 'thinking' %>'>T</a>
       </center>
     </div>
   </div>
