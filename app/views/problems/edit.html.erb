@@ -19,7 +19,7 @@
   </div>
 </nav>
 
-<%= image_tag(@problem.image(:medium), class: 'w-100') %>
+<%= image_tag(@problem.image(:medium), class: 'w-100') if @problem.image.present?  %>
 <div class="card-header" role="tab" id="new-problem-head" style="margin-top: 2px;">
   <a class="collapsed" data-toggle="collapse" href="#new-problem-textarea" aria-expanded="false" aria-controls="new-problem-textarea">
     <span class="pull-right"><%= fa_icon('chevron-down') %></span>
