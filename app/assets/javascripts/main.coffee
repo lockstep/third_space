@@ -34,11 +34,11 @@ $(document).ready ->
     post_lens_submission($(this))
 
   # Open photo dialog
-  $('#computer').click ->
+  $(document).on 'click', '#computer', ->
     $('#image-upload').click()
 
   # Open camera dialog
-  $('#camera').click ->
+  $(document).on 'click', '#camera', ->
     $('#image-upload').attr('capture', 'camera').click()
 
   $(document).on 'click', '#next_link', ->
