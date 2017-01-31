@@ -6,3 +6,40 @@ $enable-flex: true;
 a:visited { 
   text-decoration: none;
 }
+
+.form-control {
+  border-radius: 0px;
+}
+
+.carousel-indicators {
+  padding-bottom: 10%;
+}
+
+.carousel-caption {
+  padding-bottom: 20%;
+}
+
+.top-navbar {
+  background-color: #fe4153;
+  color: white;
+}
+
+.white {
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+  color: white;
+}
+
+.problems-grid {
+  margin: 10px 20px 10px 10px;
+}
+
+.btn-square {
+  border-radius: 0px;
+}
+
+.problem-filters {
+  margin-top: 5px;
+}
