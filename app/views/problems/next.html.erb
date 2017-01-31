@@ -1,10 +1,10 @@
-<nav class="navbar navbar-light" style="background-color: #fe4153;">
-  <span class="navbar-brand" style="color: white;">Review</span>
+<nav class="navbar navbar-light top-navbar">
+  <span class="navbar-brand white">Review</span>
 </nav>
 
 <div class="card-block">Great work! Now its time to consider the problem through all the lenses. This will help you communicate your solution better</div>
 
-<%= link_to "Next", view_problems_path(@problem.id, 'review'), class: 'btn btn-primary btn-block', style: "border-radius: 0px;" %>
+<%= link_to "Next", view_problems_path(@problem.id, 'review'), class: 'btn btn-primary btn-block btn-square' %>
 <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
   <div class="row">
     <div class="col-xs"><%= link_to "Go Back", view_problems_path(@problem.id, 'thinking'), class: 'btn btn-link' %></div>

@@ -1,20 +1,20 @@
-<nav class="navbar navbar-light" style="background-color: #fe4153;">
-  <span class="navbar-brand" style="color: white;">Review</span>
+<nav class="navbar navbar-light top-navbar">
+  <span class="navbar-brand">Review</span>
 </nav>
 
 <div class="card-block">Here is "Your Statement of Photo" again</div>
 
 <%= image_tag("thirdspace.jpg", class: 'w-100') %>
-<div class="card-header" role="tab" id="review-head" style="margin-top: 2px;">
+<div class="card-header" role="tab" id="review-head">
   <a class="collapsed" data-toggle="collapse" href="#review-textarea" aria-expanded="false" aria-controls="review-textarea">
     <span class="pull-right"><%= fa_icon('chevron-down') %></span>
-    <span id="review-head-input" style="text-decoration: none;">Use ACEIT to write one final solution</span>
+    <span id="review-head-input">Use ACEIT to write one final solution</span>
   </a>
 </div>
 <div id="review-textarea" class="collapse" role="tabpanel" aria-labelledby="review-head">
   <form>
     <div class="form-group">
-      <textarea style="border-radius: 0px;" id="review-input" class="form-control" placeholder="Write solution here" rows="20"></textarea>
+      <textarea id="review-input" class="form-control" placeholder="Write solution here" rows="20"></textarea>
     </div>
   </form>
 </div>
