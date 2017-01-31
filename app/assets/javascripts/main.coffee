@@ -1,29 +1,35 @@
 $(document).ready ->
   # Problem
   $(document).on 'shown.bs.collapse', "#new-problem-textarea", ->
-    $('.fa-chevron-down').removeClass('fa-chevron-down').addClass 'fa-chevron-up'
-    $('#new-problem-head-input').html 'What is your problem name?'
-    $('html, body').animate { scrollTop: $('#new-problem-head').offset().top }, 500
-    $('#next-bar').show()
-    $('#tools-bar').hide()
+    text_submission('new-problem', 'What is your problem name?', true)
     post_problem_submission($(this))
 
   $(document).on 'hidden.bs.collapse', "#new-problem-textarea", ->
-    $('.fa-chevron-up').removeClass('fa-chevron-up').addClass 'fa-chevron-down'
-    $('#new-problem-head-input').html 'Write problem name here'
-    $('#next-bar').hide()
-    $('#tools-bar').show()
+    text_submission('new-problem', 'Write problem name here', false)
 
   # Review
   $(document).on 'shown.bs.collapse', "#review-textarea", ->
-    $('.fa-chevron-down').removeClass('fa-chevron-down').addClass 'fa-chevron-up'
-    $('#review-head-input').html 'What is your ACEIT solution?'
-    $('html, body').animate { scrollTop: $('#review-head').offset().top }, 500
+    text_submission('review', 'What is your ACEIT solution?', true)
     set_input_text('review')
 
   $(document).on 'hidden.bs.collapse', "#review-textarea", ->
-    $('.fa-chevron-up').removeClass('fa-chevron-up').addClass 'fa-chevron-down'
-    $('#review-head-input').html 'Use ACEIT to write one final solution'
+    text_submission('review', 'Use ACEIT to write one final solution', false)
+
+  # Lens Result
+  $(document).on 'shown.bs.collapse', "#result-textarea", ->
+    text_submission('result', 'What is your expected result?', false)
+    set_input_text('result')
+    show_next_button()
+  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
+    text_submission('result', 'What is your expected result?', true)
+
+  # Lens Solution
+  $(document).on 'shown.bs.collapse', "#result-textarea", ->
+    text_submission('solution', 'What is a solution through this lens?', true)
+    set_input_text('solution')
+    show_next_button()
+  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
+    text_submission('solution', 'What is a solution through this lens?', false)
 
   # Input submission
   $('.input-textarea').focusout ->
@@ -41,11 +47,17 @@ $(document).ready ->
   $(document).on 'click', '#camera', ->
     $('#image-upload').attr('capture', 'camera').click()
 
+  # Image upload submit
+  $(document).on 'change', '#image-upload', (e) ->
+    $('#problem-form').submit()
+
+  # Problem next link
   $(document).on 'click', '#next_link', ->
     if $('#new-problem-input').val().length > 1
       post_problem_submission($('#new-problem-textarea'))
       location.href = "/problems/#{id}/adaptability"
 
+  # aceit links
   $(document).on 'click', '.aceit-link', (e) ->
     e.preventDefault()
     if $('#solution-input').val().length > 1
@@ -54,11 +66,18 @@ $(document).ready ->
       post_lens_submission($('#result-textarea'))
     location.href = $(this).attr("href")
 
-  $(document).on 'change', '#image-upload', (e) ->
-    $('#problem-form').submit()
-
-  input_textarea('solution')
-  input_textarea('result')
+text_submission = (id, title, show) ->
+  first = show ? 'down' : 'up'
+  second = show ? 'up' : 'down'
+  $(".fa-chevron-#{first}").removeClass("fa-chevron-#{first}").addClass("fa-chevron-#{second}")
+  $("##{id}-head-input").html title
+  $('html, body').animate { scrollTop: $("##{id}-head").offset().top }, 500
+  if show
+    $('#next-bar').show()
+    $('#tools-bar').hide()
+  else
+    $('#next-bar').hide()
+    $('#tools-bar').show()
 
 post_problem_submission = (el) ->
   name = el.find('textarea:first').val()
@@ -96,16 +115,6 @@ set_input_text = (input_type) ->
 show_next_button = ->
   $.getJSON "/inputs/#{id}/count", (input_count) ->
     if input_count == 10
-      console.log(input_count)
       $('#next-bar').show()
       $('#aceit-bar').hide()
-
-input_textarea = (input_type) ->
-  $(document).on 'shown.bs.collapse', "##{input_type}-textarea", ->
-    $("##{input_type}-head .fa-chevron-down").removeClass('fa-chevron-down').addClass 'fa-chevron-up'
-    $('html, body').animate { scrollTop: $("##{input_type}-head").offset().top }, 500
-    set_input_text(input_type)
-    show_next_button()
-  $(document).on 'hidden.bs.collapse', "##{input_type}-textarea", ->
-    $("##{input_type}-head .fa-chevron-up").removeClass('fa-chevron-up').addClass 'fa-chevron-down'
 
