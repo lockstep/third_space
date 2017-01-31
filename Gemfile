@@ -31,6 +31,8 @@ gem 'tether-rails'
 gem 'font-awesome-rails'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk' 
+gem "administrate", "~> 0.3.0"
+gem 'bourbon'
 
 group :development, :test do
   gem 'pry-rails'
