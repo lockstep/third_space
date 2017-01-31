@@ -24,11 +24,11 @@ $(document).ready ->
     text_submission('result', 'What is your expected result?', true)
 
   # Lens Solution
-  $(document).on 'shown.bs.collapse', "#result-textarea", ->
+  $(document).on 'shown.bs.collapse', "#solution-textarea", ->
     text_submission('solution', 'What is a solution through this lens?', true)
     set_input_text('solution')
     show_next_button()
-  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
+  $(document).on 'hidden.bs.collapse', "#solution-textarea", ->
     text_submission('solution', 'What is a solution through this lens?', false)
 
   # Input submission
@@ -116,5 +116,5 @@ show_next_button = ->
   $.getJSON "/inputs/#{id}/count", (input_count) ->
     if input_count == 10
       $('#next-bar').show()
-      $('#aceit-bar').hide()
+      $('#tools-bar').hide()
 
