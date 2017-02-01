@@ -2,7 +2,6 @@ $enable-flex: true;
 @import "bootstrap";
 @import "font-awesome";
 @import "tether";
-@import "jquery.mobile.css";
 
 a:visited { 
   text-decoration: none;
@@ -11,13 +10,6 @@ a:visited {
 .form-control {
   border-radius: 0px;
 }
-
-.full-screen {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 
 .carousel-indicators {
   padding-bottom: 10%;
@@ -32,12 +24,8 @@ a:visited {
   color: white;
 }
 
-.white, .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+.white {
   color: white;
-}
-
-.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
-  font-weight: normal;
 }
 
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
