@@ -11,9 +11,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.mobile
+//= require turbolinks
 //= require tether
 //= require bootstrap
 //= require_tree .
-//= require carousel
 //= require main
