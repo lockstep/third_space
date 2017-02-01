@@ -11,13 +11,15 @@ feature 'User completes solving process' do
     expect(page).to have_content('Write problem name here')
   end
 
-  scenario 'creates new submission', js: true do
-    visit '/problems/new'
-    find(:href, "new-problem-textarea").trigger('click')
-    fill_in 'new-problem-input', with: 'New submission'
-    click_on 'Next'
-    expect(page).to have_content 'What is a solution through this lens?'
-    expect(page).to have_content 'What is your expected result?'
+  context 'creates new submission' do
+    background { visit '/problems/new' }
+    scenario 'with text', js: true do
+      find(:href, "new-problem-textarea").trigger('click')
+      fill_in 'new-problem-input', with: 'New submission'
+      click_on 'Next'
+      expect(page).to have_content 'What is a solution through this lens?'
+      expect(page).to have_content 'What is your expected result?'
+    end
   end
 
   context 'existing submissions' do
@@ -55,6 +57,20 @@ feature 'User completes solving process' do
       find(:href, "review-textarea").trigger('click')
       wait_for_ajax
       expect(page).to have_field("review-input", with: 'Final text')
+    end
+
+    scenario 'filters by all' do
+      another_user = create(:user, email: 'foo@example.com')
+      create(:problem, name: 'Another problem', user: @user)
+      create(:problem, name: "Somebody else's problem", user: another_user)
+
+      visit '/problems'
+      expect(page).to have_content('My Problem')
+      expect(page).to have_content('Another problem')
+      expect(page).not_to have_content("Somebody else's problem")
+
+      visit '/problems?stream=all'
+      expect(page).to have_content("Somebody else's problem")
     end
 
     scenario 'edits from search' do
