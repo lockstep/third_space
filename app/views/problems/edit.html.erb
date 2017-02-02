@@ -1,32 +1,31 @@
 <%= render 'top_bar', title: 'TST APP', icon: 'bell-o' %>
 
 <%= image_tag(@problem.image(:medium), class: 'w-100') if @problem.image.present?  %>
-<div class="card-header" role="tab" id="new-problem-head">
-  <a class="collapsed" data-toggle="collapse" href="#new-problem-textarea" aria-expanded="false" aria-controls="new-problem-textarea">
-    <span class="pull-right"><%= fa_icon('chevron-down') %></span>
-    <span id="new-problem-head-input">Write problem name here</span>
-  </a>
-</div>
-<div id="new-problem-textarea" class="collapse" role="tabpanel" aria-labelledby="new-problem-head">
-  <%= form_for @problem, html: {id:"problem-form"} do |f| %>
+<%= form_for @problem, html: {id:"problem-form"} do |f| %>
+  <%= f.file_field :image, id:"image-upload", style:"visibility: hidden;", accept:"image/*" %>
+  <div class="image-box">
+    <div class="image-box-inner">
+      <i class="fa fa-file-image-o image-icon" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="card-header" role="tab" id="new-problem-head">
+    <a class="collapsed" data-toggle="collapse" href="#new-problem-textarea" aria-expanded="false" aria-controls="new-problem-textarea">
+      <span class="pull-right"><%= fa_icon 'chevron-down', id: 'new-problem-icon' %></span>
+      <span id="new-problem-head-input">Write problem name here</span>
+    </a>
+  </div>
+  <div id="new-problem-textarea" class="collapse" role="tabpanel" aria-labelledby="new-problem-head">
     <%= f.hidden_field :id %>
-    <%= f.file_field :image, id:"image-upload", style:"display: none;", accept:"image/*" %>
     <div class="form-group">
       <%= f.text_area :name, id:"new-problem-input", class:"form-control", rows:"20", placeholder:"Write problem name here" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
 <nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded" style="display: none;">
   <div class="row">
     <div class="col-xs">
       <center><%= button_tag 'Next', class: 'btn btn-link', id: 'next_link' %></center>
     </div>
-  </div>
-</nav>
-<nav id="tools-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded top-navbar">
-  <div class="row">
-    <div class="col-xs"><center><i id="computer" class="fa fa-image fa-lg"></i></center></div>
-    <div class="col-xs"><center><i id="camera" class="fa fa-camera fa-lg"></i></center></div>
   </div>
 </nav>
 
