@@ -35,17 +35,6 @@ feature 'User completes solving process' do
       end
     end
 
-    scenario 'finalizes submission', js: true do
-      Input::LENSES.each do |lens|
-        create(:input, lens: lens, input_type: 'result', problem: @problem)
-        create(:input, lens: lens, input_type: 'solution', problem: @problem)
-      end
-      visit "/problems/#{@problem.id}/adaptability"
-      find(:href, "solution-textarea").trigger('click')
-      wait_for_ajax
-      click_on 'Next'
-    end
-
     scenario 'submits final review', js: true do
       visit "/problems/#{@problem.id}/review"
       find(:href, "review-textarea").trigger('click')

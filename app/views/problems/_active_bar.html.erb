@@ -1,7 +1,7 @@
 <nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded" style="display: none;">
   <div class="row">
     <div class="col-xs">
-      <center><%= link_to 'Next', view_problems_path(@problem.id, 'next'), class: 'btn btn-link' %></center>
+      <center><%= link_to @page == 'thinking' ? 'Complete' : "Continue to page #{Input.next_lens(@page).titleize.humanize}", view_problems_path(@problem.id, @page == 'thinking' ? 'next' : Input.next_lens(@page)), class: 'btn btn-link' %></center>
     </div>
   </div>
 </nav>
