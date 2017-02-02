@@ -1,0 +1,56 @@
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none !important;
+}
+
+.form-control {
+  border-radius: 0px;
+}
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-indicators {
+  padding-bottom: 10%;
+}
+
+.carousel-caption {
+  padding-bottom: 20%;
+}
+
+.top-navbar {
+  background-color: #fe4153;
+  color: white;
+}
+
+.white, .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+  color: white;
+}
+
+.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
+  font-weight: normal;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+  color: white;
+}
+
+.problems-grid {
+  margin: 10px 20px 10px 10px;
+}
+
+.btn-square {
+  border-radius: 0px;
+}
+
+.problem-filters {
+  margin-top: 5px;
+}
+
+.aceit-button {
+  padding-left: 5px;
+  padding-right: 5px;
+}
