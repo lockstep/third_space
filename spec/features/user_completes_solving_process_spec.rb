@@ -46,19 +46,6 @@ feature 'User completes solving process' do
       click_on 'Next'
     end
 
-    scenario 'submits final review', js: true do
-      visit "/problems/#{@problem.id}/review"
-      find(:href, "review-textarea").trigger('click')
-      wait_for_ajax
-      fill_in "review-input", with: 'Final text'
-      find(:href, "review-textarea").trigger('click')
-      wait_for_ajax
-      visit "/problems/#{@problem.id}/review"
-      find(:href, "review-textarea").trigger('click')
-      wait_for_ajax
-      expect(page).to have_field("review-input", with: 'Final text')
-    end
-
     scenario 'filters by all' do
       another_user = create(:user, email: 'foo@example.com')
       create(:problem, name: 'Another problem', user: @user)
