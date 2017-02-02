@@ -3,6 +3,24 @@ a, a:hover, a:active, a:visited {
   text-decoration: none !important;
 }
 
+html {
+  background-image: image-url('subtle_pattern.png')
+}
+
+.image-box {
+  padding: 1em;
+  width: 100%;
+}
+.image-box-inner {
+  display: table;
+  margin: 0 auto; 
+}
+
+.image-icon {
+  font-size: 20em;
+  color: #fe4153;
+}
+
 .form-control {
   border-radius: 0px;
 }
@@ -26,16 +44,18 @@ a, a:hover, a:active, a:visited {
   color: white;
 }
 
-.white, .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+a.white:active, a.white:link, a.white:visited, a.white:hover
+{
   color: white;
-}
-
-.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {
   font-weight: normal;
 }
 
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+.navbar-light .navbar-brand {
   color: white;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: 0;
 }
 
 .problems-grid {
@@ -54,3 +74,5 @@ a, a:hover, a:active, a:visited {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+

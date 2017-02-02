@@ -1,4 +1,5 @@
 $(document).ready ->
+
   # Problem
   $(document).on 'shown.bs.collapse', "#new-problem-textarea", ->
     text_submission('new-problem', 'What is your problem name?', true)
@@ -17,11 +18,11 @@ $(document).ready ->
 
   # Lens Result
   $(document).on 'shown.bs.collapse', "#result-textarea", ->
-    text_submission('result', 'What is your expected result?', false)
+    text_submission('result', 'What is your expected result?', true)
     set_input_text('result')
     show_next_button()
   $(document).on 'hidden.bs.collapse', "#result-textarea", ->
-    text_submission('result', 'What is your expected result?', true)
+    text_submission('result', 'What is your expected result?', false)
 
   # Lens Solution
   $(document).on 'shown.bs.collapse', "#solution-textarea", ->
@@ -39,13 +40,10 @@ $(document).ready ->
   $('#review-textarea').focusout ->
     post_lens_submission($(this))
 
-  # Open photo dialog
-  $(document).on 'click', '#computer', ->
+  # Open photo/camera dialog
+  $('.image-icon').css('cursor','pointer') #iOS fix
+  $(document).on 'click', '.image-icon', ->
     $('#image-upload').click()
-
-  # Open camera dialog
-  $(document).on 'click', '#camera', ->
-    $('#image-upload').attr('capture', 'camera').click()
 
   # Image upload submit
   $(document).on 'change', '#image-upload', (e) ->
@@ -53,9 +51,8 @@ $(document).ready ->
 
   # Problem next link
   $(document).on 'click', '#next_link', ->
-    if $('#new-problem-input').val().length > 1
-      post_problem_submission($('#new-problem-textarea'))
-      location.href = "/problems/#{id}/adaptability"
+    post_problem_submission($('#new-problem-textarea'))
+    location.href = "/problems/#{id}/adaptability"
 
   # aceit links
   $(document).on 'click', '.aceit-link', (e) ->
@@ -67,17 +64,19 @@ $(document).ready ->
     location.href = $(this).attr("href")
 
 text_submission = (id, title, show) ->
-  first = show ? 'down' : 'up'
-  second = show ? 'up' : 'down'
-  $(".fa-chevron-#{first}").removeClass("fa-chevron-#{first}").addClass("fa-chevron-#{second}")
-  $("##{id}-head-input").html title
-  $('html, body').animate { scrollTop: $("##{id}-head").offset().top }, 500
   if show
+    klass1 = 'fa-chevron-down'
+    klass2 = 'fa-close'
     $('#next-bar').show()
     $('#tools-bar').hide()
   else
+    klass1 = 'fa-close'
+    klass2 = 'fa-chevron-down'
     $('#next-bar').hide()
     $('#tools-bar').show()
+  $("##{id}-icon").removeClass(klass1).addClass(klass2)
+  $("##{id}-head-input").html title
+  $('html, body').animate { scrollTop: $("##{id}-head").offset().top }, 500
 
 post_problem_submission = (el) ->
   name = el.find('textarea:first').val()
@@ -113,8 +112,8 @@ set_input_text = (input_type) ->
       $("##{input_type}-textarea").find('textarea:first').val(input_text)
 
 show_next_button = ->
-  $.getJSON "/inputs/#{id}/count", (input_count) ->
-    if input_count == 10
-      $('#next-bar').show()
-      $('#tools-bar').hide()
+  #$.getJSON "/inputs/#{id}/count", (input_count) ->
+  #  if input_count == 10
+  $('#next-bar').show()
+  $('#tools-bar').hide()
 
