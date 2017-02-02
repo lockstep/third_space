@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  PAGES = %w(review next edit)
+  PAGES = %w(next edit)
 
   def index
     @problems = params[:stream].blank? ? current_user.problems : Problem.all

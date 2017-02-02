@@ -8,14 +8,6 @@ $(document).ready ->
   $(document).on 'hidden.bs.collapse', "#new-problem-textarea", ->
     text_submission('new-problem', 'Write problem name here', false)
 
-  # Review
-  $(document).on 'shown.bs.collapse', "#review-textarea", ->
-    text_submission('review', 'What is your ACEIT solution?', true)
-    set_input_text('review')
-
-  $(document).on 'hidden.bs.collapse', "#review-textarea", ->
-    text_submission('review', 'Use ACEIT to write one final solution', false)
-
   # Lens Result
   $(document).on 'shown.bs.collapse', "#result-textarea", ->
     text_submission('result', 'What is your expected result?', true)
@@ -34,10 +26,6 @@ $(document).ready ->
 
   # Input submission
   $('.input-textarea').focusout ->
-    post_lens_submission($(this))
-
-  # Review submission
-  $('#review-textarea').focusout ->
     post_lens_submission($(this))
 
   # Open photo/camera dialog
