@@ -19,10 +19,7 @@ module ThirdSpace
         secret_access_key: ENV.fetch('S3_SECRET'),
         s3_region: 'us-east-1'
       },
-      styles: { medium: "300x300>", thumb: "200x200>" },
-      default_url: "/images/:style/missing.png",
-      path: "#{Rails.root}/public/:basename.:extension",
-      url: "/:attachment/:basename.:extension"
+      styles: { medium: "700#x480#", thumb: "100x100" },
     }
   end
 end

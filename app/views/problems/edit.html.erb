@@ -1,8 +1,8 @@
 <%= render 'top_bar', title: 'TST APP', icon: 'bell-o' %>
 
-<%= image_tag(@problem.image(:medium), class: 'w-100') if @problem.image.present?  %>
+<%= image_tag(@problem.image.url(:medium), class: 'w-100') if @problem.image.present?  %>
 <%= form_for @problem, html: {id:"problem-form"} do |f| %>
-  <% if @problem.image.blank?  %>
+  <% unless @problem.image.present?  %>
   <%= f.file_field :image, id:"image-upload", style:"visibility: hidden;", accept:"image/*" %>
   <div class="image-box">
     <div class="image-box-inner">
