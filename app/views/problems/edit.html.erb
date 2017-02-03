@@ -9,19 +9,17 @@
     </div>
   </div>
   <div class="card-header" role="tab" id="new-problem-head">
-    <a class="collapsed" data-toggle="collapse" href="#new-problem-textarea" aria-expanded="false" aria-controls="new-problem-textarea">
-      <span class="pull-right"><%= fa_icon 'chevron-down', id: 'new-problem-icon' %></span>
-      <span id="new-problem-head-input">Write problem name here</span>
+      <span id="new-problem-head-input">What is your problem name?</span>
     </a>
   </div>
-  <div id="new-problem-textarea" class="collapse" role="tabpanel" aria-labelledby="new-problem-head">
+  <div id="new-problem-textarea" role="tabpanel" aria-labelledby="new-problem-head">
     <%= f.hidden_field :id %>
     <div class="form-group">
       <%= f.text_area :name, id:"new-problem-input", class:"form-control", rows:"20", placeholder:"Write problem name here" %>
     </div>
   </div>
 <% end %>
-<nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded" style="display: none;">
+<nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded">
   <div class="row">
     <div class="col-xs">
       <center><%= button_tag 'Next', class: 'btn btn-link', id: 'next_link' %></center>

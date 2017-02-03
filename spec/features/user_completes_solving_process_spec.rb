@@ -8,13 +8,12 @@ feature 'User completes solving process' do
   scenario 'skips the intro wizard' do
     visit '/'
     click_on 'Skip'
-    expect(page).to have_content('Write problem name here')
+    expect(page).to have_content('What is your problem name?')
   end
 
   context 'creates new submission' do
     background { visit '/problems/new' }
     scenario 'with text', js: true do
-      find(:href, "new-problem-textarea").trigger('click')
       fill_in 'new-problem-input', with: 'New submission'
       click_on 'Next'
       expect(page).to have_content 'What is a solution through this lens?'

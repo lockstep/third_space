@@ -17,7 +17,7 @@
     <div class="card">
       <%= image_tag(problem.image.present? ? problem.image(:thumbnail) : 'thirdspace.jpg' , class: 'card-img-top w-100') %>
       <div class="card-block">
-        <h6 class="card-title"><%= problem.name %></h6>
+        <h6 class="card-title"><%= problem.name.presence || 'Untitled' %></h6>
         <p class="card-text small">Some quick example text.</p>
         <a href="<%= view_problems_path(problem.id, 'adaptability') %>" class="btn btn-primary btn-sm btn-block">View</a>
       </div>

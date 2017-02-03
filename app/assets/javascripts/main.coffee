@@ -1,13 +1,5 @@
 $(document).ready ->
 
-  # Problem
-  $(document).on 'shown.bs.collapse', "#new-problem-textarea", ->
-    text_submission('new-problem', 'What is your problem name?', true)
-    post_problem_submission($(this))
-
-  $(document).on 'hidden.bs.collapse', "#new-problem-textarea", ->
-    text_submission('new-problem', 'Write problem name here', false)
-
   # Lens Result
   $(document).on 'shown.bs.collapse', "#result-textarea", ->
     text_submission('result', 'What is your expected result?', true)
