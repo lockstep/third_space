@@ -19,6 +19,7 @@ feature 'User completes solving process' do
       expect(page).to have_content 'What is a solution through this lens?'
       expect(page).to have_content 'What is your expected result?'
     end
+
   end
 
   context 'existing submissions' do
@@ -27,7 +28,8 @@ feature 'User completes solving process' do
     end
 
     context 'successfully updates lens' do
-      Input::LENSES.each do |lens|
+      @lenses = %w(adaptability cultural_competence empathy intellectual_curiosity thinking)
+      @lenses.each do |lens|
         scenario lens, js: true do
           test_lens(lens)
         end
@@ -50,6 +52,7 @@ feature 'User completes solving process' do
 
     scenario 'edits from search' do
     end
+
   end
 
   def test_lens(lens)
