@@ -1,4 +1,4 @@
-$(document).on 'turbolinks:load', ->
+$(document).ready ->
 
   # Lens Solution
   $(document).on 'shown.bs.collapse', "#solution-textarea", ->
