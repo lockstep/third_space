@@ -1,20 +1,30 @@
-$(document).ready ->
-
-  # Lens Result
-  $(document).on 'shown.bs.collapse', "#result-textarea", ->
-    text_submission('result', 'What is your expected result?', true)
-    set_input_text('result')
-    show_next_button()
-  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
-    text_submission('result', 'What is your expected result?', false)
+$(document).on 'turbolinks:load', ->
 
   # Lens Solution
   $(document).on 'shown.bs.collapse', "#solution-textarea", ->
-    text_submission('solution', 'What is a solution through this lens?', true)
     set_input_text('solution')
-    show_next_button()
+    show_elements(['result-bar', 'solution-textarea'])
+    hide_elements(['next-bar', 'tools-bar', 'result-head', 'result-textarea'])
+    $("#result-icon").removeClass('fa-close').addClass('fa-chevron-down')
+    $("#solution-icon").removeClass('fa-chevron-down').addClass('fa-close')
+
   $(document).on 'hidden.bs.collapse', "#solution-textarea", ->
-    text_submission('solution', 'What is a solution through this lens?', false)
+    show_elements(['tools-bar', 'result-head'])
+    hide_elements(['solution-textarea', 'result-textarea'])
+    $("#solution-icon").removeClass('fa-close').addClass('fa-chevron-down')
+
+  # Lens Result
+  $(document).on 'shown.bs.collapse', "#result-textarea", ->
+    set_input_text('result')
+    show_elements(['next-bar', 'result-head', 'result-textarea'])
+    hide_elements(['result-bar', 'tools-bar', 'solution-textarea'])
+    $("#solution-icon").removeClass('fa-close').addClass('fa-chevron-down')
+    $("#result-icon").removeClass('fa-chevron-down').addClass('fa-close')
+
+  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
+    show_elements(['tools-bar', 'result-head'])
+    hide_elements(['result-textarea', 'next-bar'])
+    $("#result-icon").removeClass('fa-close').addClass('fa-chevron-down')
 
   # Input submission
   $('.input-textarea').focusout ->
@@ -42,21 +52,6 @@ $(document).ready ->
     if $('#result-input').val().length > 1
       post_lens_submission($('#result-textarea'))
     location.href = $(this).attr("href")
-
-text_submission = (id, title, show) ->
-  if show
-    klass1 = 'fa-chevron-down'
-    klass2 = 'fa-close'
-    $('#next-bar').show()
-    $('#tools-bar').hide()
-  else
-    klass1 = 'fa-close'
-    klass2 = 'fa-chevron-down'
-    $('#next-bar').hide()
-    $('#tools-bar').show()
-  $("##{id}-icon").removeClass(klass1).addClass(klass2)
-  $("##{id}-head-input").html title
-  $('html, body').animate { scrollTop: $("##{id}-head").offset().top }, 500
 
 post_problem_submission = (el) ->
   name = el.find('textarea:first').val()
@@ -91,9 +86,11 @@ set_input_text = (input_type) ->
     if input_text
       $("##{input_type}-textarea").find('textarea:first').val(input_text)
 
-show_next_button = ->
-  #$.getJSON "/inputs/#{id}/count", (input_count) ->
-  #  if input_count == 10
-  $('#next-bar').show()
-  $('#tools-bar').hide()
+show_elements = (elements) ->
+  $.each elements, (index, element) =>
+    $("##{element}").show()
+
+hide_elements = (elements) ->
+  $.each elements, (index, element) =>
+    $("##{element}").hide()
 

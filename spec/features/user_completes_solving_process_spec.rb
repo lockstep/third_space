@@ -59,7 +59,6 @@ feature 'User completes solving process' do
       expect(page).not_to have_content("On second page")
 
       click_on '2'
-      save_and_open_page
       expect(page).to have_content("On second page")
       expect(page).not_to have_content('My Problem')
     end
