@@ -25,5 +25,6 @@
   </div>
   <% end %>
 </div>
+<%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: "pagination" %>
 <%= link_to "Create New", new_problem_path('new'), class: 'btn btn-success btn-block btn-square' %>
 

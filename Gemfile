@@ -33,6 +33,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk' 
 gem "administrate", "~> 0.3.0"
 gem 'bourbon'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'pry-rails'

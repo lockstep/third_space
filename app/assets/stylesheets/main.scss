@@ -4,7 +4,12 @@ html {
 
 a, a:hover, a:active, a:visited, a:focus {
   text-decoration: none;
-  color: #0275d8;
+}
+
+.pagination{
+  display:table;
+  margin:0 auto;
+  padding-bottom: 10px;
 }
 
 .btn-link:focus, .btn-link:hover, .btn-link:active, .btn-link:visited {

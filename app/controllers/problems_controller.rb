@@ -2,7 +2,8 @@ class ProblemsController < ApplicationController
   PAGES = %w(next edit)
 
   def index
-    @problems = params[:stream].blank? ? current_user.problems : Problem.all
+    problems = params[:stream].blank? ? current_user.problems : Problem.all
+    @problems = problems.paginate(:page => params[:page], :per_page => 30)
     render template: "problems/tst_stream"
   end
 
