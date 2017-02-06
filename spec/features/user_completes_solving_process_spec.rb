@@ -50,6 +50,20 @@ feature 'User completes solving process' do
       expect(page).to have_content("Somebody else's problem")
     end
 
+    scenario 'paginates correctly' do
+      create_list(:problem, 29, user: @user)
+      create(:problem, name: 'On second page', user: @user)
+
+      visit '/problems'
+      expect(page).to have_content('My Problem')
+      expect(page).not_to have_content("On second page")
+
+      click_on '2'
+      save_and_open_page
+      expect(page).to have_content("On second page")
+      expect(page).not_to have_content('My Problem')
+    end
+
     scenario 'edits from search' do
     end
 
