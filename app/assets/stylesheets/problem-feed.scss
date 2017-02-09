@@ -45,3 +45,38 @@
     color: $black;
   }
 }
+
+.comment-group {
+  padding: $padding*1.5;
+
+  .comment-title {
+    letter-spacing: 0.5em;
+    font-size: 12px;
+    font-weight: 700;
+    color: darken($medium-grey, 20%);
+  }
+}
+
+.discuss {
+  margin: $margin*3 0
+}
+
+.comment-form {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.comment-input {
+  display: inline-block;
+  padding: 5px 60px 5px 15px;
+}
+
+.comment-send {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  background: transparent;
+  border: 0;
+}

@@ -20,7 +20,7 @@
           <div class="row">
             <% @problems.each do |problem| %>
               <div class="col-xs-12 ">
-                <a href="<%= view_problems_path(problem.id, 'adaptability') %>">
+                <a href="<%= discuss_problems_path(problem.id) %>">
                   <div class="problem-box">
                     <div class="problem">
                       <%= problem.name.presence || 'Untitled' %>

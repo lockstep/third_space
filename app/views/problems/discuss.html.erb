@@ -1,0 +1,42 @@
+<%= render 'top_bar', title: 'TST DISCUSS', icon: '' %>
+
+<section class="problem-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="problem-contents">
+          <div class="row">
+            <div class="col-xs-12 ">
+              <div class="problem-box discuss">
+                <div class="problem">
+                  <%= @problem.name.presence || 'Untitled' %>
+                </div>
+                <div class="degree-thinking">
+                  Some quick example text.
+                </div>
+              </div>
+              <div class="comment-group">
+                <div class="comment-title">COMMENTs</div>
+                <% @problem.comments.each do |comment| %>
+                  <div>
+                    <%= comment.user.email %>: <%= comment.description %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="comment-form">
+  <%= form_tag '/comments', method: :post do %>
+    <%= text_field_tag 'comment[description]', '', placeholder: 'Add comment here',
+      class: 'form-control comment-input' %>
+    <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
+    <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
+    <%= submit_tag 'POST', class: 'comment-send' %>
+  <% end %>
+</div>
