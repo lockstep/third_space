@@ -3,28 +3,14 @@ $(document).on 'turbolinks:load', ->
   # Lens Solution
   $(document).on 'shown.bs.collapse', "#solution-textarea", ->
     set_input_text('solution')
-    show_elements(['result-bar', 'solution-textarea'])
-    hide_elements(['next-bar', 'tools-bar', 'result-head', 'result-textarea'])
-    $("#result-icon").removeClass('fa-close').addClass('fa-chevron-down')
+    show_elements(['solution-textarea', 'next-bar'])
+    hide_elements(['tools-bar'])
     $("#solution-icon").removeClass('fa-chevron-down').addClass('fa-close')
 
   $(document).on 'hidden.bs.collapse', "#solution-textarea", ->
-    show_elements(['tools-bar', 'result-head'])
-    hide_elements(['solution-textarea', 'result-textarea'])
+    show_elements(['tools-bar'])
+    hide_elements(['solution-textarea', 'next-bar'])
     $("#solution-icon").removeClass('fa-close').addClass('fa-chevron-down')
-
-  # Lens Result
-  $(document).on 'shown.bs.collapse', "#result-textarea", ->
-    set_input_text('result')
-    show_elements(['next-bar', 'result-head', 'result-textarea'])
-    hide_elements(['result-bar', 'tools-bar', 'solution-textarea'])
-    $("#solution-icon").removeClass('fa-close').addClass('fa-chevron-down')
-    $("#result-icon").removeClass('fa-chevron-down').addClass('fa-close')
-
-  $(document).on 'hidden.bs.collapse', "#result-textarea", ->
-    show_elements(['tools-bar', 'result-head'])
-    hide_elements(['result-textarea', 'next-bar'])
-    $("#result-icon").removeClass('fa-close').addClass('fa-chevron-down')
 
   # Input submission
   $('.input-textarea').focusout ->
@@ -49,8 +35,6 @@ $(document).on 'turbolinks:load', ->
     e.preventDefault()
     if $('#solution-input').val().length > 1
       post_lens_submission($('#solution-textarea'))
-    if $('#result-input').val().length > 1
-      post_lens_submission($('#result-textarea'))
     location.href = $(this).attr("href")
 
 post_problem_submission = (el) ->

@@ -17,7 +17,6 @@ feature 'User completes solving process' do
       fill_in 'new-problem-input', with: 'New submission'
       click_on 'Next'
       expect(page).to have_content 'What is a solution through this lens?'
-      expect(page).to have_content 'What is your expected result?'
     end
 
   end
@@ -72,7 +71,6 @@ feature 'User completes solving process' do
     @input = create(:input, problem: @problem, lens: lens)
     visit "/problems/#{@problem.id}/#{@input.lens}"
     test_input('solution')
-    test_input('result')
   end
 
   def test_input(type)
