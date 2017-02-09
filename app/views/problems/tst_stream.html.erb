@@ -11,20 +11,34 @@
 </div>
 </center>
 
-<div class="row problems-grid">
-  <% @problems.each do |problem| %>
-  <div class="col-xs-6">
-    <div class="card">
-      <%= image_tag('thirdspace.jpg' , class: 'card-img-top w-100') %>
-      <div class="card-block">
-        <h6 class="card-title"><%= problem.name.presence || 'Untitled' %></h6>
-        <p class="card-text small">Some quick example text.</p>
-        <a href="<%= view_problems_path(problem.id, 'adaptability') %>" class="btn btn-primary btn-sm btn-block white">View</a>
+<section class="problem-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="problem-contents">
+          <h3>Latest Problems</h3>
+          <div class="row">
+            <% @problems.each do |problem| %>
+              <div class="col-xs-12 ">
+                <a href="<%= view_problems_path(problem.id, 'adaptability') %>">
+                  <div class="problem-box">
+                    <div class="problem">
+                      <%= problem.name.presence || 'Untitled' %>
+                    </div>
+                    <div class="degree-thinking">
+                      Some quick example text.
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
+</section>
+
+
 <%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <%= link_to "Create New", new_problem_path('new'), class: 'btn btn-success btn-block btn-square' %>
-
