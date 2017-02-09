@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   resources :problems, only: [:index, :new, :update, :edit] do
+    get ":id/discuss", to: 'problems#discuss', on: :collection
     get ":id/:lens", to: 'problems#show', on: :collection, as: :view
   end
 
