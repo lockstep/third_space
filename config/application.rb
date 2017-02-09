@@ -11,15 +11,5 @@ module ThirdSpace
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.paperclip_defaults = {
-      storage: :s3,
-      s3_credentials: {
-        bucket: ENV.fetch('S3_BUCKET'),
-        access_key_id: ENV.fetch('S3_KEY'),
-        secret_access_key: ENV.fetch('S3_SECRET'),
-        s3_region: 'us-east-1'
-      },
-      styles: { medium: "700#x480#", thumb: "100x100" },
-    }
   end
 end

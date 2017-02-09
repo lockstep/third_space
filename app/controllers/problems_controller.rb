@@ -30,14 +30,13 @@ class ProblemsController < ApplicationController
   def update
     @problem = Problem.find(problem_params[:id])
     @problem.update(problem_params)
-    return render status: 200, json: '' if problem_params[:image].blank?
-    redirect_to edit_problem_path(@problem.id)
+    return render status: 200, json: ''
   end
 
   private
 
   def problem_params
-    params.require(:problem).permit(:id, :name, :image)
+    params.require(:problem).permit(:id, :name)
   end
 
 end
