@@ -33,6 +33,10 @@ class ProblemsController < ApplicationController
     return render status: 200, json: ''
   end
 
+  def discuss
+    @problem = Problem.find(params[:id])
+  end
+
   private
 
   def problem_params
