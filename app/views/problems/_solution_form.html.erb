@@ -12,21 +12,7 @@
   </form>
 </div>
 
-<div class="card-header" role="tab" id="result-head">
-  <a class="collapsed" data-toggle="collapse" href="#result-textarea" aria-expanded="false" aria-controls="result-textarea">
-    <span class="pull-right"><%= fa_icon 'chevron-down', id: 'result-icon' %></span>
-    <span id="result-head-input">What is your expected result?</span>
-  </a>
-</div>
-<div id="result-textarea" class="input-textarea collapse" role="tabpanel" aria-labelledby="result-head">
-  <form>
-    <div class="form-group">
-      <textarea id="result-input" class="form-control" placeholder="Write expected result here" rows="20"></textarea>
-    </div>
-  </form>
-</div>
-
 <script type="text/javascript">
-var id = <%= @problem.id %>;
-var lens = '<%= @page %>';
+  var id = <%= @problem.id %>;
+  var lens = '<%= @page %>';
 </script>
