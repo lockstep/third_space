@@ -14,10 +14,6 @@ class ProblemDashboard < Administrate::BaseDashboard
     name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    image_file_name: Field::String,
-    image_content_type: Field::String,
-    image_file_size: Field::Number,
-    image_updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,10 +36,6 @@ class ProblemDashboard < Administrate::BaseDashboard
     :name,
     :user,
     :inputs,
-    :image_file_name,
-    :image_content_type,
-    :image_file_size,
-    :image_updated_at,
     :created_at,
     :updated_at,
   ].freeze

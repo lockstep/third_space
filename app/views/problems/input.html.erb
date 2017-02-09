@@ -2,7 +2,7 @@
   <span class="nav-item white"><%= image_tag("#{@page}_icon.svg", width: 30) %> <%= @page.humanize.titleize %></span>
 </nav>
 <div class="image-aceit">
-  <%= image_tag(@problem.image.present? ? @problem.image(:medium) : "#{@page}.jpg", class: 'w-100') %>
+  <%= image_tag("#{@page}.jpg", class: 'w-100') %>
   <div class="aceit-overlay">
     <%= image_tag("#{@page}_icon.svg") %>
   </div>

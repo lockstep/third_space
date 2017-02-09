@@ -15,7 +15,7 @@
   <% @problems.each do |problem| %>
   <div class="col-xs-6">
     <div class="card">
-      <%= image_tag(problem.image.present? ? problem.image(:thumbnail) : 'thirdspace.jpg' , class: 'card-img-top w-100') %>
+      <%= image_tag('thirdspace.jpg' , class: 'card-img-top w-100') %>
       <div class="card-block">
         <h6 class="card-title"><%= problem.name.presence || 'Untitled' %></h6>
         <p class="card-text small">Some quick example text.</p>

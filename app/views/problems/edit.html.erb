@@ -1,15 +1,6 @@
 <%= render 'top_bar', title: 'TST APP', icon: 'bell-o' %>
 
-<%= image_tag(@problem.image.url(:medium), class: 'w-100') if @problem.image.present?  %>
 <%= form_for @problem, html: {id:"problem-form"} do |f| %>
-  <% unless @problem.image.present?  %>
-  <%= f.file_field :image, id:"image-upload", style:"visibility: hidden;", accept:"image/*" %>
-  <div class="image-box">
-    <div class="image-box-inner">
-      <i class="fa fa-file-image-o image-icon" aria-hidden="true"></i>
-    </div>
-  </div>
-  <% end %>
   <div class="card-header" role="tab" id="new-problem-head">
       <span id="new-problem-head-input">What is your problem name?</span>
     </a>
