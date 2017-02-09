@@ -1,5 +1,8 @@
 <nav id="adapt-panel" class="navbar navbar-full navbar-light bg-primary">
   <span class="nav-item white"><%= image_tag("#{@page}_icon.svg", width: 30) %> <%= @page.humanize.titleize %></span>
+  <a class="white float-xs-right" href="<%= problems_path %>">
+    <%= fa_icon('home 2x') %>
+  </a>
 </nav>
 <div class="image-aceit">
   <%= image_tag("#{@page}.jpg", class: 'w-100') %>
