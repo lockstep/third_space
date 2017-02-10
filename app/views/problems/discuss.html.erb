@@ -1,24 +1,24 @@
 <%= render 'top_bar', title: 'TST DISCUSS', icon: '' %>
 
-<section class="problem-wrapper">
+<section class="problem__wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <div class="problem-contents">
+        <div class="problem__contents">
           <div class="row">
             <div class="col-xs-12 ">
-              <div class="problem-box discuss">
-                <div class="problem">
+              <div class="problem__box problem__discuss-group">
+                <div class="problem__title">
                   <%= @problem.name.presence || 'Untitled' %>
                 </div>
-                <div class="degree-thinking">
+                <div class="problem__degree-thinking">
                   Some quick example text.
                 </div>
               </div>
-              <div class="comment-group">
-                <div class="comment-title">COMMENTs</div>
+              <div class="comment__group">
+                <h6 class="comment-title">COMMENTs</h6>
                 <% @problem.comments.each do |comment| %>
-                  <div>
+                  <div class="comment__message">
                     <%= comment.user.email %>: <%= comment.description %>
                   </div>
                 <% end %>
@@ -31,12 +31,12 @@
   </div>
 </section>
 
-<div class="comment-form">
+<div class="comment__form">
   <%= form_tag '/comments', method: :post do %>
     <%= text_field_tag 'comment[description]', '', placeholder: 'Add comment here',
-      class: 'form-control comment-input' %>
+      class: 'form-control comment__input' %>
     <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
     <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
-    <%= submit_tag 'POST', class: 'comment-send' %>
+    <%= submit_tag 'POST', class: 'comment__send-button' %>
   <% end %>
 </div>
