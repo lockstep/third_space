@@ -1,8 +1,8 @@
-.problem-wrapper {
+.problem__wrapper {
     background: $white;
 }
 
-.problem-contents {
+.problem__contents {
   h3 {
     text-transform: uppercase;
     letter-spacing: 0.5em;
@@ -14,34 +14,72 @@
   }
 }
 
-.problem-box {
+.problem__box {
   margin: 0 0 $margin*3 0;
   padding: $padding*1.5;
   background: $medium-grey;
+}
 
-  .problem,
-  .degree-thinking {
-    width: 100%;
-    min-height: 65px;
-    font-size: 12px;
-    background: $light-grey;
-    color: $black;
-    letter-spacing: 1px;
-    padding: $padding*1.5;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: center;
-  }
+.problem__title,
+.problem__degree-thinking {
+  width: 100%;
+  min-height: 65px;
+  font-size: 12px;
+  background: $light-grey;
+  color: $black;
+  letter-spacing: 1px;
+  padding: $padding*1.5;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
 
-  .problem {
-    font-size: 24px;
-    margin-bottom: $margin;
-  }
+.problem__title {
+  font-size: 24px;
+  margin-bottom: $margin;
+}
 
-  .degree-thinking  {
-    width: 100%;
-    font-size: 12px;
-    color: $black;
-  }
+.problem__degree-thinking  {
+  width: 100%;
+  font-size: 12px;
+  color: $black;
+}
+
+.problem__discuss-group {
+  margin: $margin*3 0
+}
+
+.comment__group {
+  padding: $padding*1.5;
+}
+
+.comment__title {
+  letter-spacing: 0.5em;
+  font-weight: 700;
+  color: darken($medium-grey, 20%);
+}
+
+.comment__message {
+  margin-bottom: 4px;
+}
+
+.comment__form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.comment__input {
+  display: inline-block;
+  padding: 10px 60px 10px 15px;
+}
+
+.comment__send-button {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: transparent;
+  border: 0;
 }
