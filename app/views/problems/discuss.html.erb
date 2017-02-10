@@ -12,7 +12,7 @@
                   <%= @problem.name.presence || 'Untitled' %>
                 </div>
                 <div class="problem__degree-thinking">
-                  Some quick example text.
+                  <%= @problem.get_lense_value('thinking') %>
                 </div>
               </div>
               <div class="comment__group">
