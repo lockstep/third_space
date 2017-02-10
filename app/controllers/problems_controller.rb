@@ -35,7 +35,6 @@ class ProblemsController < ApplicationController
 
   def discuss
     @problem = Problem.find(params[:id])
-    render template: "problems/discuss"
   end
 
   private
