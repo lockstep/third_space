@@ -2,28 +2,18 @@ $(document).on 'turbolinks:load', ->
 
   # Lens Solution
   $(document).on 'shown.bs.collapse', "#solution-textarea", ->
-    set_input_text('solution')
-    show_elements(['solution-textarea', 'next-bar'])
     hide_elements(['tools-bar'])
+    show_elements(['next-bar'])
     $("#solution-icon").removeClass('fa-chevron-down').addClass('fa-close')
 
   $(document).on 'hidden.bs.collapse', "#solution-textarea", ->
     show_elements(['tools-bar'])
-    hide_elements(['solution-textarea', 'next-bar'])
+    hide_elements(['next-bar'])
     $("#solution-icon").removeClass('fa-close').addClass('fa-chevron-down')
 
   # Input submission
   $('.input-textarea').focusout ->
     post_lens_submission($(this))
-
-  # Open photo/camera dialog
-  $('.image-icon').css('cursor','pointer') #iOS fix
-  $(document).on 'click', '.image-icon', ->
-    $('#image-upload').click()
-
-  # Image upload submit
-  $(document).on 'change', '#image-upload', (e) ->
-    $('#problem-form').submit()
 
   # Problem next link
   $(document).on 'click', '#next_link', ->
@@ -65,11 +55,6 @@ post_lens_submission = (el) ->
     }
   )
 
-set_input_text = (input_type) ->
-  $.getJSON "/inputs/#{id}/#{lens}/#{input_type}", (input_text) ->
-    if input_text
-      $("##{input_type}-textarea").find('textarea:first').val(input_text)
-
 show_elements = (elements) ->
   $.each elements, (index, element) =>
     $("##{element}").show()
@@ -77,4 +62,3 @@ show_elements = (elements) ->
 hide_elements = (elements) ->
   $.each elements, (index, element) =>
     $("##{element}").hide()
-

@@ -7,7 +7,7 @@
 <div id="solution-textarea" class="input-textarea collapse" role="tabpanel" aria-labelledby="solution-head">
   <form>
     <div class="form-group">
-      <textarea id="solution-input" class="form-control" placeholder="Write solution here" rows="20"></textarea>
+      <textarea id="solution-input" class="form-control" placeholder="Write solution here" rows="20"><%= @problem.get_len_value(@page) %></textarea>
     </div>
   </form>
 </div>
