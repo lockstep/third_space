@@ -11,21 +11,21 @@
 </div>
 </center>
 
-<section class="problem-wrapper">
+<section class="problem__wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <div class="problem-contents">
+        <div class="problem__contents">
           <h3>Latest Problems</h3>
           <div class="row">
             <% @problems.each do |problem| %>
               <div class="col-xs-12 ">
-                <a href="<%= view_problems_path(problem.id, 'adaptability') %>">
-                  <div class="problem-box">
-                    <div class="problem">
+                <a href="<%= discuss_problems_path(problem.id) %>">
+                  <div class="problem__box">
+                    <div class="problem__title">
                       <%= problem.name.presence || 'Untitled' %>
                     </div>
-                    <div class="degree-thinking">
+                    <div class="problem__degree-thinking">
                       Some quick example text.
                     </div>
                   </div>
