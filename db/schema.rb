@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209092349) do
+ActiveRecord::Schema.define(version: 20170214080515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,21 +25,16 @@ ActiveRecord::Schema.define(version: 20170209092349) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "inputs", force: :cascade do |t|
-    t.integer  "problem_id"
-    t.string   "lens"
-    t.string   "input_type"
-    t.text     "input_text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["problem_id"], name: "index_inputs_on_problem_id", using: :btree
-  end
-
   create_table "problems", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
+    t.string   "adaptability"
+    t.string   "cultural_competence"
+    t.string   "empathy"
+    t.string   "intellectual_curiosity"
+    t.string   "thinking"
     t.index ["user_id"], name: "index_problems_on_user_id", using: :btree
   end
 
@@ -65,6 +60,5 @@ ActiveRecord::Schema.define(version: 20170209092349) do
 
   add_foreign_key "comments", "problems"
   add_foreign_key "comments", "users"
-  add_foreign_key "inputs", "problems"
   add_foreign_key "problems", "users"
 end

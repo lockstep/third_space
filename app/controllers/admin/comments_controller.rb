@@ -1,16 +1,16 @@
 module Admin
-  class InputsController < Admin::ApplicationController
+  class CommentsController < Admin::ApplicationController
     # To customize the behavior of this controller,
     # simply overwrite any of the RESTful actions. For example:
     #
     # def index
     #   super
-    #   @resources = Input.all.paginate(10, params[:page])
+    #   @resources = Comment.all.paginate(10, params[:page])
     # end
 
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
-    #   Input.find_by!(slug: param)
+    #   Comment.find_by!(slug: param)
     # end
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions

@@ -1,46 +1,65 @@
 class ProblemsController < ApplicationController
-  PAGES = %w(next edit)
+  before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success]
 
   def index
-    problems = params[:stream].blank? ? current_user.problems : Problem.all
+    # problems = params[:stream].blank? ? current_user.problems : Problem.all
+    problems = current_user.problems
     @problems = problems.paginate(:page => params[:page], :per_page => 30)
-    render template: "problems/tst_stream"
-  end
-
-  def show
-    return redirect_to root_path if params[:lens].blank?
-    @problem = Problem.find(params[:id])
-    @page = params[:lens]
-    if Input::LENSES.include?(params[:lens])
-      render template: "problems/input"
-    elsif PAGES.include?(params[:lens])
-      render template: "problems/#{params[:lens]}"
-    else
-      redirect_to root_path
-    end
   end
 
   def new
-    problem = Problem.new
-    problem.user = current_user
-    problem.save
-    redirect_to edit_problem_path(problem.id)
+    @problem = Problem.new
+  end
+
+  def create
+    problem = Problem.new(problem_params.merge(user_id: current_user.id))
+    if problem.save(problem_params)
+      redirect_to "/problems/#{problem.id}/lenses/adaptability"
+    else
+      redirect_to :back
+    end
+  end
+
+  def edit
   end
 
   def update
-    @problem = Problem.find(problem_params[:id])
-    @problem.update(problem_params)
-    return render status: 200, json: ''
+    if @problem.update(problem_params)
+      redirect_to problem_path(@problem.id)
+    else
+      redirect_to :back
+    end
   end
 
-  def discuss
-    @problem = Problem.find(params[:id])
+  def show
+  end
+
+  def lense
+    @lense = params[:lense]
+  end
+
+  def update_lense
+    if @problem.update(problem_params)
+      lense = params[:problem][:lense]
+      redirect_to success_problem_path(@problem.id) and return if lense == 'thinking'
+      redirect_to lenses_problem_path(id: @problem.id, lense: "#{Problem.next_lens(lense)}")
+    else
+      redirect_to :back
+    end
+  end
+
+  def success
   end
 
   private
 
+  def set_problem
+    @problem = Problem.find(params[:id])
+  end
+
   def problem_params
-    params.require(:problem).permit(:id, :name)
+    params.require(:problem).permit(:name, :adaptability,
+      :cultural_competence, :empathy, :intellectual_curiosity, :thinking)
   end
 
 end

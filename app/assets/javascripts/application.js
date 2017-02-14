@@ -15,6 +15,5 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
-//= require_tree .
 //= require carousel
-//= require main
+//= require lense

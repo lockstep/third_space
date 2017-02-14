@@ -9,7 +9,7 @@ class ProblemDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    inputs: Field::HasMany,
+    comments: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
@@ -25,7 +25,7 @@ class ProblemDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :user,
-    :inputs,
+    :comments,
     :created_at,
   ].freeze
 
@@ -35,7 +35,7 @@ class ProblemDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :user,
-    :inputs,
+    :comments,
     :created_at,
     :updated_at,
   ].freeze
@@ -46,7 +46,7 @@ class ProblemDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :user,
-    :inputs,
+    :comments,
   ].freeze
 
   # Overwrite this method to customize how problems are displayed
