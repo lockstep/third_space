@@ -1,14 +1,14 @@
-<%= render 'top_bar', title: 'TST Stream', icon: '' %>
+<%= render 'navbar_top', title: 'TST Stream', icon: '' %>
 
 <center>
-<div class="btn-group problem-filters" role="group" aria-label="Basic example">
-  <a href="<%= problems_path %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] != 'all' %>">
-    <%= fa_icon('user-circle') %> My
-  </a>
-  <a href="<%= problems_path(stream: 'all') %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] == 'all' %>">
-    <%= fa_icon('th-large') %> All
-  </a>
-</div>
+  <div class="btn-group problem-filters" role="group" aria-label="Basic example">
+    <a href="<%= problems_path %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] != 'all' %>">
+      <%= fa_icon('user-circle') %> My
+    </a>
+    <a href="<%= problems_path(stream: 'all') %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] == 'all' %>">
+      <%= fa_icon('th-large') %> All
+    </a>
+  </div>
 </center>
 
 <section class="problem__wrapper">
@@ -20,13 +20,13 @@
           <div class="row">
             <% @problems.each do |problem| %>
               <div class="col-xs-12 ">
-                <a href="<%= discuss_problems_path(problem.id) %>">
+                <a href="<%= problem_path(problem.id) %>">
                   <div class="problem__box">
                     <div class="problem__title">
                       <%= problem.name.presence || 'Untitled' %>
                     </div>
                     <div class="problem__degree-thinking">
-                      <%= problem.get_lense_value('thinking') %>
+                      <%= problem.thinking %>
                     </div>
                   </div>
                 </a>

@@ -9,6 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     problems: Field::HasMany,
+    comments: Field::HasMany,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -32,6 +33,7 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :problems,
+    :comments,
     :email,
     :sign_in_count,
     :last_sign_in_at,
@@ -43,6 +45,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :problems,
+    :comments,
     :email,
     :sign_in_count,
     :current_sign_in_at,

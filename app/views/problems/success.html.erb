@@ -8,7 +8,11 @@
 
 <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
   <div class="row">
-    <div class="col-xs"><%= link_to "Go Back", view_problems_path(@problem.id, 'thinking'), class: 'btn btn-link' %></div>
-    <div class="col-xs"><%= link_to "View feed", problems_path, class: 'btn btn-link pull-right' %></div>
+    <div class="col-xs">
+      <%= link_to "Go Back", lenses_problem_path(id: @problem.id, lense: 'thinking'), class: 'btn btn-link' %>
+    </div>
+    <div class="col-xs">
+      <%= link_to "View feed", problems_path, class: 'btn btn-link pull-right' %>
+    </div>
   </div>
 </nav>

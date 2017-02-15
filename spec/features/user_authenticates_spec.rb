@@ -7,7 +7,7 @@ feature 'Authentication:' do
     end
     scenario 'signs in successfully' do
       visit '/'
-      fill_in 'user_email', with: 'test@example.com'
+      fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: 'password'
       click_on 'Log in'
       expect(page).to have_content('Skip')
@@ -22,7 +22,7 @@ feature 'Authentication:' do
     scenario 'requests new password' do
       visit '/'
       click_on 'Forgot Password?'
-      fill_in 'user_email', with: 'test@example.com'
+      fill_in 'user_email', with: @user.email
       click_on 'Reset password'
       expect(page).to have_content('You will receive an email with instructions on how to reset your password in a few minutes.')
     end
@@ -52,7 +52,7 @@ feature 'Authentication:' do
     end
     scenario 'successfully logs in' do
       visit '/admin'
-      fill_in 'user_email', with: 'test@example.com'
+      fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: 'password'
       click_on 'Log in'
       expect(page).to have_content('Signed in successfully.')

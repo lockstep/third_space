@@ -1,4 +1,4 @@
-<%= render 'top_bar', title: 'TST DISCUSS', icon: '' %>
+<%= render 'navbar_top', title: 'TST DISCUSS', icon: '' %>
 
 <section class="problem__wrapper">
   <div class="container">
@@ -12,7 +12,7 @@
                   <%= @problem.name.presence || 'Untitled' %>
                 </div>
                 <div class="problem__degree-thinking">
-                  <%= @problem.get_lense_value('thinking') %>
+                  <%= @problem.thinking %>
                 </div>
               </div>
               <div class="comment__group">
