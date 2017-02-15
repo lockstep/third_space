@@ -19,17 +19,14 @@
           <h3>Latest Problems</h3>
           <div class="row">
             <% @problems.each_with_index do |problem, index| %>
-              <%- colorIndex = index % 5 %>
+              <%- assetIndex = index % 5 %>
               <div class="col-xs-12 ">
                 <a href="<%= problem_path(problem.id) %>">
-                  <div class="problem__box"
-                  style="outline-color: <%= @colors[colorIndex] %>;
-                    background-image: url(<%= asset_path 'banner.png' %>)">
+                  <div class="problem__box problem__<%= Problem::LENSES[assetIndex]%>">
                     <div class="problem__title-wrapper">
-                      <h5 class="problem__title"
-                        style="background: <%= @colors[colorIndex] %>;">
+                      <div class="problem__title problem__title-<%= Problem::LENSES[assetIndex]%>">
                         <%= problem.name.presence || 'Untitled' %>
-                      </h5>
+                      </div>
                     </div>
                     <div class="problem__degree-thinking">
                       <%= problem.thinking %>

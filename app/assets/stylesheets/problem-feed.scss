@@ -14,17 +14,49 @@
   }
 }
 
+.problem__adaptability,
+.problem__cultural_competence,
+.problem__empathy,
+.problem__intellectual_curiosity,
+.problem__thinking {
+  background-size: 100%;
+  outline: 4px solid;
+}
+
+.problem__adaptability {
+  background: image-url("adaptability.png") no-repeat center;
+  outline-color: $adaptability;
+}
+
+.problem__cultural_competence {
+  background: image-url("cultural_competence.png") no-repeat center;
+  outline-color: $cultural;
+}
+
+.problem__empathy {
+  background: image-url("empathy.png") no-repeat center;
+  outline-color: $empathy;
+}
+
+.problem__intellectual_curiosity {
+  background: image-url("intellectual_curiosity.png") no-repeat center;
+  outline-color: $intellectual;
+}
+
+.problem__thinking {
+  background: image-url("thinking.png") no-repeat center;
+  outline-color: $thinking;
+}
+
 .problem__box {
   margin: 0 0 $margin*3 0;
-  background: $light-grey;
   box-shadow: 5px 5px 10px 0px $shadow;
-  outline: 4px solid;
 }
 
 .problem__title-wrapper {
   position: relative;
   width: 100%;
-  height: 80px;
+  min-height: 120px;
 }
 
 .problem__title {
@@ -32,12 +64,29 @@
   bottom: 0;
   margin: 0;
   padding: 5px;
-  font-size: .8em;
+  font-size: 14px;
   color: $light-grey;
   font-weight: 100;
   text-transform: uppercase;
   letter-spacing: .1rem;
+
+  &-adaptability {
+    background-color: $adaptability;
+  }
+  &-cultural_competence {
+    background-color: $cultural;
+  }
+  &-empathy {
+    background-color: $empathy;
+  }
+  &-intellectual_curiosity {
+    background-color: $intellectual;
+  }
+  &-thinking {
+    background-color: $thinking;
+  }
 }
+
 
 .problem__degree-thinking {
   padding: $padding*1.5;
@@ -52,7 +101,7 @@
   background: image-url("banner.png") no-repeat center;
   background-size: 100%;
   width: 100%;
-  height: 150px;
+  min-height: 150px;
 }
 
 .discuss__title {
@@ -64,7 +113,7 @@
   text-shadow: 3px 3px 2px $dark-shadow;
   position: relative;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(50%);
 }
 
 .problem__discuss-group {
