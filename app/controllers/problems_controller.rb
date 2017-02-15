@@ -2,8 +2,7 @@ class ProblemsController < ApplicationController
   before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success]
 
   def index
-    # problems = params[:stream].blank? ? current_user.problems : Problem.all
-    problems = current_user.problems
+    problems = params[:stream].blank? ? current_user.problems : Problem.all
     @problems = problems.paginate(:page => params[:page], :per_page => 30)
   end
 
