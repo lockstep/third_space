@@ -26,7 +26,7 @@ feature 'Create Problem Spec' do
 
       expect(page).to have_content 'completed the workflow'
       click_on 'View feed'
-      expect(page).to have_content 'global warming'
+      expect(page).to have_content 'GLOBAL WARMING'
       expect(page).to have_content 'test thinking'
     end
   end

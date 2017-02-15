@@ -18,12 +18,15 @@
         <div class="problem__contents">
           <h3>Latest Problems</h3>
           <div class="row">
-            <% @problems.each do |problem| %>
+            <% @problems.each_with_index do |problem, index| %>
+              <%- assetIndex = index % 5 %>
               <div class="col-xs-12 ">
                 <a href="<%= problem_path(problem.id) %>">
-                  <div class="problem__box">
-                    <div class="problem__title">
-                      <%= problem.name.presence || 'Untitled' %>
+                  <div class="problem__box problem__<%= Problem::LENSES[assetIndex]%>">
+                    <div class="problem__title-wrapper">
+                      <div class="problem__title problem__title-<%= Problem::LENSES[assetIndex]%>">
+                        <%= problem.name.presence || 'Untitled' %>
+                      </div>
                     </div>
                     <div class="problem__degree-thinking">
                       <%= problem.thinking %>

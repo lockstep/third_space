@@ -7,9 +7,11 @@
         <div class="problem__contents">
           <div class="row">
             <div class="col-xs-12 ">
-              <div class="problem__box problem__discuss-group">
-                <div class="problem__title">
-                  <%= @problem.name.presence || 'Untitled' %>
+              <div class="problem__discuss-group">
+                <div class="discuss__background">
+                  <div class="discuss__title">
+                    <%= @problem.name.presence || 'Untitled' %>
+                  </div>
                 </div>
                 <div class="problem__degree-thinking">
                   <%= @problem.thinking %>

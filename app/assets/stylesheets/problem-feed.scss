@@ -14,40 +14,111 @@
   }
 }
 
-.problem__box {
-  margin: 0 0 $margin*3 0;
-  padding: $padding*1.5;
-  background: $medium-grey;
+.problem__adaptability,
+.problem__cultural_competence,
+.problem__empathy,
+.problem__intellectual_curiosity,
+.problem__thinking {
+  background-size: 100%;
+  outline: 4px solid;
 }
 
-.problem__title,
-.problem__degree-thinking {
+.problem__adaptability {
+  background: image-url("adaptability.png") no-repeat center;
+  outline-color: $adaptability;
+}
+
+.problem__cultural_competence {
+  background: image-url("cultural_competence.png") no-repeat center;
+  outline-color: $cultural;
+}
+
+.problem__empathy {
+  background: image-url("empathy.png") no-repeat center;
+  outline-color: $empathy;
+}
+
+.problem__intellectual_curiosity {
+  background: image-url("intellectual_curiosity.png") no-repeat center;
+  outline-color: $intellectual;
+}
+
+.problem__thinking {
+  background: image-url("thinking.png") no-repeat center;
+  outline-color: $thinking;
+}
+
+.problem__box {
+  margin: 0 0 $margin*3 0;
+  box-shadow: 5px 5px 10px 0px $shadow;
+}
+
+.problem__title-wrapper {
+  position: relative;
   width: 100%;
-  min-height: 65px;
-  font-size: 12px;
-  background: $light-grey;
-  color: $black;
-  letter-spacing: 1px;
-  padding: $padding*1.5;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-align: center;
+  min-height: 120px;
 }
 
 .problem__title {
-  font-size: 24px;
-  margin-bottom: $margin;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  padding: 5px;
+  font-size: 14px;
+  color: $light-grey;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+
+  &-adaptability {
+    background-color: $adaptability;
+  }
+  &-cultural_competence {
+    background-color: $cultural;
+  }
+  &-empathy {
+    background-color: $empathy;
+  }
+  &-intellectual_curiosity {
+    background-color: $intellectual;
+  }
+  &-thinking {
+    background-color: $thinking;
+  }
 }
 
-.problem__degree-thinking  {
+
+.problem__degree-thinking {
+  padding: $padding*1.5;
   width: 100%;
+  min-height: 65px;
   font-size: 12px;
-  color: $black;
+  background: $dark-shadow;
+  color: $light-grey;
+}
+
+.discuss__background {
+  background: image-url("banner.png") no-repeat center;
+  background-size: 100%;
+  width: 100%;
+  min-height: 150px;
+}
+
+.discuss__title {
+  padding: $padding*1.5;
+  color: $light-grey;
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 2px $dark-shadow;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
 }
 
 .problem__discuss-group {
-  margin: $margin*3 0
+  margin: $margin*3 0;
+  box-shadow: 5px 5px 10px 0px $shadow;
 }
 
 .comment__group {
