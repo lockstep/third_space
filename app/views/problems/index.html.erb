@@ -24,7 +24,7 @@
                 <a href="<%= problem_path(problem.id) %>">
                   <div class="problem__box problem__<%= Problem::LENSES[assetIndex]%>">
                     <div class="problem__title-wrapper">
-                      <div class="problem__title problem__title-<%= Problem::LENSES[assetIndex]%>">
+                      <div class="problem__title problem__title--<%= Problem::LENSES[assetIndex]%>">
                         <%= problem.name.presence || 'Untitled' %>
                       </div>
                     </div>

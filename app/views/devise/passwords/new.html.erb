@@ -1,12 +1,22 @@
-<h4>Forgot your password?</h4>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+<div class='auth__container'>
+  <div class='auth__background'>
   </div>
-  <%= f.submit "Reset password", class: 'btn btn-primary btn-block' %>
-<% end %>
+  <div class='auth__form'>
+    <div class='third-space__logo third-space__logo--white'></div>
+    <h4 class="mb-1">Forgot your password?</h4>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= render "devise/shared/links" %>
+      <div class="form-group">
+         <%= fa_icon('envelope-o', class: 'auth__icon') %>
+        <%= f.email_field :email, autofocus: true, placeholder: "Email",
+            class: 'form-control auth__input' %>
+      </div>
+
+      <%= f.submit "Reset password", class: 'btn btn--third-space btn-block' %>
+      <hr class="auth__hr"/>
+    <% end %>
+
+    <%= link_to "Sign in", new_session_path(resource_name), class: "nav-link white" %><br />
+  </div>
+</div>
