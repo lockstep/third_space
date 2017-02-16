@@ -70,19 +70,19 @@
   text-transform: uppercase;
   letter-spacing: .1rem;
 
-  &-adaptability {
+  &--adaptability {
     background-color: $adaptability;
   }
-  &-cultural_competence {
+  &--cultural_competence {
     background-color: $cultural;
   }
-  &-empathy {
+  &--empathy {
     background-color: $empathy;
   }
-  &-intellectual_curiosity {
+  &--intellectual_curiosity {
     background-color: $intellectual;
   }
-  &-thinking {
+  &--thinking {
     background-color: $thinking;
   }
 }
