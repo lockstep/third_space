@@ -1,0 +1,16 @@
+.users.show {
+  background: image-url('galaxy_bg.png') no-repeat center;
+  .card {
+    height: 100%;
+    background-color: initial;
+    color: $white;
+  }
+  .profile {
+    &__img {
+      width: 160px;
+      height: 160px;
+      border-radius:50%;
+      overflow:hidden;
+    }
+  }
+}

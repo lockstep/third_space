@@ -1,0 +1,24 @@
+<%= render 'layouts/shared/navbar_top', title: 'Profile', icon: 'user-circle' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class='card my-2 text-xs-center'>
+        <div class='card-block'>
+          <%= image_tag 'default_avatar.jpg',
+            class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
+          <div>
+            <h4>Firstname Lastname</h4>
+            <p class='profile__content--email'>
+              <span class='font-weight-bold'>Email</span>: <%= current_user.email %>
+            </p>
+          </div>
+        </div>
+        <hr/>
+        <div class=''>
+          <%= link_to 'edit profile', '#', class: 'btn btn-outline-secondary text-uppercase' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
