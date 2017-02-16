@@ -1,0 +1,42 @@
+.tip__close-button {
+  opacity: 1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.tip__icon {
+  background: image-url('lightblub.svg') no-repeat center;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.tip__carousel-item {
+  padding: 25px;
+  padding-top: 100px;
+}
+
+.tip__carousel-indicators {
+  bottom: 130px;
+}
+
+.tip__overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  background-color: $dark-shadow;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.tip__overlay-content {
+  position: relative;
+  width: 100%;
+  color: $white;
+}

@@ -17,3 +17,4 @@
 //= require bootstrap
 //= require carousel
 //= require lense
+//= require modal
