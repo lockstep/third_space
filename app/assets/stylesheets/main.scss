@@ -100,3 +100,19 @@ a.white:active, a.white:link, a.white:visited, a.white:hover {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.third-space__logo {
+  background: image-url("3s-logo.svg") no-repeat center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+
+  &--white {
+    background: image-url("3s-logo-white.svg") no-repeat center;
+  }
+}
+
+.btn--third-space {
+  background-color: $logo-color;
+  color: $white;
+}

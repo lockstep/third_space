@@ -9,14 +9,14 @@ feature 'Authentication:' do
       visit '/'
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: 'password'
-      click_on 'Log in'
+      click_on 'Sign in'
       expect(page).to have_content('Skip')
     end
     scenario 'signs in unsuccessfully' do
       visit '/'
       fill_in 'user_email', with: 'test@example.com'
       fill_in 'user_password', with: 'wrong_password'
-      click_on 'Log in'
+      click_on 'Sign in'
       expect(page).to have_content('Invalid Email or password.')
     end
     scenario 'requests new password' do
@@ -54,7 +54,7 @@ feature 'Authentication:' do
       visit '/admin'
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: 'password'
-      click_on 'Log in'
+      click_on 'Sign in'
       expect(page).to have_content('Signed in successfully.')
       expect(page).to have_current_path(admin_root_path)
     end
