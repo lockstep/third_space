@@ -35,6 +35,8 @@ class ProblemsController < ApplicationController
 
   def lense
     @lense = params[:lense]
+    all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"));
+    @tips = all_tips[@lense]
   end
 
   def update_lense

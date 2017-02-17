@@ -1,21 +1,19 @@
 <div id="tipOverlay" class="tip__overlay">
   <div class="tip__overlay-content">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+      data-interval="false">
       <ol class="carousel-indicators tip__carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <% tips.each_with_index do |tip, index| %>
+          <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>"
+            class="<%= index == 0 ? 'active' : ''%>"></li>
+        <% end %>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="carousel-item tip__carousel-item active">
-            This is a placeholder text for the tip 1
-        </div>
-        <div class="carousel-item tip__carousel-item">
-          This is a placeholder text for the tip 2
-        </div>
-        <div class="carousel-item tip__carousel-item">
-          This is a placeholder text for the tip 3
-        </div>
+        <% tips.each do |tip| %>
+          <div class="carousel-item tip__carousel-item">
+            <%= tip %>
+          </div>
+        <%end%>
       </div>
     </div>
   </div>
