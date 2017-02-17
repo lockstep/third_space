@@ -59,7 +59,7 @@ class ProblemsController < ApplicationController
   end
 
   def load_tips(lense)
-    all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"));
+    all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"))
     all_tips[lense]
   end
 
