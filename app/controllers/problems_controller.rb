@@ -8,6 +8,7 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new
+    @tips = load_tips("problem")
   end
 
   def create
@@ -35,8 +36,7 @@ class ProblemsController < ApplicationController
 
   def lense
     @lense = params[:lense]
-    all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"));
-    @tips = all_tips[@lense]
+    @tips = load_tips(@lense)
   end
 
   def update_lense
@@ -56,6 +56,11 @@ class ProblemsController < ApplicationController
 
   def set_problem
     @problem = Problem.find(params[:id])
+  end
+
+  def load_tips(lense)
+    all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"));
+    all_tips[lense]
   end
 
   def problem_params

@@ -9,7 +9,7 @@
   <div class='aceit-overlay'>
     <%= image_tag("#{@lense}_icon.svg") %>
   </div>
-  <div class='tip__icon' onclick="openTip()" >
+  <div class='tip__icon' onclick="openTip()"></div>
 </div>
 
 <%= form_tag update_lense_problem_path(@problem), method: :put do %>
@@ -36,6 +36,6 @@
   </nav>
 <% end %>
 
-
+<%= render 'problems/tip', tips: @tips %>
 <%= render 'problems/navbar_bottom' %>
-<%= render 'problems/tip', tips: @tips%>
+
