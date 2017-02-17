@@ -31,6 +31,8 @@ feature 'Authentication:' do
     scenario 'signs up successfully' do
       visit '/'
       click_on 'Create Account'
+      fill_in 'user_first_name', with: 'donale'
+      fill_in 'user_last_name', with: 'trump'
       fill_in 'user_email', with: 'foo@example.com'
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'

@@ -8,7 +8,7 @@
           <%= image_tag 'default_avatar.jpg',
             class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
           <div>
-            <h4>Firstname Lastname</h4>
+            <h4><%= "#{current_user.first_name} #{current_user.last_name}" %></h4>
             <p class='profile__content--email'>
               <span class='font-weight-bold'>Email</span>: <%= current_user.email %>
             </p>

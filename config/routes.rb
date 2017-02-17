@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     resources :comments
     root to: "problems#index"
   end
-  
+
   root 'welcome#index'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations'}
 
   resources :problems do
     get '/lenses/:lense', to: 'problems#lense', on: :member, as: :lenses
