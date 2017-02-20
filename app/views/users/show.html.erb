@@ -6,7 +6,7 @@
       <div class='card my-2 text-xs-center profile__card'>
         <div class='card-block'>
           <%= render 'layouts/shared/flash_messages' %>
-          <%= image_tag 'default_avatar.jpg',
+          <%= image_tag current_user.avatar.url(:thumb),
             class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
           <div>
             <h4><%= "#{current_user.first_name} #{current_user.last_name}" %></h4>
