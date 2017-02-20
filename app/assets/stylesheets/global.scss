@@ -2,8 +2,72 @@ html, body {
     height:100%;
 }
 
-.menu-col {
+.third-space__logo {
+  background: image-url("3s-logo.svg") no-repeat center;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+
+  &--white {
+    background: image-url("3s-logo-white.svg") no-repeat center;
+  }
+}
+
+.btn--third-space {
+  background-color: $logo-color;
+  color: $white;
+  border-radius: 0;
+}
+
+.menu__col {
   min-width: 75px;
+}
+
+.aceit__navbar--button {
+  background: $light-grey;
+}
+
+.aceit__button-col {
+  width: 20%;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.aceit__button {
+  width: 90%;
+  display: block;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  border: 2px solid;
+  font-weight: bold;
+
+  &--adaptability {
+    color: $adaptability;
+    border-color: $adaptability;
+  }
+  &--cultural_competence {
+    color: $cultural;
+    border-color: $cultural;
+  }
+  &--empathy {
+    color: $empathy;
+    border-color: $empathy;
+  }
+  &--intellectual_curiosity {
+    color: $intellectual;
+    border-color: $intellectual;
+  }
+  &--thinking {
+    color: $thinking;
+    border-color: $thinking;
+  }
+  &--active {
+    color: $white;
+    background: $logo-color;
+    border-color: $white;
+  }
 }
 
 @-webkit-keyframes autofill {

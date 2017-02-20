@@ -1,16 +1,21 @@
-.lens__header {
-  position: relative;
+.lense {
+  background: $light-grey;
 }
 
-.lens__submit-btn {
+.lense__header {
+  position: relative;
+  background: $light-grey;
+}
+
+.lense__submit-btn {
   padding: 0;
   background: $logo-color;
   color: $white;
-  margin-bottom: 52px;
+  margin-bottom: 54px;
   width: 100%;
 }
 
-.lens__textarea {
+.lense__textarea {
   padding: 10px 20px;
   width: 100%;
   height: 20vh;
