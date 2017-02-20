@@ -1,35 +1,31 @@
 <%= render 'layouts/shared/navbar_top', title: 'TST A C E I T', icon: 'link'%>
-
-<div class='image-aceit'>
-  <%= image_tag("#{@lense}.png", class: 'w-100') %>
-  <div class='aceit-overlay'>
-    <%= image_tag("#{@lense}_icon.svg") %>
-  </div>
-  <div class='tip__icon' onclick="openTip()"></div>
-</div>
-
-<%= form_tag update_lense_problem_path(@problem), method: :put  do %>
-<div class='card-header lense__header' role='tab'>
-  <span>What is a solution through this lens?</span>
-</div>
-
-<div class='form-group'>
-  <textarea name='problem[<%= @lense %>]' class='form-control lense__textarea'
-    placeholder='Write solution here'><%= @problem.send(@lense) %></textarea>
+<div >
+  <div class='image-aceit'>
+    <%= image_tag("#{@lense}.png", class: 'w-100') %>
+    <div class='aceit-overlay'>
+      <%= image_tag("#{@lense}_icon.svg") %>
+    </div>
+    <div class='tip__icon' onclick="openTip()"></div>
   </div>
 
-  <nav id='next-bar' class='navbar navbar-fixed-bottom lense__submit-btn'>
+<!--   <%= form_tag update_lense_problem_path(@problem), method: :put  do %>
+    <div class='card-header lense__header' role='tab'>
+      <span>What is a solution through this lens?</span>
+    </div>
+
+    <div class='form-group lense__form-input'>
+      <textarea name='problem[<%= @lense %>]' class='form-control lense__textarea'
+        id='solution-input' placeholder='Write solution here'><%= @problem.send(@lense) %>
+      </textarea>
+    </div>
+
     <%= hidden_field 'problem', 'id', value: current_user.id %>
     <%= hidden_field 'problem', 'lense', value: @lense %>
-    <center>
-      <%= submit_tag @lense == 'thinking' ? 'Complete' : "Continue to #{Problem.next_lens(@lense).titleize.humanize}",
-      class: 'btn btn-link white' %>
-    </center>
-  </nav>
-  <% end %>
-</div>
+    <%= submit_tag @lense == 'thinking' ? 'Complete' : "Continue to #{Problem.next_lens(@lense).titleize.humanize}",
+      id: 'submit-solution', class: 'btn btn-link btn-block lense__submit-btn' %>
+  <% end %> -->
 
-  <!-- <%= form_tag update_lense_problem_path(@problem), method: :put do %>
+  <%= form_tag update_lense_problem_path(@problem), method: :put do %>
     <div class='card-header' role='tab' id='solution-head'>
       <a class='collapsed' data-toggle='collapse' href='#solution-textarea' aria-expanded='false' aria-controls='solution-textarea'>
         <span class='pull-right'><%= fa_icon 'chevron-down', id: 'solution-icon' %></span>
@@ -42,17 +38,22 @@
       </div>
     </div>
 
-    <nav id='next-bar' class='navbar navbar-fixed-bottom navbar-light bg-faded' style='display: none;'>
+    <nav id='next-bar' class='navbar navbar-fixed-bottom navbar-light bg-faded lense__submit-btn'
+      style='display: none;'>
       <div class='row'>
         <div class='col-xs'>
           <%= hidden_field 'problem', 'id', value: current_user.id %>
           <%= hidden_field 'problem', 'lense', value: @lense %>
-        <center><%= submit_tag @lense == 'thinking' ? 'Complete' : "Continue to #{Problem.next_lens(@lense).titleize.humanize}", class: 'btn btn-link' %></center>
+        <center>
+          <%= submit_tag @lense == 'thinking' ? 'Complete' : "Continue to #{Problem.next_lens(@lense).titleize.humanize}",
+            class: 'btn btn-link white' %>
+
+          </center>
         </div>
       </div>
     </nav>
-    <% end %> -->
-
+  <% end %>
+</div>
 <%= render 'problems/navbar_bottom' %>
 <%= render 'problems/tip', tips: @tips %>
 
