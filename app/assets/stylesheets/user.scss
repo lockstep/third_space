@@ -1,11 +1,15 @@
-.users.show {
-  background: image-url('galaxy_bg.png') no-repeat center;
-  .card {
-    height: 100%;
-    background-color: initial;
-    color: $white;
-  }
+.users.show,
+.users.edit_password,
+.users.update_password,
+.registrations.edit,
+.registrations.update {
+  background: image-url('galaxy_bg.png') center;
   .profile {
+    &__card {
+      height: 100%;
+      background-color: initial;
+      color: $white;
+    }
     &__img {
       width: 160px;
       height: 160px;

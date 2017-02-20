@@ -3,8 +3,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class='card my-2 text-xs-center'>
+      <div class='card my-2 text-xs-center profile__card'>
         <div class='card-block'>
+          <%= render 'layouts/shared/flash_messages' %>
           <%= image_tag 'default_avatar.jpg',
             class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
           <div>
@@ -14,9 +15,8 @@
             </p>
           </div>
         </div>
-        <hr/>
-        <div class=''>
-          <%= link_to 'edit profile', '#', class: 'btn btn-outline-secondary text-uppercase' %>
+        <div class='mt-3'>
+          <%= link_to 'edit profile', edit_user_registration_path, class: 'btn btn-outline-secondary text-uppercase' %>
         </div>
       </div>
     </div>

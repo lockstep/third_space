@@ -16,5 +16,10 @@ Rails.application.routes.draw do
     put '/update_lense', to: 'problems#update_lense', on: :member, as: :update_lense
   end
   resources :comments, only: [:create]
-  get '/profile', to: 'users#show', as: 'profile'
+  resource :users, only: [:show] do
+    collection do
+      get 'edit_password'
+      patch 'update_password'
+    end
+  end
 end
