@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'View Problem' do
+feature 'View Problem', js: true do
   background do
     @user = create(:user)
     @user2 = create(:user)
@@ -9,18 +9,32 @@ feature 'View Problem' do
     login_as(@user2, scope: :user)
   end
 
-  scenario 'views problem page with comment' do
+  scenario 'sees problem page with comment' do
     visit problem_path(@problem.id)
     expect(page).to have_content(@problem.name)
     expect(page).to have_content(@problem.thinking)
     expect(page).to have_content(@comment.description)
   end
 
-  scenario 'adds a comment to the problem' do
+  scenario 'disables post button by default' do
     visit problem_path(@problem.id)
-    value = 'hello world'
-    fill_in 'comment_description', with: value
-    click_on 'POST'
-    expect(page).to have_content("#{@user2.email}: #{value}")
+    expect(find('.comment__send-button')['disabled']).to eq true
+  end
+
+  context 'Adding a comment' do
+    scenario 'adds the comment successfully' do
+      visit problem_path(@problem.id)
+      value = 'hello world'
+      fill_in 'comment_description', with: value
+      expect(find('.comment__send-button')['disabled']).to eq false
+      click_on 'POST'
+      expect(page).to have_content("#{@user2.email}: #{value}")
+    end
+
+    scenario "cannot post the comment" do
+      visit problem_path(@problem.id)
+      fill_in 'comment_description', with: '          '
+      expect(find('.comment__send-button')['disabled']).to eq true
+    end
   end
 end
