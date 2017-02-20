@@ -1,25 +1,21 @@
 <%= render 'layouts/shared/navbar_top', title: 'TST PROBLEM', icon: 'link' %>
 
-<%= form_for @problem, html: {id:"problem-form"} do |f| %>
+<%= form_for @problem, html: {id:'problem-form'} do |f| %>
   <div id='problem-container'>
-    <div class="card-header" role="tab" id="new-problem-head">
-      <span id="new-problem-head-input">What is your problem name?</span>
-      <div class='tip__icon tip__icon--problem' onclick="openTip()" ></div>
+    <div class='card-header lens__header' role='tab' id='new-problem-head'>
+      <span id='new-problem-head-input'>What is your problem name?</span>
+      <div class='tip__icon tip__icon--problem' onclick='openTip()' ></div>
     </div>
 
-    <div id="new-problem-textarea" role="tabpanel" aria-labelledby="new-problem-head">
-      <div class="form-group">
-        <%= f.text_area :name, id:"new-problem-input", class:"form-control", rows:"20", placeholder:"Write problem name here" %>
+    <div id='new-problem-textarea' role='tabpanel' aria-labelledby='new-problem-head'>
+      <div class='form-group'>
+        <%= f.text_area :name, id:'new-problem-input', class:'form-control',
+          rows:'18', placeholder:'Write problem name here' %>
       </div>
     </div>
-
-    <nav id="next-bar" class="navbar navbar-fixed-bottom navbar-light bg-faded">
-      <div class="row">
-        <div class="col-xs">
-          <center><%= submit_tag 'Next', class: 'btn btn-link', id: 'submit-problem-btn' %></center>
-        </div>
-      </div>
-    </nav>
+    <div class='navbar navbar-fixed-bottom p-0'>
+      <%= submit_tag 'Next', class: 'btn btn-block btn--third-space', id: 'submit-problem-btn' %></center>
+    </div>
   </div>
 <% end %>
 

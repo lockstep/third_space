@@ -44,4 +44,6 @@
 
 
 <%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-<%= link_to "Create New", new_problem_path('new'), class: 'btn btn-success btn-block btn-square' %>
+<div data-turbolinks="false">
+  <%= link_to "Create New", new_problem_path('new'), class: 'btn btn-success btn-block btn-square' %>
+</div>

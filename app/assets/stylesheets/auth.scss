@@ -53,6 +53,12 @@
   &:-moz-placeholder { /* Firefox 18- */
     color: $white;
   }
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill,  {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+  }
 }
 
 .auth__icon {
