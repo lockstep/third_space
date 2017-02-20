@@ -4,6 +4,7 @@
   <div id='problem-container'>
     <div class="card-header" role="tab" id="new-problem-head">
       <span id="new-problem-head-input">What is your problem name?</span>
+      <div class='tip__icon tip__icon--problem' onclick="openTip()" ></div>
     </div>
 
     <div id="new-problem-textarea" role="tabpanel" aria-labelledby="new-problem-head">
@@ -21,3 +22,5 @@
     </nav>
   </div>
 <% end %>
+
+<%= render 'problems/tip', tips: @tips %>
