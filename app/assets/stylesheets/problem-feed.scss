@@ -144,15 +144,24 @@
 .comment__input {
   display: inline-block;
   padding: 10px 60px 10px 15px;
+
+  &:focus {
+    border-color: $logo-color;
+  }
 }
 
 .comment__send-button {
   display: inline-block;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 8px;
   background: transparent;
   border: 0;
+  color: $logo-color;
+
+  &:disabled {
+    color: $light-grey;
+  }
 }
 
 .problems.new {
