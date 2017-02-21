@@ -3,6 +3,16 @@
   left: 0;
   width: 100%;
   height: 100%;
+
+  .error {
+    color: $error;
+    .fa, label {
+      color: $white;
+    }
+    input {
+      border-bottom: 1px solid $error
+    }
+  }
 }
 
 .auth__background {
@@ -79,4 +89,11 @@
 
 .auth__hr {
   border-color: $white;
+}
+
+.auth__alert-msg {
+  width: 100%;
+  color: $error;
+  text-align: center;
+  padding: 10px;
 }

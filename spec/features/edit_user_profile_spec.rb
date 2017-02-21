@@ -22,8 +22,8 @@ feature 'Edit User Profile' do
     fill_in 'user_first_name', with: ''
     fill_in 'user_last_name', with: ''
     click_on 'update'
-    expect(page).to have_content "First name can't be blank."
-    expect(page).to have_content "Last name can't be blank."
+    expect(page).to have_content "First name can't be blank"
+    expect(page).to have_content "Last name can't be blank"
   end
 
   scenario 'updates password successfully' do
@@ -45,6 +45,6 @@ feature 'Edit User Profile' do
     fill_in 'user_password_confirmation', with: '123456'
     fill_in 'user_current_password', with: ''
     click_on 'update'
-    expect(page).to have_content "Current password can't be blank."
+    expect(page).to have_content "Current password can't be blank"
   end
 end

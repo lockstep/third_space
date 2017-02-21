@@ -1,19 +1,13 @@
 module UserHelper
   def display_has_danger(field)
     if @user.errors.messages[field].present?
-      'has-danger'
+      'error'
     end
-  end
-
-  def display_form_control_danger(field)
-    @user.errors.messages[field].present? ? 'form-control-danger' : ''
   end
 
   def display_form_control_feedback(field)
-    if @user.errors.messages[field].present?
-      content_tag :div, class: 'form-control-feedback' do
-        "#{field.to_s.humanize} can't be blank."
-      end
-    end
+    messages = @user.errors.messages[field]
+    return "" unless messages.present?
+    messages.map { |msg| content_tag(:div, "#{field.to_s.humanize} #{msg}") }.join.html_safe
   end
 end
