@@ -18,3 +18,4 @@
 //= require carousel
 //= require lense
 //= require modal
+//= require problem
