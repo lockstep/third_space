@@ -5,6 +5,8 @@ class Problem < ApplicationRecord
   belongs_to :user
   has_many :comments
 
+  scope :ordered_by_date, -> { order(created_at: :desc) }
+
   def self.next_lens(current_lens)
     return LENSES.last if LENSES.last == current_lens
     LENSES[LENSES.index(current_lens) + 1]
