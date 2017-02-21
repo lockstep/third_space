@@ -1,5 +1,6 @@
 .problem__wrapper {
-    background: $white;
+    // background: $white;
+
 }
 
 .problem__contents {
@@ -166,4 +167,8 @@
 
 .problems.new {
   background: $light-grey;
+}
+
+.problems.index {
+  background: image-url('galaxy_bg.png') repeat-y;
 }
