@@ -57,6 +57,9 @@ feature 'Edit User Profile' do
     end
 
     scenario 'successfully upload' do
+      allow_any_instance_of(Paperclip::Attachment).to receive(:save)
+         .and_return(true)
+
       visit users_path
       click_on 'edit profile'
       attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.png"
