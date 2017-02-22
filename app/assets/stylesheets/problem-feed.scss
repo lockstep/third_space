@@ -1,6 +1,11 @@
 .problem__wrapper {
-    // background: $white;
+  &--discuss {
+    padding-bottom: 150px;
+  }
 
+  &--feed {
+    padding-bottom: 50px;
+  }
 }
 
 .problem__contents {
@@ -61,18 +66,23 @@
 }
 
 .problem__title {
-  position: absolute;
-  bottom: 0;
-  margin: 0;
-  padding: 5px;
   font-size: 14px;
   color: $light-grey;
   font-weight: 100;
   text-transform: uppercase;
   letter-spacing: .1rem;
+  position: absolute;
+  bottom: 0;
+
+  span {
+    display: inline;
+    padding: 2px 4px;
+    padding-left: 0;
+  }
 
   &--adaptability {
     background-color: $adaptability;
+
   }
   &--cultural_competence {
     background-color: $cultural;
@@ -90,7 +100,7 @@
 
 
 .problem__degree-thinking {
-  padding: $padding*1.5;
+  padding: 5px;
   width: 100%;
   min-height: 65px;
   font-size: 12px;
@@ -124,6 +134,7 @@
 
 .comment__group {
   padding: $padding*1.5;
+  padding-left: 0;
 }
 
 .comment__title {
@@ -143,8 +154,7 @@
 }
 
 .comment__input {
-  display: inline-block;
-  padding: 10px 60px 10px 15px;
+  padding: 10px 10px 20px;
 
   &:focus {
     border-color: $logo-color;
@@ -155,13 +165,14 @@
   display: inline-block;
   position: absolute;
   right: 10px;
-  top: 8px;
-  background: transparent;
-  border: 0;
-  color: $logo-color;
+  bottom: 10px;
+  background: $logo-color;
+  border: 1px solid $logo-color ;
+  border-radius: 4px;
+  color: $white;
 
   &:disabled {
-    color: $light-grey;
+    opacity: .4;
   }
 }
 

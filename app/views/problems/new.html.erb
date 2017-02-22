@@ -1,4 +1,4 @@
-<%= render 'layouts/shared/navbar_top', title: 'TST PROBLEM', icon: 'link' %>
+<%= render 'layouts/shared/navbar_top', title: 'TST PROBLEM', icon: '' %>
 
 <%= form_for @problem, html: {id:'problem-form'} do |f| %>
   <div id='problem-container'>
@@ -13,9 +13,8 @@
           rows:'18', placeholder:'Write problem name here' %>
       </div>
     </div>
-    <div class='navbar navbar-fixed-bottom p-0'>
-      <%= submit_tag 'Next', class: 'btn btn-block btn--third-space', id: 'submit-problem-btn' %></center>
-    </div>
+    <%= submit_tag 'Next', class: 'btn btn-block btn--third-space btn--fixed-bottom',
+      id: 'submit-problem-btn' %>
   </div>
 <% end %>
 

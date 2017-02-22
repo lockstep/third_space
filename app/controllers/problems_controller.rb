@@ -33,6 +33,9 @@ class ProblemsController < ApplicationController
   end
 
   def show
+    lense_index = params[:id].to_i % 6
+    @lense = Problem::LENSES[lense_index]
+    @image_index = (params[:id].to_i  % 9) + 1
   end
 
   def lense
