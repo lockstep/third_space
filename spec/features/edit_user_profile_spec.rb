@@ -12,6 +12,7 @@ feature 'Edit User Profile' do
     fill_in 'user_first_name', with: 'Tom'
     fill_in 'user_last_name', with: 'Cruise'
     click_on 'update'
+    expect(page).to have_content 'Your account has been updated successfully'
     expect(page).to have_content 'Tom'
     expect(page).to have_content 'Cruise'
   end
@@ -46,5 +47,33 @@ feature 'Edit User Profile' do
     fill_in 'user_current_password', with: ''
     click_on 'update'
     expect(page).to have_content "Current password can't be blank"
+  end
+
+  context 'user is going to upload an avatar' do
+    scenario 'user can see default avatar before upload' do
+      visit users_path
+      click_on 'edit profile'
+      expect(page).to have_css("img[src*='default_avatar']")
+    end
+
+    scenario 'successfully upload' do
+      visit users_path
+      click_on 'edit profile'
+      attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.png"
+      click_button 'update'
+      expect(page).to have_content 'Your account has been updated successfully'
+    end
+
+    context 'invalid image formats' do
+      scenario 'unsuccessfully upload' do
+        ['avatar.gif', 'fake_avatar.txt'].each do |filename|
+          visit users_path
+          click_on 'edit profile'
+          attach_file 'user_avatar', "spec/fixtures/paperclip/#{filename}"
+          click_button 'update'
+          expect(page).to have_content 'Uploaded file is not a valid image'
+        end
+      end
+    end
   end
 end
