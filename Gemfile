@@ -30,20 +30,23 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'tether-rails'
 gem 'font-awesome-rails'
 gem "paperclip", "~> 5.0.0"
-gem 'aws-sdk' 
+gem 'aws-sdk'
 gem "administrate", "~> 0.3.0"
 gem 'bourbon'
 gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'byebug'
   gem 'rspec-rails', '~> 3.5'
-  gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'poltergeist'
   gem 'launchy'
+end
+
+group :test do
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'webmock'
 end
 
 group :development do
