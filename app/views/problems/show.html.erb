@@ -1,6 +1,6 @@
-<%= render 'layouts/shared/navbar_top', title: 'TST DISCUSS', icon: '' %>
+<%= render 'layouts/shared/navbar_top', title: 'DISCUSSTION', icon: '' %>
 
-<section class="problem__wrapper">
+<section class="problem__wrapper--discuss">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
@@ -8,17 +8,20 @@
           <div class="row">
             <div class="col-xs-12 ">
               <div class="problem__discuss-group">
-                <div class="discuss__background">
-                  <div class="discuss__title">
-                    <%= @problem.name.presence || 'Untitled' %>
+                <div class="problem__box problem__<%=@lense%>"
+                  style="background: url(<%= asset_url "textures/#{@image_index}.png"%>) ">
+                  <div class="problem__title-wrapper">
+                    <div class="problem__title">
+                      <span class="problem__title--<%=@lense%>"><%= @problem.name.presence || 'Untitled' %></span>
+                    </div>
                   </div>
-                </div>
-                <div class="problem__degree-thinking">
-                  <%= @problem.thinking %>
+                  <div class="problem__degree-thinking">
+                    <%= @problem.thinking %>
+                  </div>
                 </div>
               </div>
               <div class="comment__group">
-                <h6 class="comment-title">COMMENTs</h6>
+                <h6 class="comment-title">COMMENTS</h6>
                 <% @problem.comments.each do |comment| %>
                   <div class="comment__message">
                     <%= comment.user.email %>: <%= comment.description %>
@@ -33,10 +36,10 @@
   </div>
 </section>
 
-<div class="comment__form">
+<div class='comment__form'>
   <%= form_tag '/comments', method: :post do %>
-    <%= text_field_tag 'comment[description]', '', placeholder: 'Add comment here',
-      class: 'form-control comment__input' %>
+    <%= text_area_tag 'comment[description]', '', placeholder: 'Add comment here',
+      class: 'form-control comment__input', rows: '5' %>
     <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
     <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
     <%= submit_tag 'POST', class: 'comment__send-button', disabled: true %>

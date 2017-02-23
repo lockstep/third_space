@@ -11,7 +11,7 @@ feature 'View Problem', js: true do
 
   scenario 'sees problem page with comment' do
     visit problem_path(@problem.id)
-    expect(page).to have_content(@problem.name)
+    expect(page).to have_content(@problem.name.upcase)
     expect(page).to have_content(@problem.thinking)
     expect(page).to have_content(@comment.description)
   end

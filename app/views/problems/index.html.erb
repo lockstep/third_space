@@ -1,7 +1,8 @@
-<%= render 'layouts/shared/navbar_top', title: 'TST Stream', icon: 'home' %>
+<%- title = params[:stream] == 'all' ? 'Public Feed' :  'My Feed'%>
+<%= render 'layouts/shared/navbar_top', title: "#{title}", icon: 'home' %>
 
 <center>
-  <div class="btn-group problem-filters" role="group" aria-label="Basic example">
+  <div class="btn-group problem-filters mt-1" role="group" aria-label="Basic example">
     <a href="<%= problems_path %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] != 'all' %>">
       <%= fa_icon('user-circle') %> My
     </a>
@@ -11,21 +12,24 @@
   </div>
 </center>
 
-<section class="problem__wrapper">
+<section class="problem__wrapper--feed">
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="problem__contents">
           <h3>Latest Problems</h3>
           <div class="row">
-            <% @problems.each_with_index do |problem, index| %>
-              <%- assetIndex = index % 5 %>
+            <% @problems.each do |problem| %>
+              <%- id = problem.id %>
+              <%- asset_index = id.to_i % Problem::LENSES.length %>
+              <%- image_index = (id.to_i % ProblemsController::TEXTURE_IMAGE_AMOUNT) + 1 %>
               <div class="col-xs-12 ">
-                <a href="<%= problem_path(problem.id) %>">
-                  <div class="problem__box problem__<%= Problem::LENSES[assetIndex]%>">
+                <a href="<%= problem_path(problem.id, image_index: image_index, lense: Problem::LENSES[asset_index]) %>" >
+                  <div class="problem__box problem__<%= Problem::LENSES[asset_index]%>"
+                    style="background: url(<%= asset_url "textures/#{image_index}.png"%>) ">
                     <div class="problem__title-wrapper">
-                      <div class="problem__title problem__title--<%= Problem::LENSES[assetIndex]%>">
-                        <%= problem.name.presence || 'Untitled' %>
+                      <div class="problem__title">
+                        <span class="problem__title--<%= Problem::LENSES[asset_index]%>"><%= problem.name.presence || 'Untitled' %></span>
                       </div>
                     </div>
                     <div class="problem__degree-thinking">
@@ -40,10 +44,11 @@
       </div>
     </div>
   </div>
+  <%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
+    class: 'pagination__button'%>
 </section>
 
-
-<%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <div data-turbolinks="false">
-  <%= link_to "Create New", new_problem_path('new'), class: 'btn btn-block btn--third-space' %>
+  <%= link_to "Create New", new_problem_path('new'),
+    class: 'btn btn-block btn--third-space btn--fixed-bottom' %>
 </div>
