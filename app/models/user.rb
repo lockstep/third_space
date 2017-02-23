@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :company, optional: true
   has_many :problems
   has_many :comments
 
@@ -28,4 +29,11 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: IMAGE_FORMATS,
     message: "Uploaded file is not a valid image. Only JPG, JPEG and PNG files are allowed"
   validates :first_name, :last_name, presence: true
+
+  def add_company
+    domain_name = email.sub(/.*?@/, '')
+    if company = Company.find_by_domain_name(domain_name)
+      update(company: company)
+    end
+  end
 end

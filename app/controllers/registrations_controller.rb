@@ -2,6 +2,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def sign_up(resource_name, user)
+    super
+    user.add_company
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

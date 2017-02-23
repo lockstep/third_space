@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Authentication:' do
+feature 'Authentication' do
   context 'existing user' do
     background do
      @user = create(:user)
@@ -29,14 +29,16 @@ feature 'Authentication:' do
   end
   context 'new user' do
     scenario 'signs up successfully' do
+      @company = create(:company)
       visit '/'
       click_on 'Create Account'
       fill_in 'user_first_name', with: 'donale'
       fill_in 'user_last_name', with: 'trump'
-      fill_in 'user_email', with: 'foo@example.com'
+      fill_in 'user_email', with: 'foo@apple.com'
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
       click_on 'Sign up'
+      expect(User.last.company).to eq @company
       expect(page).to have_content('Skip')
     end
     scenario 'gets redirected to login page' do
