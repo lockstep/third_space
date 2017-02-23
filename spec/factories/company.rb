@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :company do
-    name 'Apple'
-    domain_name 'apple.com'
+    sequence(:name) { |n| "company#{n}" }
+    sequence(:domain_name) { |n| "company#{n}.com" }
   end
 end
