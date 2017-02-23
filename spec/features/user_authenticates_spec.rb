@@ -34,7 +34,7 @@ feature 'Authentication' do
       click_on 'Create Account'
       fill_in 'user_first_name', with: 'donale'
       fill_in 'user_last_name', with: 'trump'
-      fill_in 'user_email', with: 'foo@apple.com'
+      fill_in 'user_email', with: "foo@#{@company.domain_name}"
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
       click_on 'Sign up'

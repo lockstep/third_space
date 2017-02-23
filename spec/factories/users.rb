@@ -5,5 +5,9 @@ FactoryGirl.define do
     last_name 'trump'
     password 'password'
     role 'user'
+
+    factory :user_with_company do
+      company
+    end
   end
 end
