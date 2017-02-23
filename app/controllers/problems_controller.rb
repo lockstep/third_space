@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success]
+  before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success, :edit]
 
   TEXTURE_IMAGE_AMOUNT = 10
 
@@ -13,8 +13,10 @@ class ProblemsController < ApplicationController
   end
 
   def new
+    all_tips = load_tips("problem")
     @problem = Problem.new
-    @tips = load_tips("problem")
+    @tips = all_tips["examples"]
+    @intro_text = all_tips["intro_text"]
   end
 
   def create
@@ -27,11 +29,14 @@ class ProblemsController < ApplicationController
   end
 
   def edit
+    all_tips = load_tips("problem")
+    @tips = all_tips["examples"]
+    @intro_text = all_tips["intro_text"]
   end
 
   def update
     if @problem.update(problem_params)
-      redirect_to problem_path(@problem.id)
+      redirect_to success_problem_path(@problem.id)
     else
       redirect_to :back
     end
@@ -45,7 +50,9 @@ class ProblemsController < ApplicationController
 
   def lense
     @lense = params[:lense]
-    @tips = load_tips(@lense)
+    all_tips = load_tips(@lense)
+    @tips = all_tips["examples"]
+    @intro_text = all_tips["intro_text"]
   end
 
   def update_lense
