@@ -27,7 +27,6 @@ $.fn.mathSpace = function() {
   });
 }
 
-
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
     enableDisablePostCommentBtn();
@@ -36,7 +35,3 @@ $(document).on('turbolinks:load', function() {
     $('.problem__title').mathSpace();
   }
 });
-
-
-
-

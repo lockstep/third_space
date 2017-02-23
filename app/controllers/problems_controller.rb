@@ -1,6 +1,8 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success]
 
+  TEXTURE_IMAGE_AMOUNT = 10
+
   def index
     problems = params[:stream].blank? ?
       current_user.problems.ordered_by_date : Problem.all.ordered_by_date
@@ -33,9 +35,9 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    lense_index = params[:id].to_i % 6
+    lense_index = params[:id].to_i % Problem::LENSES.length
     @lense = Problem::LENSES[lense_index]
-    @image_index = (params[:id].to_i  % 9) + 1
+    @image_index = (params[:id].to_i  % TEXTURE_IMAGE_AMOUNT) + 1
   end
 
   def lense
