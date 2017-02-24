@@ -1,0 +1,22 @@
+.problems {
+  &.new, &.edit {
+    background: $light-grey;
+  }
+
+  &.index {
+    background: image-url('galaxy_bg.png') repeat-y;
+  }
+}
+
+.problems__checkbox {
+  padding: 0 15px;
+
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+    background-color: $logo-color;
+  }
+
+  .custom-control-input:focus~.custom-control-indicator {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px $logo-color;
+  }
+}
+
