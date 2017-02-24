@@ -6,5 +6,6 @@ FactoryGirl.define do
     empathy 'solution for empathy'
     intellectual_curiosity 'solution for intellectual_curiosity'
     thinking 'solution for thinking'
+    public false
   end
 end

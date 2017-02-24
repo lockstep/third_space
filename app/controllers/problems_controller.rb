@@ -7,7 +7,7 @@ class ProblemsController < ApplicationController
     if params[:stream].blank?
       problems = current_user.problems.ordered_by_date
     else
-      problems = Problem.in_company(current_user).ordered_by_date
+      problems = Problem.view_all(current_user).ordered_by_date
     end
     @problems = problems.paginate(:page => params[:page], :per_page => 30)
   end
@@ -80,7 +80,7 @@ class ProblemsController < ApplicationController
   end
 
   def problem_params
-    params.require(:problem).permit(:name, :adaptability,
+    params.require(:problem).permit(:name, :public, :adaptability,
       :cultural_competence, :empathy, :intellectual_curiosity, :thinking)
   end
 
