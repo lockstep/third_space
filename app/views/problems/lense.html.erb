@@ -30,7 +30,7 @@
       <%= hidden_field 'problem', 'id', value: current_user.id %>
       <%= hidden_field 'problem', 'lense', value: @lense %>
       <%= submit_tag get_lense_submit_text(@lense), id: 'next-bar',
-        class: 'btn btn-block btn--fixed-bottom btn--third-space btn__submit',
+        class: 'btn btn-block btn--fixed-bottom btn--third-space lense__btn--submit',
         disabled: true, style: 'display: none;'%>
     </div>
   <% end %>

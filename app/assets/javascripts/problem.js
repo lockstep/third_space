@@ -30,13 +30,13 @@ $.fn.mathSpace = function() {
 
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
-    enableDisableSubmitBtn('.comment__input', '.btn__submit');
+    enableDisableSubmitBtn('.comment__input', '.comment__button--submit');
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
-    enableDisableSubmitBtn('.problem__name', '.btn__submit');
+    enableDisableSubmitBtn('.problem__name', '.problem__btn--submit');
   }
   if ($('.problems.lense').length > 0 ) {
-    enableDisableSubmitBtn('.ace-it', '.btn__submit');
+    enableDisableSubmitBtn('.ace-it', '.lense__btn--submit');
   }
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
     $('.problem__title').mathSpace();
