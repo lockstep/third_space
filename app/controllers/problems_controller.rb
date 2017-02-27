@@ -13,32 +13,29 @@ class ProblemsController < ApplicationController
   end
 
   def new
-    all_tips = load_tips("problem")
     @problem = Problem.new
-    @tips = all_tips["examples"]
-    @intro_text = all_tips["intro_text"]
+    load_tips('problem')
   end
 
   def create
-    problem = Problem.new(problem_params.merge(user_id: current_user.id))
-    if problem.save(problem_params)
-      redirect_to "/problems/#{problem.id}/lenses/adaptability"
+    @problem = Problem.new(problem_params.merge(user_id: current_user.id))
+    if @problem.save(problem_params)
+      redirect_to "/problems/#{@problem.id}/lenses/adaptability"
     else
-      redirect_to :back
+      load_tips('problem')
+      render :new
     end
   end
 
   def edit
-    all_tips = load_tips("problem")
-    @tips = all_tips["examples"]
-    @intro_text = all_tips["intro_text"]
+    load_tips("problem")
   end
 
   def update
     if @problem.update(problem_params)
       redirect_to success_problem_path(@problem.id)
     else
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -50,9 +47,7 @@ class ProblemsController < ApplicationController
 
   def lense
     @lense = params[:lense]
-    all_tips = load_tips(@lense)
-    @tips = all_tips["examples"]
-    @intro_text = all_tips["intro_text"]
+    load_tips(@lense)
   end
 
   def update_lense
@@ -61,7 +56,7 @@ class ProblemsController < ApplicationController
       redirect_to success_problem_path(@problem.id) and return if lense == 'thinking'
       redirect_to lenses_problem_path(id: @problem.id, lense: "#{Problem.next_lens(lense)}")
     else
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -76,7 +71,8 @@ class ProblemsController < ApplicationController
 
   def load_tips(lense)
     all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"))
-    all_tips[lense]
+    @tips = all_tips[lense]["examples"]
+    @intro_text = all_tips[lense]["intro_text"]
   end
 
   def problem_params
