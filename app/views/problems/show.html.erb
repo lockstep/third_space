@@ -42,6 +42,6 @@
       class: 'form-control comment__input', rows: '5' %>
     <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
     <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
-    <%= submit_tag 'POST', class: 'btn__submit', disabled: true %>
+    <%= submit_tag 'POST', class: 'comment__button--submit', disabled: true %>
   <% end %>
 </div>

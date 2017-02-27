@@ -23,21 +23,8 @@
               <%- id = problem.id %>
               <%- asset_index = id.to_i % Problem::LENSES.length %>
               <%- image_index = (id.to_i % ProblemsController::TEXTURE_IMAGE_AMOUNT) + 1 %>
-              <div class="col-xs-12 ">
-                <a href="<%= problem_path(problem.id, image_index: image_index, lense: Problem::LENSES[asset_index]) %>" >
-                  <div class="problem__box problem__<%= Problem::LENSES[asset_index]%>"
-                    style="background: url(<%= asset_url "textures/#{image_index}.png"%>) ">
-                    <div class="problem__title-wrapper">
-                      <div class="problem__title">
-                        <span class="problem__title--<%= Problem::LENSES[asset_index]%>"><%= problem.name.presence || 'Untitled' %></span>
-                      </div>
-                    </div>
-                    <div class="problem__degree-thinking">
-                      <%= problem.thinking %>
-                    </div>
-                  </div>
-                </a>
-              </div>
+              <%= render 'problems/problem', problem: problem,
+                image_index: image_index, asset_index: asset_index %>
             <% end %>
           </div>
         </div>
