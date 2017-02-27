@@ -12,10 +12,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.touchswipe
+//= require swiper.min
 //= require turbolinks
 //= require tether
 //= require bootstrap
-//= require carousel
+//= require welcome
 //= require lense
 //= require modal
 //= require problem

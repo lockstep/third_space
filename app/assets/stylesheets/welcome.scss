@@ -1,0 +1,25 @@
+.welcome__swiper {
+  .swiper-pagination-bullets {
+    bottom: 50px;
+  }
+}
+
+.welcom__slider-caption {
+  color: $white;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 15%;
+}
+
+.welcome__swiper-pagination {
+
+  .swiper-pagination-bullet {
+    background: $white;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: $white;
+  }
+}

@@ -3,6 +3,15 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 20;
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    outline: 0;
+  }
 }
 
 .tip__icon {
@@ -17,15 +26,6 @@
     top: 5px;
     bottom: initial;
   }
-}
-
-.tip__carousel-item {
-  padding: 25px;
-  padding-top: 100px;
-}
-
-.tip__carousel-indicators {
-  bottom: 130px;
 }
 
 .tip__overlay {
@@ -43,5 +43,27 @@
 .tip__overlay-content {
   position: relative;
   width: 100%;
+  height: 100%;
   color: $white;
+  padding: 15px;
+}
+
+.tip__swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.tip__swiper-slide {
+  top: 30%;
+}
+
+.tip__swiper-pagination {
+  .swiper-pagination-bullet {
+    background: $white;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: $white;
+  }
 }

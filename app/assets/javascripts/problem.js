@@ -41,4 +41,11 @@ $(document).on('turbolinks:load', function() {
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
     $('.problem__title').mathSpace();
   }
+  if ($('.problems.lense').length > 0 ) {
+    var swiper = new Swiper('.tip__swiper-container', {
+      pagination: '.tip__swiper-pagination',
+      paginationClickable: true
+    });
+  }
 });
+
