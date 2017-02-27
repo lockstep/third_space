@@ -1,14 +1,15 @@
-function enableDisablePostCommentBtn() {
-  var $commentInput = $('.comment__input');
-  $commentInput.on('input', function() {
-    var commentValue = $commentInput.val();
-    if($.trim(commentValue).length > 0) {
-      $('.comment__send-button').removeAttr('disabled');
+function enableDisableSubmitBtn(input_class, submit_btn_class) {
+  var $input = $(input_class);
+  $input.on('input', function() {
+    var inputValue = $input.val();
+    if($.trim(inputValue).length > 0) {
+      $(submit_btn_class).removeAttr('disabled');
     } else {
-      $('.comment__send-button').attr('disabled', 'disabled');
+      $(submit_btn_class).attr('disabled', 'disabled');
     }
   });
 }
+
 var limited_length = 100;
 var ending = "...";
 
@@ -29,7 +30,13 @@ $.fn.mathSpace = function() {
 
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
-    enableDisablePostCommentBtn();
+    enableDisableSubmitBtn('.comment__input', '.btn__submit');
+  }
+  if ($('.problems.new, .problems.edit').length > 0 ) {
+    enableDisableSubmitBtn('.problem__name', '.btn__submit');
+  }
+  if ($('.problems.lense').length > 0 ) {
+    enableDisableSubmitBtn('.ace-it', '.btn__submit');
   }
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
     $('.problem__title').mathSpace();

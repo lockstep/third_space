@@ -15,11 +15,12 @@ feature 'Create Problem Spec' do
   context 'creates a problem', js: true do
     background { visit new_problem_path }
     scenario 'creates a problem successfull' do
-      fill_in 'new-problem-input', with: 'global warming'
+      fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
       %w(adaptability cultural_competence empathy intellectual_curiosity thinking).each do |lense|
         find('#solution-head-input').trigger('click')
+        expect(find('.btn__submit')['disabled']).to eq true
         fill_in 'solution-input', with: "test #{lense}"
         lense == 'thinking' ? click_on('Complete') : click_on('Continue')
       end
@@ -28,6 +29,11 @@ feature 'Create Problem Spec' do
       click_on 'View Feed'
       expect(page).to have_content 'GLOBAL WARMING'
       expect(page).to have_content 'test thinking'
+    end
+
+    scenario 'cannot post the problem' do
+      fill_in 'problem[name]', with: ''
+      expect(find('.btn__submit')['disabled']).to eq true
     end
   end
 end

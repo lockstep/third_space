@@ -18,7 +18,7 @@ feature 'View Problem', js: true do
 
   scenario 'disables post button by default' do
     visit problem_path(@problem.id)
-    expect(find('.comment__send-button')['disabled']).to eq true
+    expect(find('.btn__submit')['disabled']).to eq true
   end
 
   context 'Adding a comment' do
@@ -26,7 +26,7 @@ feature 'View Problem', js: true do
       visit problem_path(@problem.id)
       value = 'hello world'
       fill_in 'comment_description', with: value
-      expect(find('.comment__send-button')['disabled']).to eq false
+      expect(find('.btn__submit')['disabled']).to eq false
       click_on 'POST'
       expect(page).to have_content("#{@user2.email}: #{value}")
     end
@@ -34,7 +34,7 @@ feature 'View Problem', js: true do
     scenario "cannot post the comment" do
       visit problem_path(@problem.id)
       fill_in 'comment_description', with: '          '
-      expect(find('.comment__send-button')['disabled']).to eq true
+      expect(find('.btn__submit')['disabled']).to eq true
     end
   end
 end

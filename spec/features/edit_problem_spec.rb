@@ -12,10 +12,8 @@ feature 'Edit Problem Spec' do
 
     expect(page).to have_content(@problem.name)
     find('#edit-problem').trigger('click')
-
-    fill_in 'new-problem-input', with: 'Edited Problem Title'
+    fill_in 'problem[name]', with: 'Edited Problem Title'
     click_on 'Update'
-
     expect(page).to have_content 'Edited Problem Title'
   end
 
@@ -24,12 +22,9 @@ feature 'Edit Problem Spec' do
 
     expect(page).to have_content(@problem.name)
     find('#edit-thinking').trigger('click')
-
     find('#solution-head-input').trigger('click')
     fill_in 'solution-input', with: "This is awesome solution"
     click_on('Complete')
-
     expect(page).to have_content 'This is awesome solution'
   end
-
 end
