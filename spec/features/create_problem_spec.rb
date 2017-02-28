@@ -25,8 +25,8 @@ feature 'Create Problem Spec' do
         lense == 'thinking' ? click_on('Complete') : click_on('Continue')
       end
 
-      expect(page).to have_content 'completed the workflow'
-      click_on 'View Feed'
+      expect(page).to have_content 'Review'
+      click_on 'View Problem'
       expect(page).to have_content 'GLOBAL WARMING'
       expect(page).to have_content 'test thinking'
     end

@@ -1,6 +1,6 @@
-<%- title = params[:stream] == 'all' ? 'Public Feed' :  'My Feed'%>
-<%= render 'layouts/shared/navbar_top', title: "#{title}"%>
-
+<%- title = params[:stream] == 'all' ? 'Public Feed' :  'My Feed' %>
+<%= render 'layouts/shared/navbar_top', title: title %>
+<%= render 'layouts/shared/flash_messages' %>
 <center>
   <div class="btn-group problem-filters mt-1" role="group" aria-label="Basic example">
     <a href="<%= problems_path %>" class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] != 'all' %>">

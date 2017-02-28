@@ -1,0 +1,14 @@
+<%= render 'layouts/shared/navbar_top', title: 'Review' %>
+<%= render 'layouts/shared/flash_messages' %>
+<%= render 'problems/problem_with_360_degree_thinking' %>
+
+<nav class='navbar navbar-fixed-bottom navbar-light bg-faded'>
+  <div class='row'>
+    <div class='col-xs'>
+      <%= link_to 'New Problem',new_problem_path('new'), class: 'btn btn-link' %>
+    </div>
+    <div class='col-xs'>
+      <%= link_to 'View Problem', problem_path(@problem), class: 'btn btn-link pull-right' %>
+    </div>
+  </div>
+</nav>

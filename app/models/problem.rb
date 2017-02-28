@@ -3,7 +3,7 @@ class Problem < ApplicationRecord
   TYPES = %w(solution summary)
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   scope :ordered_by_date, -> { order(created_at: :desc) }
   scope :in_company, -> (user) {
