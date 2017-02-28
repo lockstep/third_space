@@ -1,15 +1,19 @@
 var limited_length = 100;
 var ending = "...";
 
-function enableDisableSubmitBtn(input_class, submit_btn_class) {
-  var $input = $(input_class);
-  $input.on('input', function() {
-    var inputValue = $input.val();
-    if($.trim(inputValue).length > 0) {
-      $(submit_btn_class).removeAttr('disabled');
-    } else {
-      $(submit_btn_class).attr('disabled', 'disabled');
-    }
+function enable_disable_subit_btn(input_class, submit_btn_class) {
+  var inputValue = $(input_class).val();
+  if($.trim(inputValue).length > 0) {
+    $(submit_btn_class).removeAttr('disabled');
+  } else {
+    $(submit_btn_class).attr('disabled', 'disabled');
+  }
+}
+
+function  listen_field_updating(input_class, submit_btn_class) {
+  enable_disable_subit_btn(input_class, submit_btn_class);
+  $(input_class).on('input', function() {
+    enable_disable_subit_btn(input_class, submit_btn_class)
   });
 }
 
@@ -30,15 +34,15 @@ $.fn.mathSpace = function() {
 
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
-    enableDisableSubmitBtn('.comment__input', '.comment__button--submit');
+    listen_field_updating('.comment__input', '.comment__button--submit');
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
-    enableDisableSubmitBtn('.problem__name', '.problem__btn--submit');
+    listen_field_updating('.problem__name', '.problem__btn--submit');
     createSlider('.tip__swiper-container', '.tip__swiper-pagination');
     stopShakingTip(isTipClicked != undefined);
   }
   if ($('.problems.lense').length > 0 ) {
-    enableDisableSubmitBtn('.ace-it', '.lense__btn--submit');
+    listen_field_updating('.ace-it', '.lense__btn--submit');
     stopShakingTip(isTipClicked != undefined);
   }
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
@@ -48,4 +52,3 @@ $(document).on('turbolinks:load', function() {
     createSlider('.tip__swiper-container', '.tip__swiper-pagination');
   }
 });
-
