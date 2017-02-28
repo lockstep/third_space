@@ -3,10 +3,10 @@
 
 <center>
   <div class="btn-group problem-filters mt-1" role="group" aria-label="Basic example">
-    <a href="<%= problems_path %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] != 'all' %>">
+    <a href="<%= problems_path %>" class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] != 'all' %>">
       <%= fa_icon('user-circle') %> My
     </a>
-    <a href="<%= problems_path(stream: 'all') %>" class="btn btn-sm btn-outline-danger <%= 'active' if params[:stream] == 'all' %>">
+    <a href="<%= problems_path(stream: 'all') %>" class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] == 'all' %>">
       <%= fa_icon('th-large') %> All
     </a>
   </div>
