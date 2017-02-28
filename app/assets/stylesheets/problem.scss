@@ -4,6 +4,11 @@
   }
 }
 
+.problem__discuss-group {
+  margin: $margin*3 0;
+  box-shadow: 5px 5px 10px 0px $shadow;
+}
+
 .problems__checkbox {
   padding: 0 15px;
 
@@ -16,3 +21,45 @@
   }
 }
 
+.problem__button {
+  background: #EF4758;
+  border: 1px solid #EF4758;
+}
+
+.comment__group {
+  padding: $padding*1.5;
+  padding-left: 0;
+}
+
+.comment__message {
+  margin-bottom: 4px;
+}
+
+.comment__form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.comment__input {
+  padding: 10px 10px 20px;
+
+  &:focus {
+    border-color: $logo-color;
+  }
+}
+
+.comment__button--submit {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background: $logo-color;
+  border: 1px solid $logo-color ;
+  border-radius: 4px;
+  color: $white;
+
+  &:disabled {
+    opacity: .4;
+  }
+}

@@ -1,5 +1,7 @@
 class ProblemsController < ApplicationController
-  before_action :set_problem, only: [:update, :show, :lense, :update_lense, :success, :edit]
+  before_action :set_problem, only: [
+    :edit, :update, :destroy, :show, :lense, :update_lense, :review
+  ]
 
   TEXTURE_IMAGE_AMOUNT = 10
 
@@ -33,9 +35,9 @@ class ProblemsController < ApplicationController
 
   def update
     if @problem.update(problem_params)
-      redirect_to success_problem_path(@problem.id)
+      redirect_to review_problem_path(@problem.id), notice: 'Successfully updated problem.'
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: problems_path)
     end
   end
 
@@ -43,6 +45,12 @@ class ProblemsController < ApplicationController
     lense_index = params[:id].to_i % Problem::LENSES.length
     @lense = Problem::LENSES[lense_index]
     @image_index = (params[:id].to_i  % TEXTURE_IMAGE_AMOUNT) + 1
+  end
+
+  def destroy
+    if @problem.destroy
+      redirect_to problems_path, notice: 'problem was deleted.'
+    end
   end
 
   def lense
@@ -53,14 +61,17 @@ class ProblemsController < ApplicationController
   def update_lense
     if @problem.update(problem_params)
       lense = params[:problem][:lense]
-      redirect_to success_problem_path(@problem.id) and return if lense == 'thinking'
-      redirect_to lenses_problem_path(id: @problem.id, lense: "#{Problem.next_lens(lense)}")
+      if lense == 'thinking'
+        redirect_to review_problem_path(@problem.id) and return
+      else
+        redirect_to lenses_problem_path(id: @problem.id, lense: "#{Problem.next_lens(lense)}")
+      end
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: problems_path)
     end
   end
 
-  def success
+  def review
   end
 
   private

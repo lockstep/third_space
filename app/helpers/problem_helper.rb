@@ -7,4 +7,7 @@ module ProblemHelper
     return 'Complete'
   end
 
+  def show_problem_actions?(user)
+    user == current_user
+  end
 end

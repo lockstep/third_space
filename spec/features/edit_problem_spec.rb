@@ -1,30 +1,31 @@
 require 'rails_helper'
 
-feature 'Edit Problem Spec' do
+feature 'Edit Problem Spec', js: true do
   background do
     @user = create(:user)
     login_as(@user, scope: :user)
     @problem = create(:problem, user: @user)
   end
 
-  scenario 'edits a problem ', js: true do
-    visit success_problem_path(@problem)
+  context 'in review page' do
+    scenario 'edits a problem' do
+      visit review_problem_path(@problem)
 
-    expect(page).to have_content(@problem.name)
-    find('#edit-problem').trigger('click')
-    fill_in 'problem[name]', with: 'Edited Problem Title'
-    click_on 'Update'
-    expect(page).to have_content 'Edited Problem Title'
+      find('#edit-problem').trigger('click')
+      fill_in 'problem[name]', with: 'Edited Problem Title'
+      click_on 'Update'
+      expect(page).to have_content 'Successfully updated problem'
+    end
   end
 
-  scenario 'edits a 360 degree thinking ', js: true do
-    visit "/problems/#{@problem.id}/success"
+  context 'in discussion page' do
+    scenario 'edits a problem' do
+      visit problem_path(@problem)
+      click_link 'Edit'
 
-    expect(page).to have_content(@problem.name)
-    find('#edit-thinking').trigger('click')
-    find('#solution-head-input').trigger('click')
-    fill_in 'solution-input', with: "This is awesome solution"
-    click_on('Complete')
-    expect(page).to have_content 'This is awesome solution'
+      fill_in 'problem[name]', with: 'Edited Problem Title'
+      click_on 'Update'
+      expect(page).to have_content 'Successfully updated problem'
+    end
   end
 end

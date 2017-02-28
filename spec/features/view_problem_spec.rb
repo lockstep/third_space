@@ -9,6 +9,26 @@ feature 'View Problem', js: true do
     login_as(@user2, scope: :user)
   end
 
+  context 'owner problem' do
+    scenario 'can see problem actions' do
+      login_as(@user, scope: :user)
+      visit problem_path(@problem)
+
+      expect(page).to have_content 'Edit'
+      expect(page).to have_content 'Delete'
+    end
+  end
+
+  context 'other users' do
+    scenario 'can not see problem problem' do
+      login_as(@user2, scope: :user)
+      visit problem_path(@problem)
+
+      expect(page).to_not have_content 'Edit'
+      expect(page).to_not have_content 'Delete'
+    end
+  end
+
   scenario 'sees problem page with comment' do
     visit problem_path(@problem.id)
     expect(page).to have_content(@problem.name.upcase)

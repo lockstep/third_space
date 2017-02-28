@@ -66,7 +66,8 @@
 }
 
 .problem__title {
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 1.4;
   color: $light-grey;
   font-weight: 100;
   text-transform: uppercase;
@@ -103,7 +104,7 @@
   padding: 5px;
   width: 100%;
   min-height: 65px;
-  font-size: 12px;
+  font-size: 16px;
   background: $dark-shadow;
   color: $light-grey;
 }
@@ -125,55 +126,6 @@
   position: relative;
   top: 50%;
   transform: translateY(50%);
-}
-
-.problem__discuss-group {
-  margin: $margin*3 0;
-  box-shadow: 5px 5px 10px 0px $shadow;
-}
-
-.comment__group {
-  padding: $padding*1.5;
-  padding-left: 0;
-}
-
-.comment__title {
-  letter-spacing: 0.5em;
-  font-weight: 700;
-  color: darken($medium-grey, 20%);
-}
-
-.comment__message {
-  margin-bottom: 4px;
-}
-
-.comment__form {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-.comment__input {
-  padding: 10px 10px 20px;
-
-  &:focus {
-    border-color: $logo-color;
-  }
-}
-
-.comment__button--submit {
-  display: inline-block;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  background: $logo-color;
-  border: 1px solid $logo-color ;
-  border-radius: 4px;
-  color: $white;
-
-  &:disabled {
-    opacity: .4;
-  }
 }
 
 .problem__select-feed-btn {

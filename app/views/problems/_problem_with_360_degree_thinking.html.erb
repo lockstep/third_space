@@ -1,11 +1,4 @@
-<nav class='navbar navbar-light top-navbar'>
-  <span class='navbar-brand'>Review</span>
-</nav>
-
-<div class='px-2 my-2'>
-  Congrats, you have completed the workflow.
-</div>
-<div class='px-2 mb-2'>
+<div class='px-2 py-2 mb-2'>
   <div>
     <span class='review__title'>Problem</span>
     <a id='edit-problem' href="<%= edit_problem_path(@problem.id) %>">
@@ -23,13 +16,3 @@
   </div>
   <p><%= @problem.thinking %></p>
 </div>
-<nav class='navbar navbar-fixed-bottom navbar-light bg-faded'>
-  <div class='row'>
-    <div class='col-xs'>
-      <%= link_to 'New Problem',new_problem_path('new'), class: 'btn btn-link' %>
-    </div>
-    <div class='col-xs'>
-      <%= link_to 'View Feed', problems_path, class: 'btn btn-link pull-right' %>
-    </div>
-  </div>
-</nav>

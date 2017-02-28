@@ -1,5 +1,4 @@
-<%= render 'layouts/shared/navbar_top', title: 'DISCUSSTION', icon: '' %>
-
+<%= render 'layouts/shared/navbar_top', title: 'DISCUSSION' %>
 <section class="problem__wrapper--discuss">
   <div class="container">
     <div class="row">
@@ -16,10 +15,22 @@
                     </div>
                   </div>
                   <div class="problem__degree-thinking">
-                    <%= @problem.thinking %>
+                    <p><%= @problem.thinking %></p>
                   </div>
                 </div>
               </div>
+              <% if show_problem_actions?(@problem.user) %>
+                <div class='text-xs-center mb-2'>
+                  <%= link_to edit_problem_path, class: 'btn btn-danger problem__button' do %>
+                    <%= fa_icon('edit') %> Edit
+                  <% end %>
+                  <%= link_to problem_path, method: :delete,
+                    data: { confirm: 'Are you sure?'},
+                    class: 'btn btn-danger problem__button' do %>
+                    <%= fa_icon('trash-o') %> Delete
+                  <% end %>
+                </div>
+              <% end %>
               <div class="comment__group">
                 <h6 class="comment-title">COMMENTS</h6>
                 <% @problem.comments.each do |comment| %>
