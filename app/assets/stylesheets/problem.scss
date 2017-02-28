@@ -1,10 +1,6 @@
 .problems {
-  &.new, &.edit {
+  &.new, &.edit, &.index {
     background: $light-grey;
-  }
-
-  &.index {
-    background: image-url('galaxy_bg.png') repeat-y;
   }
 }
 
