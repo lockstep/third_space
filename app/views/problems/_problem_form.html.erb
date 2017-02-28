@@ -11,7 +11,7 @@
       </div>
     </div>
 
-    <div class='form-group problems__checkbox pb-3'>
+    <div class='form-group problems__checkbox'>
       <label class="custom-control custom-checkbox">
         <%= f.check_box :public, class: 'custom-control-input' %>
         <span class="custom-control-indicator"></span>
@@ -20,7 +20,7 @@
     </div>
 
     <%= submit_tag button_name,
-      class: 'btn btn-block btn--third-space btn--fixed-bottom problem__btn--submit',
+      class: 'btn btn-block btn--third-space problem__btn--submit',
       disabled: true %>
   </div>
 <% end %>

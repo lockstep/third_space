@@ -18,19 +18,19 @@
       </div>
     </a>
     <div id='solution-textarea' class='input-textarea collapse' role='tabpanel' aria-labelledby='solution-head'>
-      <div class='form-group pb-3'>
+      <div>
         <textarea id='solution-input'
                   name='problem[<%= @lense %>]'
                   class='form-control ace-it'
                   placeholder='Keep this to ~200 characters. Try to complete in less than 3 minutes.'
-                  rows='20'><%= @problem.send(@lense) %></textarea>
+                  rows='15'><%= @problem.send(@lense) %></textarea>
       </div>
     </div>
     <div>
       <%= hidden_field 'problem', 'id', value: current_user.id %>
       <%= hidden_field 'problem', 'lense', value: @lense %>
       <%= submit_tag get_lense_submit_text(@lense), id: 'next-bar',
-        class: 'btn btn-block btn--fixed-bottom btn--third-space lense__btn--submit',
+        class: 'btn btn-block btn--third-space lense__btn--submit',
         disabled: true, style: 'display: none;'%>
     </div>
   <% end %>

@@ -2,8 +2,6 @@
   position: absolute;
   left: 0;
   width: 100%;
-  height: 100%;
-
   .error {
     color: $error;
     .fa, label {
@@ -19,17 +17,26 @@
   width: 100%;
   background-size: cover;
   z-index: -1;
+  filter: brightness(85%);
 }
 
 .auth__form {
   position: absolute;
   top: 0;
   width: 100%;
-  background-color: transparent;
   color: $white;
   padding: 20px;
 }
 
+.auth__form-background {
+  background: #191B30;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .auth__error {
   width: 100%;
   position: absolute;
