@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require shared
 //= require welcome
 //= require lense
 //= require modal

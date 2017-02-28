@@ -1,3 +1,6 @@
+var limited_length = 100;
+var ending = "...";
+
 function enableDisableSubmitBtn(input_class, submit_btn_class) {
   var $input = $(input_class);
   $input.on('input', function() {
@@ -9,9 +12,6 @@ function enableDisableSubmitBtn(input_class, submit_btn_class) {
     }
   });
 }
-
-var limited_length = 100;
-var ending = "...";
 
 $.fn.mathSpace = function() {
   return $(this).each(function() {
@@ -34,18 +34,18 @@ $(document).on('turbolinks:load', function() {
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
     enableDisableSubmitBtn('.problem__name', '.problem__btn--submit');
+    createSlider('.tip__swiper-container', '.tip__swiper-pagination');
+    stopShakingTip(isTipClicked != undefined);
   }
   if ($('.problems.lense').length > 0 ) {
     enableDisableSubmitBtn('.ace-it', '.lense__btn--submit');
+    stopShakingTip(isTipClicked != undefined);
   }
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
     $('.problem__title').mathSpace();
   }
   if ($('.problems.lense').length > 0 ) {
-    var swiper = new Swiper('.tip__swiper-container', {
-      pagination: '.tip__swiper-pagination',
-      paginationClickable: true
-    });
+    createSlider('.tip__swiper-container', '.tip__swiper-pagination');
   }
 });
 
