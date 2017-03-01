@@ -25,6 +25,30 @@
   border: 1px solid #EF4758;
 }
 
+.problem__overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  background-color: $dark-shadow2;
+  overflow-y: scroll;
+  transition: 0.5s;
+}
+
+.problem__review-problem {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: $white;
+  background: transition;
+  border: 1px solid $white;
+  border-radius: 4px;
+  font-size: 14px;
+
+}
+
 .comment__group {
   padding: $padding*1.5;
   padding-left: 0;

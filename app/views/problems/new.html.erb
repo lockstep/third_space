@@ -4,8 +4,11 @@
     <div class='lense__banner-text'>
       <%= @intro_text %>
     </div>
-    <div class='tip__icon shake' onclick='openTip()' ></div>
+    <div class="btn btn--third-space problem__review-problem"
+         onclick="openTip('problemOverlay')">Review Feed</div>
+    <div class='tip__icon shake' onclick="openTip('tipOverlay')" ></div>
   </div>
   <%= render 'problems/problem_form', button_name: "Next" %>
 </div>
 <%= render 'problems/tip', tips: @tips %>
+<%= render 'problems/review_problem', problem: @problem %>

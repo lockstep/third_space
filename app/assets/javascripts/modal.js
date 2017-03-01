@@ -1,9 +1,11 @@
-function openTip() {
-  document.getElementById("tipOverlay").style.height = "100%";
-  stopShakingTip(isTipClicked == undefined);
-  localStorage.setItem("isTipClicked", true);
+function openTip(id) {
+  document.getElementById(id).style.height = "100%";
+  if(id === "tipOverlay") {
+    stopShakingTip(isTipClicked == undefined);
+    localStorage.setItem("isTipClicked", true);
+  }
 }
 
-function closeTip() {
-  document.getElementById("tipOverlay").style.height = "0%";
+function closeTip(id) {
+  document.getElementById(id).style.height = "0%";
 }

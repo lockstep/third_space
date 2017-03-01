@@ -1,10 +1,10 @@
 <%= render 'layouts/shared/navbar_top', title: 'Edit Problem' %>
-  
+
   <div class='lense__banner'>
     <div class='lense__banner-text'>
       <%= @intro_text %>
     </div>
-    <div class='tip__icon' onclick='openTip()' ></div>
+    <div class='tip__icon' onclick="openTip('tipOverlay')" ></div>
   </div>
   <%= render 'problems/problem_form', button_name: "Update" %>
 </div>

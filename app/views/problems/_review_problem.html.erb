@@ -1,0 +1,22 @@
+<div id='problemOverlay' class='problem__overlay'>
+  <div class='tip__overlay-content'>
+    <% if @problem.name %>
+      <div class="review__title">
+        Problem
+      </div>
+      <p><%=@problem.name %></p>
+    <% end %>
+    <% Problem::LENSES.each do |lense| %>
+      <% if @problem[lense]%>
+        <div class="review__title">
+          <%= lense.titleize %>
+        </div>
+        <p><%=@problem[lense]%></p>
+      <% end %>
+    <% end %>
+    <button type='button' onclick="closeTip('problemOverlay')" class='close tip__close-button'>
+      <span class='white' aria-hidden='true'>&times;</span>
+    </button>
+  </div>
+</div>
+

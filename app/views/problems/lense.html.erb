@@ -5,7 +5,9 @@
     <div class='lense__banner-text'>
       <%= @intro_text %>
     </div>
-    <div class='tip__icon shake' onclick="openTip()"></div>
+    <div class="btn btn-sm problem__review-problem"
+         onclick="openTip('problemOverlay')">Review Progress</div>
+    <div class='tip__icon shake' onclick="openTip('tipOverlay')"></div>
   </div>
 
   <%= form_tag update_lense_problem_path(@problem), method: :put do %>
@@ -13,7 +15,7 @@
       <div class='card-header' role='tab' id='solution-head'>
         <span class='pull-right'><%= fa_icon 'chevron-down', id: 'solution-icon' %></span>
         <span id='solution-head-input'>
-          <%= @lense == 'thinking'? 'What is your 360 Degree Thinking?': 'What is your solution through this lens?' %>
+          <%= @lense == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
         </span>
       </div>
     </a>
@@ -37,3 +39,4 @@
 </div>
 <%= render 'problems/navbar_bottom' %>
 <%= render 'problems/tip', tips: @tips %>
+<%= render 'problems/review_problem', problem: @problem %>
