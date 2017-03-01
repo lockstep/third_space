@@ -48,7 +48,7 @@ feature 'View Problem', js: true do
       fill_in 'comment_description', with: value
       expect(find('.comment__button--submit')['disabled']).to eq false
       click_on 'POST'
-      expect(page).to have_content("#{@user2.email}: #{value}")
+      expect(page).to have_content("#{@user2.first_name}: #{value}")
     end
 
     scenario "cannot post the comment" do
