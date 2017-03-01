@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     root to: "problems#index"
   end
 
-  root 'welcome#index'
+  root 'problems#index'
   devise_for :users, controllers: { registrations: 'registrations'}
+  get '/wizard', to: 'welcome#index', as: :wizard
 
   resources :problems do
     get '/lenses/:lense', to: 'problems#lense', on: :member, as: :lenses

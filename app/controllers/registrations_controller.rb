@@ -7,6 +7,14 @@ class RegistrationsController < Devise::RegistrationsController
     user.add_company
   end
 
+  def after_sign_up_path_for(resource)
+    wizard_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    wizard_path
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
