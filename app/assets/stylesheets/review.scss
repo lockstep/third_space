@@ -1,0 +1,30 @@
+.review__title {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.review__button--edit {
+  padding-left: 10px;
+  color: $logo-color;
+}
+
+.review__navbar--bottom {
+  background-color: #fff;
+}
+
+.review__button--bottom {
+  width: 75%;
+  margin-bottom: 10px;
+  color: #fff;
+  background-color: $logo-color;
+  border-radius: 0.25rem;
+}
+
+.review__button--bottom:focus,
+.review__button--bottom:hover,
+.review__button--bottom:active,
+.review__button--bottom:visited {
+  color: #fff;
+  background-color: $logo-color;
+}

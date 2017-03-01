@@ -8,6 +8,7 @@ feature 'Create Problem Spec' do
 
   context 'creates a problem', js: true do
     background { visit new_problem_path }
+
     scenario 'creates a problem successfull' do
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
@@ -20,9 +21,11 @@ feature 'Create Problem Spec' do
       end
 
       expect(page).to have_content 'Review'
-      click_on 'View Problem'
-      expect(page).to have_content 'GLOBAL WARMING'
+      expect(page).to have_content 'global warming'
       expect(page).to have_content 'test thinking'
+      expect(page).to have_link 'View Feed'
+      expect(page).to have_link 'New Problem'
+      expect(page).to have_link 'Add Comment'
     end
 
     scenario 'cannot post the problem' do
