@@ -14,7 +14,7 @@ feature 'Edit Problem Spec', js: true do
       find('#edit-problem').trigger('click')
       fill_in 'problem[name]', with: 'Edited Problem Title'
       click_on 'Update'
-      expect(page).to have_content 'Successfully updated problem'
+      expect(page).to have_content 'Edited Problem Title'
     end
   end
 
@@ -25,7 +25,7 @@ feature 'Edit Problem Spec', js: true do
 
       fill_in 'problem[name]', with: 'Edited Problem Title'
       click_on 'Update'
-      expect(page).to have_content 'Successfully updated problem'
+      expect(page).to have_content 'Edited Problem Title'
     end
   end
 end

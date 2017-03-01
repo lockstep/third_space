@@ -3,11 +3,7 @@
   <div class='auth__form'>
     <div class='third-space__logo third-space__logo--white'></div>
     <h4 class="mb-1">Sign in</h4>
-    <% if alert %>
-      <div class='auth__alert-msg'>
-        <%= alert %>
-      </div>
-    <% end %>
+    <%= render 'auth_messages' %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class='form-group'>
         <%= fa_icon('envelope-o', class: 'auth__icon') %>
