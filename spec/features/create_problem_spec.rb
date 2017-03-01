@@ -6,12 +6,6 @@ feature 'Create Problem Spec' do
     login_as(@user, scope: :user)
   end
 
-  scenario 'skips the intro wizard' do
-    visit '/'
-    click_on 'Skip'
-    expect(page).to have_content('What is your problem name?')
-  end
-
   context 'creates a problem', js: true do
     background { visit new_problem_path }
     scenario 'creates a problem successfull' do

@@ -10,7 +10,7 @@ feature 'Authentication' do
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: 'password'
       click_on 'Sign in'
-      expect(page).to have_content('Skip')
+      expect(page).to have_content('My Feed')
     end
     scenario 'signs in unsuccessfully' do
       visit '/'
