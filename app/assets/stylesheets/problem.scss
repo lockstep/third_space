@@ -1,5 +1,5 @@
 .problems {
-  &.new, &.edit, &.index {
+  &.new, &.edit, &.index, &.show {
     background: $light-grey;
   }
 }
@@ -46,7 +46,7 @@
   bottom: 10px;
   left: 10px;
   color: $white;
-  background: transition;
+  background: transparent;
   border: 1px solid $white;
   border-radius: 4px;
   font-size: 14px;
@@ -56,6 +56,14 @@
 .comment__group {
   padding: $padding*1.5;
   padding-left: 0;
+}
+
+.comment__image {
+  border-radius: 1rem;
+}
+
+.comment__user-name {
+  font-weight: 500;
 }
 
 .comment__message {

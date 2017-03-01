@@ -24,7 +24,7 @@ class User < ApplicationRecord
     },
     s3_protocol: 'https',
     styles: lambda { |image| IMAGE_FORMATS.include?(image.content_type) ? {
-      thumb: '160x160#', small: '25x25#' } : {} }
+      thumb: '160x160#', small: '35x35#' } : {} }
 
   validates_attachment_content_type :avatar, content_type: IMAGE_FORMATS,
     message: "Uploaded file is not a valid image. Only JPG, JPEG and PNG files are allowed"
