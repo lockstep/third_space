@@ -14,7 +14,7 @@
     <a class='toggle-link collapsed' data-toggle='collapse' href='#solution-textarea' aria-expanded='false' aria-controls='solution-textarea'>
       <div class='card-header' role='tab' id='solution-head'>
         <span class='pull-right'><%= fa_icon 'chevron-down', id: 'solution-icon' %></span>
-        <span id='solution-head-input'>
+        <span id='solution-head-input' class='problem__question-header'>
           <%= @lense == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
         </span>
       </div>

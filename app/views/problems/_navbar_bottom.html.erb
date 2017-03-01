@@ -1,46 +1,46 @@
-<nav id="navbar-bottom" class="navbar navbar-fixed-bottom aceit__navbar--button">
+<nav id="navbar-bottom" class="navbar navbar-fixed-bottom ace-it__navbar--button">
   <div class="row">
-    <div class="aceit__button-col">
+    <div class="ace-it__button-col">
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'adaptability') %>"
-          class='aceit-link aceit__button aceit__button--adaptability
-          <%= 'aceit__button--active' if request.fullpath.include? 'adaptability' %>'>
+          class='ace-it__button ace-it__button
+          <%= 'ace-it__button--active' if request.fullpath.include? 'adaptability' %>'>
           A
         </a>
       </center>
     </div>
-    <div class="aceit__button-col">
+    <div class="ace-it__button-col">
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'cultural_competence') %>"
-          class='aceit-link aceit__button aceit__button--cultural_competence
-          <%= 'aceit__button--active' if request.fullpath.include? 'cultural' %>'>
+          class='ace-it__button ace-it__button
+          <%= 'ace-it__button--active' if request.fullpath.include? 'cultural' %>'>
           C
         </a>
       </center>
     </div>
-    <div class="aceit__button-col">
+    <div class="ace-it__button-col">
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'empathy') %>"
-         class='aceit-link aceit__button aceit__button--empathy
-         <%= 'aceit__button--active' if request.fullpath.include? 'empathy' %>'>
+         class='ace-it__button ace-it__button
+         <%= 'ace-it__button--active' if request.fullpath.include? 'empathy' %>'>
          E
         </a>
       </center>
     </div>
-    <div class="aceit__button-col">
+    <div class="ace-it__button-col">
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'intellectual_curiosity') %>"
-          class='aceit-link aceit__button aceit__button--intellectual_curiosity
-          <%= 'aceit__button--active' if request.fullpath.include? 'intellectual' %>'>
+          class='ace-it__button ace-it__button
+          <%= 'ace-it__button--active' if request.fullpath.include? 'intellectual' %>'>
           I
         </a>
       </center>
     </div>
-    <div class="aceit__button-col">
+    <div class="ace-it__button-col">
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'thinking') %>"
-          class='aceit-link aceit__button aceit__button--thinking
-          <%= 'aceit__button--active' if request.fullpath.include? 'thinking' %>'>
+          class='ace-it__button ace-it__button
+          <%= 'ace-it__button--active' if request.fullpath.include? 'thinking' %>'>
           T
         </a>
       </center>

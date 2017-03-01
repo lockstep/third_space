@@ -32,14 +32,50 @@ html, body {
   min-width: 75px;
 }
 
-.aceit__navbar--button {
+.ace-it__navbar--button {
   background: $light-grey;
 }
 
-.aceit__button-col {
+.ace-it__button-col {
   width: 20%;
   display: inline-block;
   padding: 0 5px;
+}
+
+.ace-it__button {
+  width: 90%;
+  display: block;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  border: 2px solid;
+  font-weight: bold;
+  background: transparent;
+  color: $logo-color;
+  border-color: $logo-color;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $logo-color;
+  }
+
+
+  &--active {
+    color: $white;
+    background: $logo-color;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
 }
 
 .btn--fixed-bottom {
