@@ -129,6 +129,25 @@ html, body {
   font-weight: bold;
 }
 
+.top-nav__button {
+  border: 1px solid $white;
+  border-radius: 4px;
+  color: $white;
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
+
 .w-60 {
   width: 60%;
+}
+
+.link--white-action {
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+  }
 }
