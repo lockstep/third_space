@@ -12,7 +12,6 @@ feature 'Edit User Profile' do
     fill_in 'user_first_name', with: 'Tom'
     fill_in 'user_last_name', with: 'Cruise'
     click_on 'update'
-    expect(page).to have_content 'Your account has been updated successfully'
     expect(page).to have_content 'Tom'
     expect(page).to have_content 'Cruise'
   end
@@ -35,7 +34,9 @@ feature 'Edit User Profile' do
     fill_in 'user_password_confirmation', with: '123456'
     fill_in 'user_current_password', with: 'password'
     click_on 'update'
-    expect(page).to have_content 'Successfully updated password'
+    expect(page).to have_content @user.first_name
+    expect(page).to have_content @user.last_name
+    expect(page).to have_content @user.email
   end
 
   scenario 'updates password unsuccessfully' do
@@ -64,7 +65,9 @@ feature 'Edit User Profile' do
       click_on 'edit profile'
       attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.png"
       click_button 'update'
-      expect(page).to have_content 'Your account has been updated successfully'
+      expect(page).to have_content @user.first_name
+      expect(page).to have_content @user.last_name
+      expect(page).to have_content @user.email
     end
 
     context 'invalid image formats' do

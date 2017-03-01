@@ -13,6 +13,6 @@ feature 'Destroy Problem Spec', js: true do
     accept_confirm do
       click_on 'Delete'
     end
-    expect(page).to have_content 'problem was deleted'
+    expect(page).to have_content 'My Feed'
   end
 end

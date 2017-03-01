@@ -35,7 +35,7 @@ class ProblemsController < ApplicationController
 
   def update
     if @problem.update(problem_params)
-      redirect_to review_problem_path(@problem.id), notice: 'Successfully updated problem.'
+      redirect_to review_problem_path(@problem.id)
     else
       redirect_back(fallback_location: problems_path)
     end
@@ -49,7 +49,7 @@ class ProblemsController < ApplicationController
 
   def destroy
     if @problem.destroy
-      redirect_to problems_path, notice: 'problem was deleted.'
+      redirect_to problems_path
     end
   end
 
