@@ -71,8 +71,8 @@
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill,  {
-    -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: $white !important;
   }
 }
 
