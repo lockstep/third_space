@@ -33,7 +33,7 @@ class User < ApplicationRecord
   scope :without_company, -> { User.where(company_id: nil) }
 
   def self.paticipate_with(company)
-    User.without_company.each do |user|
+    without_company.each do |user|
       user.update(company: company) if user.domain_name == company.domain_name
     end
   end
