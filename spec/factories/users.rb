@@ -6,6 +6,10 @@ FactoryGirl.define do
     password 'password'
     role 'user'
 
+    trait :admin do
+      role 'admin'
+    end
+
     factory :user_with_company do
       company
     end
