@@ -30,10 +30,21 @@ class User < ApplicationRecord
     message: "Uploaded file is not a valid image. Only JPG, JPEG and PNG files are allowed"
   validates :first_name, :last_name, presence: true
 
+  scope :without_company, -> { User.where(company_id: nil) }
+
+  def self.paticipate_with(company)
+    User.without_company.each do |user|
+      user.update(company: company) if user.domain_name == company.domain_name
+    end
+  end
+
   def add_company
-    domain_name = email.sub(/.*?@/, '')
     if company = Company.find_by_domain_name(domain_name)
       update(company: company)
     end
+  end
+
+  def domain_name
+    email.sub(/.*?@/, '')
   end
 end
