@@ -151,3 +151,9 @@ html, body {
     color: $white;
   }
 }
+
+.disabled-link {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .4;
+}
