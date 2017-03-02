@@ -13,7 +13,8 @@
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'cultural_competence') %>"
           class='ace-it__button ace-it__button
-          <%= 'ace-it__button--active' if request.fullpath.include? 'cultural' %>'>
+          <%= 'ace-it__button--active' if request.fullpath.include? 'cultural' %>
+          <%= 'disabled-link' unless @problem.adaptability %>'>
           C
         </a>
       </center>
@@ -22,7 +23,8 @@
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'empathy') %>"
          class='ace-it__button ace-it__button
-         <%= 'ace-it__button--active' if request.fullpath.include? 'empathy' %>'>
+         <%= 'ace-it__button--active' if request.fullpath.include? 'empathy' %>
+         <%= 'disabled-link' unless @problem.cultural_competence %> '>
          E
         </a>
       </center>
@@ -31,7 +33,8 @@
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'intellectual_curiosity') %>"
           class='ace-it__button ace-it__button
-          <%= 'ace-it__button--active' if request.fullpath.include? 'intellectual' %>'>
+          <%= 'ace-it__button--active' if request.fullpath.include? 'intellectual' %>
+          <%= 'disabled-link' unless @problem.empathy %>' >
           I
         </a>
       </center>
@@ -40,7 +43,8 @@
       <center>
         <a href="<%= lenses_problem_path(id: @problem.id, lense: 'thinking') %>"
           class='ace-it__button ace-it__button
-          <%= 'ace-it__button--active' if request.fullpath.include? 'thinking' %>'>
+          <%= 'ace-it__button--active' if request.fullpath.include? 'thinking' %>
+          <%= 'disabled-link' unless @problem.intellectual_curiosity %>' >
           T
         </a>
       </center>
