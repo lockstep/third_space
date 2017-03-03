@@ -15,6 +15,7 @@ class ProblemsController < ApplicationController
   end
 
   def new
+    visit_ace_it_form
     @problem = Problem.new
     load_tips('problem')
   end
@@ -22,7 +23,8 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params.merge(user_id: current_user.id))
     if @problem.save(problem_params)
-      redirect_to "/problems/#{@problem.id}/lenses/adaptability"
+      assign_cookies
+      visit_ace_it_form
     else
       load_tips('problem')
       render :new
@@ -60,11 +62,10 @@ class ProblemsController < ApplicationController
 
   def update_lense
     if @problem.update(problem_params)
-      lense = params[:problem][:lense]
-      if lense == 'thinking'
-        redirect_to review_problem_path(@problem.id) and return
+      if done_lense_form?(params[:problem][:lense])
+        finish_lense_form
       else
-        redirect_to lenses_problem_path(id: @problem.id, lense: "#{Problem.next_lens(lense)}")
+        visit_next_lense_form(params[:problem][:lense])
       end
     else
       redirect_back(fallback_location: problems_path)
@@ -91,4 +92,35 @@ class ProblemsController < ApplicationController
       :cultural_competence, :empathy, :intellectual_curiosity, :thinking)
   end
 
+  def assign_cookies
+    cookies[:problem_id] = @problem.id
+    cookies[:lense] = "adaptability"
+  end
+
+  def destroy_cookies
+    cookies.delete :problem_id
+    cookies.delete :lense
+  end
+
+  def visit_ace_it_form
+    # redirect to lense form if user didn't complete creating problem workflow
+    redirect_to lenses_problem_path(
+      id: cookies[:problem_id], lense: cookies[:lense]
+    ) and return if cookies[:problem_id]
+  end
+
+  def done_lense_form?(lense)
+    lense == 'thinking'
+  end
+
+  def finish_lense_form
+    destroy_cookies
+    redirect_to review_problem_path(@problem.id)
+  end
+
+  def visit_next_lense_form(lense)
+    new_lense = "#{Problem.next_lens(lense)}"
+    cookies[:lense] = new_lense
+    redirect_to lenses_problem_path(id: @problem.id, lense: new_lense)
+  end
 end

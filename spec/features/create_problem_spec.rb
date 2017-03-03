@@ -60,5 +60,19 @@ feature 'Create Problem Spec' do
       click_on 'T'
       expect(page).to have_content 'Cultural'
     end
+
+    context 'user does not finish ACE-IT form' do
+      scenario 'can comeback to update ACE-IT' do
+        fill_in 'problem[name]', with: 'global warming'
+        click_on 'Next'
+        find('#solution-head-input').trigger('click')
+        fill_in 'solution-input', with: "test adaptability"
+        click_on('Continue')
+        click_on('Feed')
+        click_on('Create New')
+        expect(page).to have_content 'Cultural Competence'
+        expect(page).to have_content 'What is your solution through this lens?'
+      end
+    end
   end
 end
