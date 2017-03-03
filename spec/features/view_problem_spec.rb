@@ -57,4 +57,29 @@ feature 'View Problem', js: true do
       expect(find('.comment__button--submit')['disabled']).to eq true
     end
   end
+
+  context 'Deletes a comment' do
+    scenario 'deletes the comment successfully' do
+      visit problem_path(@problem.id)
+
+      expect(page).to have_content("#{@user2.first_name}: Hello, this is awesome.")
+
+      find('.comment__delete-icon').trigger('click')
+      expect(page).to_not have_content("#{@user2.first_name}: Hello, this is awesome.")
+    end
+
+    scenario 'edit the comment successfully' do
+      visit problem_path(@problem.id)
+
+      expect(page).to have_content("#{@user2.first_name}: Hello, this is awesome.")
+
+      find('.comment__edit-icon').trigger('click')
+      expect(page).to have_content "Edit Comment"
+      fill_in 'edit-comment-input', with: 'Edited comment'
+      click_on 'Edit'
+
+      expect(page).to_not have_content("#{@user2.first_name}: Hello, this is awesome.")
+      expect(page).to have_content("#{@user2.first_name}: Edited comment")
+    end
+  end
 end

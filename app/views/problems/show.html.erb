@@ -38,7 +38,22 @@
                     <%= image_tag comment.user.avatar.url(:small),
                         class: 'comment__image d-inline' %>
                     <span class="comment__user-name"><%= comment.user.first_name %>:</span>
-                    <%= comment.description %>
+                    <span id="comment-id-<%= comment.id %>" ><%= comment.description %></span>
+
+                    <% if show_problem_actions?(comment.user) %>
+                      <%= link_to comment_path(comment.id), method: :delete,
+                        data: { confirm: 'Are you sure?'},
+                        class: 'btn btn-sm problem__button comment__delete-icon ' do %>
+                        <%= fa_icon('trash-o') %>
+                      <% end %>
+
+                      <button type="button" class="btn btn-sm problem__button comment__edit-icon"
+                              data-toggle="modal" data-target="#editModal"
+                              data-comment-id="<%= comment.id %>" >
+                        <%= fa_icon('edit') %>
+                      </button>
+                    <% end %>
+
                   </div>
                 <% end %>
               </div>
@@ -59,3 +74,6 @@
     <%= submit_tag 'POST', class: 'comment__button--submit', disabled: true %>
   <% end %>
 </div>
+
+<%= render 'problems/comment_edit_modal' %>
+
