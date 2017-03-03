@@ -26,6 +26,7 @@
 
 .problem__button {
   background: $logo-color;
+  color: $white;
   border: 1px solid $logo-color;
 }
 
@@ -54,12 +55,14 @@
 }
 
 .comment__group {
-  padding: $padding*1.5;
-  padding-left: 0;
+  padding-top: $padding*1.5;
 }
 
 .comment__image {
   border-radius: 1rem;
+  position: absolute;
+  left: 0;
+  top: -5px;
 }
 
 .comment__user-name {
@@ -68,6 +71,10 @@
 
 .comment__message {
   margin-bottom: 4px;
+  padding-right: 40px;
+  min-height: 35px;
+  padding-left: 40px;
+  position: relative;
 }
 
 .comment__form {
@@ -97,4 +104,18 @@
   &:disabled {
     opacity: .4;
   }
+}
+
+.comment__delete-icon {
+  padding: 2px 4px;
+  position: absolute;
+  right: -5px;
+  top: 0px;
+}
+
+.comment__edit-icon {
+  padding: 2px 3px;
+  position: absolute;
+  right: 22px;
+  top: 0px;
 }

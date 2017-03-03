@@ -17,6 +17,18 @@ function  listen_field_updating(input_class, submit_btn_class) {
   });
 }
 
+function show_edit_modal() {
+  $('#editModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var id = button.data('comment-id')
+    var commentMessage = $('#comment-id-'+id).text();
+    $('#edit-comment-input').val(commentMessage);
+    $('#comment_id').val(id);
+
+    $("#edit-comment-form").attr("action", "/comments/" + id);
+  })
+}
+
 $.fn.mathSpace = function() {
   return $(this).each(function() {
     $(this).children('span').each(function() {
@@ -35,6 +47,7 @@ $.fn.mathSpace = function() {
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
     listen_field_updating('.comment__input', '.comment__button--submit');
+    show_edit_modal();
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
     listen_field_updating('.problem__name', '.problem__btn--submit');
