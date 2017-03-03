@@ -8,14 +8,18 @@
 
           <%= image_tag @user.avatar.url(:thumb),
             class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
-
+          <div class='loading__piano-conatiner hide-loading'>
+            <div class='loading__piano-bar-1'></div>
+            <div class='loading__piano-bar-2'></div>
+            <div class='loading__piano-bar-3'></div>
+          </div>
           <%= form_tag(upload_avatar_users_path, id: 'avartar-form', method: :patch, multipart: true) do %>
             <div class='mb-1'>
               <%= label_tag 'user[avatar]', class: 'profile__avatar-label' do %>
                 <%= fa_icon('cloud-upload') %> Upload Avatar
               <% end %>
               <%= file_field_tag 'user[avatar]', class: 'profile__file' %>
-              <!-- <%= display_avatar_error_message(:avatar) %> -->
+              <div class='avatar__error'></div>
             </div>
           <% end %>
 

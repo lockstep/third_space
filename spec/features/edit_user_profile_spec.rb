@@ -71,14 +71,11 @@ feature 'Edit User Profile' do
     end
 
     context 'invalid image formats' do
-      xscenario 'unsuccessfully upload' do
-        ['avatar.gif', 'fake_avatar.txt'].each do |filename|
-          visit users_path
-          click_on 'edit profile'
-          attach_file 'user_avatar', "spec/fixtures/paperclip/#{filename}"
-          click_button 'update'
-          expect(page).to have_content 'Uploaded file is not a valid image'
-        end
+      xscenario 'unsuccessfully upload', js: true do
+        visit edit_user_registration_path
+        attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.gif"
+        find('#user_avatar').set("spec/fixtures/paperclip/avatar.gif")
+        expect(page).to have_content 'Uploaded file is not a valid image'
       end
     end
   end

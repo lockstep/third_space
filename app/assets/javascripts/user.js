@@ -11,14 +11,16 @@ $(document).on('turbolinks:load', function() {
         contentType: false,
         processData: false,
         beforeSend: function() {
-          // to show loading progress here
+          $('.profile__img').addClass('hide-loading');
+          $('.loading__piano-conatiner').removeClass('hide-loading');
         }
       }).done(function(data, statusText, xhr ) {
-        // to close loading progress here
+        $('.profile__img').removeClass('hide-loading');
+        $('.loading__piano-conatiner').addClass('hide-loading');
         if (xhr.responseJSON) {
-          console.log(xhr.responseJSON.error)
+          $('.avatar__error').text(xhr.responseJSON.error);
         } else {
-          window.location = '/users';
+          window.location = '/users/edit';
         }
       });
     });
