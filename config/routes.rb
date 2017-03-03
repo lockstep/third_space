@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     collection do
       get 'edit_password'
       patch 'update_password'
+      patch 'upload_avatar'
     end
   end
 end

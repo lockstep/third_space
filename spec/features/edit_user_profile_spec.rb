@@ -71,7 +71,7 @@ feature 'Edit User Profile' do
     end
 
     context 'invalid image formats' do
-      scenario 'unsuccessfully upload' do
+      xscenario 'unsuccessfully upload' do
         ['avatar.gif', 'fake_avatar.txt'].each do |filename|
           visit users_path
           click_on 'edit profile'

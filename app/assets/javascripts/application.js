@@ -21,3 +21,4 @@
 //= require lense
 //= require modal
 //= require problem
+//= require user
