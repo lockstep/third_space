@@ -29,7 +29,7 @@
                     class: 'btn problem__button' do %>
                     <%= fa_icon('trash-o') %> Delete
                   <% end %>
-                  <button type="button" class="btn problem__button"
+                  <button type="button" class="btn problem__button" id="buttonShareModal"
                           data-toggle="modal" data-target="#shareModal">
                     <%= fa_icon('share-alt') %> Share
                   </button>
@@ -47,7 +47,7 @@
                     <% if show_problem_actions?(comment.user) %>
                       <%= link_to comment_path(comment.id), method: :delete,
                         data: { confirm: 'Are you sure?'},
-                        class: 'btn btn-sm problem__button comment__delete-icon ' do %>
+                        class: 'btn btn-sm problem__button comment__delete-icon link--white-action' do %>
                         <%= fa_icon('trash-o') %>
                       <% end %>
 

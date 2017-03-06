@@ -22,3 +22,4 @@
 //= require modal
 //= require problem
 //= require user
+//= require sharer

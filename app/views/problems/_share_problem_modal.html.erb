@@ -12,14 +12,17 @@
         <input type='email' name='receivers_email' class='form-control'></input>
 
         <div class='shared__title'>Via Facebook:</div>
-        <button type='button' class='btn btn--facebook' data-dismiss='modal'>
+        <div class="btn btn--facebook"
+             onclick="shareToFacebook('<%= problem_url(@problem) %>', '<%=@problem.name%>',
+                                      '<%=@problem.thinking%>')">
           <%= fa_icon('facebook') %> Facebook
-        </button>
+        </div>
 
         <div class='shared__title'>Via Twitter:</div>
-        <button type='button' class='btn btn--twitter' data-dismiss='modal'>
+        <div class="btn btn--twitter"
+             onclick="shareToTwitter('<%= problem_url(@problem) %>', '<%=@problem.name%>')">
           <%= fa_icon('twitter') %> Twitter
-        </button>
+        </div>
       </div>
       <div class='modal-footer'>
         <div data-turbolinks-track='true'>
