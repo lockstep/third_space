@@ -50,7 +50,7 @@ feature 'Edit User Profile' do
     expect(page).to have_content "Current password can't be blank"
   end
 
-  context 'user is going to upload an avatar' do
+  context 'user is going to upload an avatar', js: true do
     scenario 'user can see default avatar before upload' do
       visit users_path
       click_on 'edit profile'
@@ -60,25 +60,26 @@ feature 'Edit User Profile' do
     scenario 'successfully upload' do
       allow_any_instance_of(Paperclip::Attachment).to receive(:save)
          .and_return(true)
+      expect(User.first.avatar_file_name).to be_nil
 
-      visit users_path
-      click_on 'edit profile'
-      attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.png"
-      click_button 'update'
-      expect(page).to have_content @user.first_name
-      expect(page).to have_content @user.last_name
-      expect(page).to have_content @user.email
+      visit edit_user_registration_path
+      execute_script("$('#user_avatar').css('display','block')")
+      attach_file 'user_avatar', 'spec/fixtures/paperclip/avatar.png'
+      wait_for_ajax
+
+      expect(User.first.avatar_file_name).to eq 'avatar.png'
     end
 
     context 'invalid image formats' do
       scenario 'unsuccessfully upload' do
-        ['avatar.gif', 'fake_avatar.txt'].each do |filename|
-          visit users_path
-          click_on 'edit profile'
-          attach_file 'user_avatar', "spec/fixtures/paperclip/#{filename}"
-          click_button 'update'
-          expect(page).to have_content 'Uploaded file is not a valid image'
-        end
+        allow_any_instance_of(Paperclip::Attachment).to receive(:save)
+           .and_return(false)
+
+        visit edit_user_registration_path
+        execute_script("$('#user_avatar').css('display','block')")
+        attach_file 'user_avatar', "spec/fixtures/paperclip/avatar.gif"
+
+        expect(page).to have_content 'Uploaded file is not a valid image'
       end
     end
   end

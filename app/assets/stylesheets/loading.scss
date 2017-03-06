@@ -1,0 +1,103 @@
+.loading__piano-conatiner {
+  margin-bottom: 15px;
+}
+
+.loading__piano-bar-1,
+.loading__piano-bar-2,
+.loading__piano-bar-3 {
+  margin: auto;
+  width: 39px;
+  height: 10px;
+  font-size: 10px;
+  display: block;
+  margin-bottom: 0.6em;
+   animation: stretchdelay 1.38s infinite ease-in-out;
+  -o-animation: stretchdelay 1.38s infinite ease-in-out;
+  -ms-animation: stretchdelay 1.38s infinite ease-in-out;
+  -webkit-animation: stretchdelay 1.38s infinite ease-in-out;
+  -moz-animation: stretchdelay 1.38s infinite ease-in-out;
+}
+
+.loading__piano-bar-2{
+  animation-delay: -1.15s;
+  -o-animation-delay: -1.15s;
+  -ms-animation-delay: -1.15s;
+  -webkit-animation-delay: -1.15s;
+  -moz-animation-delay: -1.15s;
+}
+.loading__piano-bar-3 {
+  animation-delay: -0.92s;
+  -o-animation-delay: -0.92s;
+  -ms-animation-delay: -0.92s;
+  -webkit-animation-delay: -0.92s;
+  -moz-animation-delay: -0.92s;
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleX(0.8);
+    background-color: $medium-grey;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    transform: scaleX(1);
+    background-color: $logo-color;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}
+
+@-o-keyframes stretchdelay {
+  0%, 40%, 100% {
+    -o-transform: scaleX(0.8);
+    background-color: $medium-grey;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    -o-transform: scaleX(1);
+    background-color: $logo-color;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}
+
+@-ms-keyframes stretchdelay {
+  0%, 40%, 100% {
+    -ms-transform: scaleX(0.8);
+    background-color: $medium-grey;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    -ms-transform: scaleX(1);
+    background-color: $logo-color;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% {
+    -webkit-transform: scaleX(0.8);
+    background-color: $medium-grey;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    -webkit-transform: scaleX(1);
+    background-color: $logo-color;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}
+
+@-moz-keyframes stretchdelay {
+  0%, 40%, 100% {
+    -moz-transform: scaleX(0.8);
+    background-color: $medium-grey;
+    box-shadow: 0 0 0 rgba(10,10,10,0.1);
+  }
+  20% {
+    -moz-transform: scaleX(1);
+    background-color: $logo-color;
+    box-shadow: 0 5px 6px rgba(10,10,10,0.4);
+  }
+}
+
+.hide-loading {
+  display: none;
+}

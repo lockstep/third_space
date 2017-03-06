@@ -8,16 +8,22 @@
 
           <%= image_tag @user.avatar.url(:thumb),
             class: 'card-img-top my-2 rounded profile__img', alt: 'card image cap' %>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
+          <div class='loading__piano-conatiner hide-loading'>
+            <div class='loading__piano-bar-1'></div>
+            <div class='loading__piano-bar-2'></div>
+            <div class='loading__piano-bar-3'></div>
+          </div>
+          <%= form_tag(upload_avatar_users_path, id: 'avartar-form', method: :patch, multipart: true) do %>
             <div class='mb-1'>
-              <%= f.label :avatar, class: 'profile__avatar-label' do %>
+              <%= label_tag 'user[avatar]', class: 'profile__avatar-label' do %>
                 <%= fa_icon('cloud-upload') %> Upload Avatar
               <% end %>
-              <%= f.file_field :avatar, class: 'profile__file' %>
-              <%= display_avatar_error_message(:avatar) %>
+              <%= file_field_tag 'user[avatar]', class: 'profile__file' %>
+              <div class='avatar__error'></div>
             </div>
+          <% end %>
 
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="form-group row <%= display_devise_has_danger(:first_name) %>">
               <%= f.label :first_name %><br/>
               <%= f.text_field :first_name, class: 'form-control auth__input pl-0' , autofocus: true %>
