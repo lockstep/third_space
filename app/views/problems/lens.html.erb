@@ -1,8 +1,8 @@
-<%= render 'layouts/shared/navbar_top', title: "#{@lense.to_s.humanize}" %>
+<%= render 'layouts/shared/navbar_top', title: "#{@lens.to_s.humanize}" %>
 
 <div class='pb-3'>
-  <div class='lense__banner'>
-    <div class='lense__banner-text'>
+  <div class='lens__banner'>
+    <div class='lens__banner-text'>
       <%= @intro_text %>
     </div>
     <div class="btn btn-sm problem__review-problem"
@@ -10,29 +10,29 @@
     <div class='tip__icon shake' onclick="openTip('tipOverlay')"></div>
   </div>
 
-  <%= form_tag update_lense_problem_path(@problem), method: :put do %>
+  <%= form_tag update_lens_problem_path(@problem), method: :put do %>
     <a class='toggle-link collapsed' data-toggle='collapse' href='#solution-textarea' aria-expanded='false' aria-controls='solution-textarea'>
       <div class='card-header' role='tab' id='solution-head'>
         <span class='pull-right'><%= fa_icon 'chevron-down', id: 'solution-icon' %></span>
         <span id='solution-head-input' class='problem__question-header'>
-          <%= @lense == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
+          <%= @lens == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
         </span>
       </div>
     </a>
     <div id='solution-textarea' class='input-textarea collapse' role='tabpanel' aria-labelledby='solution-head'>
       <div>
         <textarea id='solution-input'
-                  name='problem[<%= @lense %>]'
+                  name='problem[<%= @lens %>]'
                   class='form-control ace-it'
                   placeholder='Keep this to ~200 characters. Try to complete in less than 3 minutes.'
-                  rows='15'><%= @problem.send(@lense) %></textarea>
+                  rows='15'><%= @problem.send(@lens) %></textarea>
       </div>
     </div>
     <div>
       <%= hidden_field 'problem', 'id', value: current_user.id %>
-      <%= hidden_field 'problem', 'lense', value: @lense %>
-      <%= submit_tag get_lense_submit_text(@lense), id: 'next-bar',
-        class: 'btn btn-block btn-lg btn--third-space lense__btn--submit',
+      <%= hidden_field 'problem', 'lens', value: @lens %>
+      <%= submit_tag get_lens_submit_text(@lens), id: 'next-bar',
+        class: 'btn btn-block btn-lg btn--third-space lens__btn--submit',
         disabled: true, style: 'display: none;'%>
     </div>
   <% end %>

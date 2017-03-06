@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get '/wizard', to: 'welcome#index', as: :wizard
 
   resources :problems do
-    get '/lenses/:lense', to: 'problems#lense', on: :member, as: :lenses
+    get '/lenses/:lens', to: 'problems#lens', on: :member, as: :lenses
     get '/review', to: 'problems#review', on: :member, as: :review
-    put '/update_lense', to: 'problems#update_lense', on: :member, as: :update_lense
+    put '/update_lens', to: 'problems#update_lens', on: :member, as: :update_lens
   end
   resources :comments, only: [:create, :edit, :update, :destroy]
   resource :users, only: [:show] do

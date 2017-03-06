@@ -13,11 +13,11 @@ feature 'Create Problem Spec' do
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
-      %w(adaptability cultural_competence empathy intellectual_curiosity thinking).each do |lense|
+      %w(adaptability cultural_competence empathy intellectual_curiosity thinking).each do |lens|
         find('#solution-head-input').trigger('click')
-        expect(find('.lense__btn--submit')['disabled']).to eq true
-        fill_in 'solution-input', with: "test #{lense}"
-        lense == 'thinking' ? click_on('Complete') : click_on('Continue')
+        expect(find('.lens__btn--submit')['disabled']).to eq true
+        fill_in 'solution-input', with: "test #{lens}"
+        lens == 'thinking' ? click_on('Complete') : click_on('Continue')
       end
 
       expect(page).to have_content 'Review'
@@ -33,7 +33,7 @@ feature 'Create Problem Spec' do
       expect(find('.problem__btn--submit')['disabled']).to eq true
     end
 
-    scenario 'cannot navigate to lense that do not have value' do
+    scenario 'cannot navigate to lens that do not have value' do
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
@@ -43,14 +43,14 @@ feature 'Create Problem Spec' do
       expect(page).to have_content 'Adaptability'
     end
 
-    scenario 'can navigate to only lense that have value' do
+    scenario 'can navigate to only lens that have value' do
       fill_in 'problem[name]', with: 'Hello'
       click_on 'Next'
 
-      %w(adaptability cultural_competence empathy ).each do |lense|
+      %w(adaptability cultural_competence empathy ).each do |lens|
         find('#solution-head-input').trigger('click')
-        expect(find('.lense__btn--submit')['disabled']).to eq true
-        fill_in 'solution-input', with: "test #{lense}"
+        expect(find('.lens__btn--submit')['disabled']).to eq true
+        fill_in 'solution-input', with: "test #{lens}"
         click_on 'Continue'
       end
 

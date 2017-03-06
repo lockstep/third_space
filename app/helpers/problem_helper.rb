@@ -1,9 +1,9 @@
 module ProblemHelper
-  def get_lense_submit_text(lense)
-    lense_text = Problem.next_lens(lense).humanize.titleize
-    return "Continue to #{lense_text}" if !['thinking', 'intellectual_curiosity'].include? lense
+  def get_lens_submit_text(lens)
+    lens_text = Problem.next_lens(lens).humanize.titleize
+    return "Continue to #{lens_text}" if !['thinking', 'intellectual_curiosity'].include? lens
 
-    return 'Continue to 360 Degree Thinking' if lense == 'intellectual_curiosity'
+    return 'Continue to 360 Degree Thinking' if lens == 'intellectual_curiosity'
     return 'Complete'
   end
 

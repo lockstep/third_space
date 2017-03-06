@@ -6,12 +6,12 @@
       </div>
       <p><%=@problem.name %></p>
     <% end %>
-    <% Problem::LENSES.each do |lense| %>
-      <% if @problem[lense]%>
+    <% Problem::LENSES.each do |lens| %>
+      <% if @problem[lens]%>
         <div class="review__title">
-          <%= lense.titleize %>
+          <%= lens.titleize %>
         </div>
-        <p><%=@problem[lense]%></p>
+        <p><%=@problem[lens]%></p>
       <% end %>
     <% end %>
     <button type='button' onclick="closeTip('problemOverlay')" class='close tip__close-button'>

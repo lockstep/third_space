@@ -54,14 +54,14 @@ $(document).on('turbolinks:load', function() {
     createSlider('.tip__swiper-container', '.tip__swiper-pagination');
     stopShakingTip(isTipClicked != undefined);
   }
-  if ($('.problems.lense').length > 0 ) {
-    listen_field_updating('.ace-it', '.lense__btn--submit');
+  if ($('.problems.lens').length > 0 ) {
+    listen_field_updating('.ace-it', '.lens__btn--submit');
     stopShakingTip(isTipClicked != undefined);
   }
   if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
     $('.problem__title').mathSpace();
   }
-  if ($('.problems.lense').length > 0 ) {
+  if ($('.problems.lens').length > 0 ) {
     createSlider('.tip__swiper-container', '.tip__swiper-pagination');
   }
 });
