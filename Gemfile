@@ -35,6 +35,8 @@ gem "administrate", "~> 0.3.0"
 gem 'bourbon'
 gem 'will_paginate-bootstrap4'
 
+gem 'sidekiq'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'

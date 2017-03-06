@@ -12,7 +12,10 @@ module ThirdSpace
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # removed field_with_errors div when form control has errors
+    # remove field_with_errors div when form control has errors
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag.html_safe }
+
+    # tell ActiveJob to use Sidekiq
+    config.active_job.queue_adapter = :sidekiq
   end
 end

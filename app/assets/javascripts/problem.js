@@ -26,7 +26,13 @@ function show_edit_modal() {
     $('#comment_id').val(id);
 
     $("#edit-comment-form").attr("action", "/comments/" + id);
-  })
+  });
+}
+
+function share_problem_by_email() {
+  $('#problem-form__share--email').bind('ajax:success',
+    function(event, data, status, xhr) { $('#shareModal').modal('hide'); }
+  );
 }
 
 $.fn.mathSpace = function() {
@@ -48,6 +54,8 @@ $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
     listen_field_updating('.comment__input', '.comment__button--submit');
     show_edit_modal();
+    listen_field_updating('#problem__share--receiver-email', '#problem__share-btn--email');
+    share_problem_by_email();
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
     listen_field_updating('.problem__name', '.problem__btn--submit');

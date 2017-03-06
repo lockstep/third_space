@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [
-    :edit, :update, :destroy, :show, :lens, :update_lens, :review
+    :edit, :update, :destroy, :show, :lens, :update_lens, :review,
+    :share_by_email
   ]
 
   TEXTURE_IMAGE_AMOUNT = 10
@@ -73,6 +74,13 @@ class ProblemsController < ApplicationController
   end
 
   def review
+  end
+
+  def share_by_email
+    UserMailer.problem_with_solution(
+      @problem.id, params[:problem][:email]
+    ).deliver_later
+    head :ok
   end
 
   private
