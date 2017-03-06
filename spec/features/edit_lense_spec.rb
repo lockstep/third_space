@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Edit Lense Spec', js: true do
+feature 'Edit Lens Spec', js: true do
   background do
     @user = create(:user)
     login_as(@user, scope: :user)

@@ -18,7 +18,7 @@
 //= require bootstrap
 //= require shared
 //= require welcome
-//= require lense
+//= require lens
 //= require modal
 //= require problem
 //= require user

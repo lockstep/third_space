@@ -1,6 +1,6 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [
-    :edit, :update, :destroy, :show, :lense, :update_lense, :review
+    :edit, :update, :destroy, :show, :lens, :update_lens, :review
   ]
 
   TEXTURE_IMAGE_AMOUNT = 10
@@ -44,8 +44,8 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    lense_index = params[:id].to_i % Problem::LENSES.length
-    @lense = Problem::LENSES[lense_index]
+    lens_index = params[:id].to_i % Problem::LENSES.length
+    @lens = Problem::LENSES[lens_index]
     @image_index = (params[:id].to_i  % TEXTURE_IMAGE_AMOUNT) + 1
   end
 
@@ -55,17 +55,17 @@ class ProblemsController < ApplicationController
     end
   end
 
-  def lense
-    @lense = params[:lense]
-    load_tips(@lense)
+  def lens
+    @lens = params[:lens]
+    load_tips(@lens)
   end
 
-  def update_lense
+  def update_lens
     if @problem.update(problem_params)
-      if done_lense_form?(params[:problem][:lense])
-        finish_lense_form
+      if done_lens_form?(params[:problem][:lens])
+        finish_lens_form
       else
-        visit_next_lense_form(params[:problem][:lense])
+        visit_next_lens_form(params[:problem][:lens])
       end
     else
       redirect_back(fallback_location: problems_path)
@@ -81,10 +81,10 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
   end
 
-  def load_tips(lense)
+  def load_tips(lens)
     all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"))
-    @tips = all_tips[lense]["examples"]
-    @intro_text = all_tips[lense]["intro_text"]
+    @tips = all_tips[lens]["examples"]
+    @intro_text = all_tips[lens]["intro_text"]
   end
 
   def problem_params
@@ -94,33 +94,33 @@ class ProblemsController < ApplicationController
 
   def assign_cookies
     cookies[:problem_id] = @problem.id
-    cookies[:lense] = "adaptability"
+    cookies[:lens] = "adaptability"
   end
 
   def destroy_cookies
     cookies.delete :problem_id
-    cookies.delete :lense
+    cookies.delete :lens
   end
 
   def visit_ace_it_form
-    # redirect to lense form if user didn't complete creating problem workflow
+    # redirect to lens form if user didn't complete creating problem workflow
     redirect_to lenses_problem_path(
-      id: cookies[:problem_id], lense: cookies[:lense]
+      id: cookies[:problem_id], lens: cookies[:lens]
     ) and return if cookies[:problem_id]
   end
 
-  def done_lense_form?(lense)
-    lense == 'thinking'
+  def done_lens_form?(lens)
+    lens == 'thinking'
   end
 
-  def finish_lense_form
+  def finish_lens_form
     destroy_cookies
     redirect_to review_problem_path(@problem.id)
   end
 
-  def visit_next_lense_form(lense)
-    new_lense = "#{Problem.next_lens(lense)}"
-    cookies[:lense] = new_lense
-    redirect_to lenses_problem_path(id: @problem.id, lense: new_lense)
+  def visit_next_lens_form(lens)
+    new_lens = "#{Problem.next_lens(lens)}"
+    cookies[:lens] = new_lens
+    redirect_to lenses_problem_path(id: @problem.id, lens: new_lens)
   end
 end

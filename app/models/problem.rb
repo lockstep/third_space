@@ -19,8 +19,8 @@ class Problem < ApplicationRecord
     LENSES[LENSES.index(current_lens) + 1]
   end
 
-  def get_lense_value(lense_type)
-    lense = inputs.find_by(lens: lense_type)
-    lense ? lense.input_text : ''
+  def get_lens_value(lens_type)
+    lens = inputs.find_by(lens: lens_type)
+    lens ? lens.input_text : ''
   end
 end

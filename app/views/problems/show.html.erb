@@ -7,11 +7,11 @@
           <div class="row">
             <div class="col-xs-12 ">
               <div class="problem__discuss-group">
-                <div class="problem__box problem__<%=@lense%>"
+                <div class="problem__box problem__<%=@lens%>"
                   style="background: url(<%= asset_url "textures/#{@image_index}.png"%>) ">
                   <div class="problem__title-wrapper">
                     <div class="problem__title">
-                      <span class="problem__title--<%=@lense%>"><%= @problem.name.presence || 'Untitled' %></span>
+                      <span class="problem__title--<%=@lens%>"><%= @problem.name.presence || 'Untitled' %></span>
                     </div>
                   </div>
                   <div class="problem__degree-thinking">

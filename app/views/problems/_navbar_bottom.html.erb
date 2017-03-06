@@ -2,7 +2,7 @@
   <div class="row">
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lense: 'adaptability') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'adaptability') %>"
           class="ace-it__button <%= 'ace-it__button--active' if request.fullpath.include? 'adaptability' %>">
           A
         </a>
@@ -10,7 +10,7 @@
     </div>
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lense: 'cultural_competence') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'cultural_competence') %>"
           class="ace-it__button ace-it__button
           <%= 'ace-it__button--active' if request.fullpath.include? 'cultural' %>
           <%= 'disabled-link' unless @problem.adaptability %> ">
@@ -20,7 +20,7 @@
     </div>
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lense: 'empathy') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'empathy') %>"
          class="ace-it__button
          <%= 'ace-it__button--active' if request.fullpath.include? 'empathy' %>
          <%= 'disabled-link' unless @problem.cultural_competence %>" >
@@ -30,7 +30,7 @@
     </div>
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lense: 'intellectual_curiosity') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'intellectual_curiosity') %>"
           class="ace-it__button
           <%= 'ace-it__button--active' if request.fullpath.include? 'intellectual' %>
           <%= 'disabled-link' unless @problem.empathy %>" >
@@ -40,7 +40,7 @@
     </div>
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lense: 'thinking') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'thinking') %>"
           class="ace-it__button
           <%= 'ace-it__button--active' if request.fullpath.include? 'thinking' %>
           <%= 'disabled-link' unless @problem.intellectual_curiosity %>" >
