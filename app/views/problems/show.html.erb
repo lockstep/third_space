@@ -21,14 +21,18 @@
               </div>
               <% if show_problem_actions?(@problem.user) %>
                 <div class='text-xs-center mb-2'>
-                  <%= link_to edit_problem_path, class: 'btn btn-danger problem__button' do %>
+                  <%= link_to edit_problem_path, class: 'btn problem__button' do %>
                     <%= fa_icon('edit') %> Edit
                   <% end %>
                   <%= link_to problem_path, method: :delete,
                     data: { confirm: 'Are you sure?'},
-                    class: 'btn btn-danger problem__button' do %>
+                    class: 'btn problem__button' do %>
                     <%= fa_icon('trash-o') %> Delete
                   <% end %>
+                  <button type="button" class="btn problem__button"
+                          data-toggle="modal" data-target="#shareModal">
+                    <%= fa_icon('share-alt') %> Share
+                  </button>
                 </div>
               <% end %>
               <div class="comment__group">
@@ -76,4 +80,4 @@
 </div>
 
 <%= render 'problems/comment_edit_modal' %>
-
+<%= render 'problems/share_problem_modal' %>

@@ -50,6 +50,10 @@ a.white:active, a.white:link, a.white:visited, a.white:hover {
 
 .form-control {
   border-radius: 0px;
+
+  &:focus {
+    border-color: $logo-color;
+  }
 }
 
 .full-screen {

@@ -1,0 +1,36 @@
+<div class='modal fade' id='shareModal' tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
+  <div class='modal-dialog modal-sm' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title d-inline' id='shareModalLabel'>Share Problem</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        <div class='shared__title'>Via Email:</div>
+        <input type='email' name='receivers_email' class='form-control'></input>
+
+        <div class='shared__title'>Via Facebook:</div>
+        <button type='button' class='btn btn--facebook' data-dismiss='modal'>
+          <%= fa_icon('facebook') %> Facebook
+        </button>
+
+        <div class='shared__title'>Via Twitter:</div>
+        <button type='button' class='btn btn--twitter' data-dismiss='modal'>
+          <%= fa_icon('twitter') %> Twitter
+        </button>
+      </div>
+      <div class='modal-footer'>
+        <div data-turbolinks-track='true'>
+          <button type='button' class='btn btn-secondary' data-dismiss='modal'>
+            Close
+          </button>
+          <button type='button' class='btn btn--third-space btn--radius-4' data-dismiss='modal'>
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

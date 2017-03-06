@@ -161,3 +161,15 @@ html, body {
   cursor: not-allowed;
   opacity: .4;
 }
+
+.btn--facebook {
+  background: $facebook;
+  color: white;
+  width: 140px;
+}
+
+.btn--twitter {
+  background: $twitter;
+  color: white;
+  width: 140px;
+}
