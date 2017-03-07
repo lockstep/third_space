@@ -2,6 +2,49 @@ html, body {
   height:100%;
 }
 
+a {
+  &:hover, &:active, &:visited, &:focus {
+    text-decoration: none;
+  }
+
+  .white {
+    color: $white;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+}
+
+.navbar__list {
+  color: $white;
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.card-header {
+  padding-left: 10px;
+  padding-right:  10px;
+}
+
+.form-control {
+  border-radius: 0px;
+
+  &:focus {
+    border-color: $logo-color;
+  }
+}
+
+.top-navbar {
+  background-color: $logo-color;
+  color: white;
+}
+
 .third-space__logo {
   background: image-url("3s-logo.svg") no-repeat center;
   width: 100px;
@@ -19,6 +62,7 @@ html, body {
   border-radius: 0;
   z-index: 11;
   font-size: 16px;
+
   &:link,
   &:visited,
   &:hover,
@@ -90,6 +134,11 @@ html, body {
 .pagination__button {
   margin-bottom: 10px;
 
+  .pagination {
+    display:table;
+    margin:0 auto;
+    padding-bottom: 10px;
+  }
   .page-item, .disabled {
     .page-link {
       z-index: 0;

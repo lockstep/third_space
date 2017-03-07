@@ -9,10 +9,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class='collapse navbar-toggleable-xs menu__col' id='navbarResponsive'>
-        <ul class='nav navbar-nav'>
-          <li class='nav-item'><a class='nav-link white' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
-          <li class='nav-item'><a class='nav-link' href="<%= users_path %>"><%= fa_icon('user-circle') %> Profile</a></li>
-          <li class='nav-item'><a class='nav-link white' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></li>
+        <ul class='nav navbar-nav navbar__menu'>
+          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
+          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= users_path %>"><%= fa_icon('user-circle') %> Profile</a></li>
+          <li class='nav-item'><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></li>
         </ul>
       </div>
     </div>
