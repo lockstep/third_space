@@ -9,7 +9,12 @@
       </div>
       <div class='modal-body'>
         <div class='shared__title'>Via Email:</div>
-        <input type='email' name='receivers_email' class='form-control'></input>
+        <%= form_tag(share_by_email_problem_path(problem), method: :post, remote: true, id: 'problem-form__share--email') do %>
+          <input type='email' name='problem[email]' id='problem__share--receiver-email' class='form-control'></input>
+          <%= submit_tag 'Send', disabled: true,
+            class: 'btn btn--third-space btn--radius-4 shared__button',
+            id: 'problem__share-btn--email', data: { disable_with: 'Sharing' } %>
+        <% end %>
 
         <div class='shared__title'>Via Facebook:</div>
         <div class="btn btn--facebook"
@@ -22,16 +27,6 @@
         <div class="btn btn--twitter"
              onclick="shareToTwitter('<%= problem_url(@problem) %>', '<%=@problem.name%>')">
           <%= fa_icon('twitter') %> Twitter
-        </div>
-      </div>
-      <div class='modal-footer'>
-        <div data-turbolinks-track='true'>
-          <button type='button' class='btn btn-secondary' data-dismiss='modal'>
-            Close
-          </button>
-          <button type='button' class='btn btn--third-space btn--radius-4' data-dismiss='modal'>
-            Share
-          </button>
         </div>
       </div>
     </div>
