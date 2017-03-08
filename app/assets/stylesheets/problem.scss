@@ -9,7 +9,7 @@
 }
 
 .problem__discuss-group {
-  margin: $margin*3 0;
+  margin: 15px 0;
 }
 
 .problems__checkbox {
@@ -54,12 +54,36 @@
 
 }
 
+.problem__owner-name {
+  font-weight: 500;
+  border-radius: 2rem;
+  display: inline-block;
+}
+
+.problem__created_time {
+  margin-right: 10px;
+  font-weight: 300;
+  font-size: 12px;
+  font-style: italic;
+  color: $grey;
+}
+
+.problem__owner-avatar {
+  border-radius: 2rem;
+  display: inline-block;
+  margin-right: 5px;
+}
+
 .comment__group {
-  padding-top: $padding*1.5;
+  padding-top: 15px;
+}
+
+.comment__title {
+  margin-bottom: 20px;
 }
 
 .comment__image {
-  border-radius: 1rem;
+  border-radius: 2rem;
   position: absolute;
   left: 0;
   top: -5px;
@@ -67,11 +91,21 @@
 
 .comment__user-name {
   font-weight: 500;
+  display: block;
+  padding-right: 55px;
+}
+
+.comment__comment-time {
+  font-weight: 300;
+  font-size: 12px;
+  font-style: italic;
+  color: $grey;
+  margin-top: 5px;
+  float: right;
 }
 
 .comment__message {
-  margin-bottom: 4px;
-  padding-right: 40px;
+  margin-bottom: 8px;
   min-height: 35px;
   padding-left: 40px;
   position: relative;
