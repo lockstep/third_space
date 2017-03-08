@@ -10,6 +10,7 @@ class User < ApplicationRecord
   belongs_to :company, optional: true
   has_many :problems
   has_many :comments
+  has_many :solution_likes
 
   has_attached_file :avatar,
     url: ':s3_domain_url',

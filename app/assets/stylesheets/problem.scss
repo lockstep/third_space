@@ -28,6 +28,8 @@
   background: $logo-color;
   color: $white;
   border: 1px solid $logo-color;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .problem__overlay {
@@ -54,6 +56,10 @@
 
 }
 
+.problem__additional-details {
+  position: relative;
+}
+
 .problem__owner-name {
   font-weight: 500;
   border-radius: 2rem;
@@ -66,6 +72,30 @@
   font-size: 12px;
   font-style: italic;
   color: $grey;
+}
+
+.problem__btn--like {
+  position: absolute;
+  top: 0;
+  right: 0;
+  a {
+    color: black;
+  }
+}
+
+.problem__action-bar {
+  position: relative;
+  height: 40px;
+}
+
+.problem__btn--basic-actions {
+  position: absolute;
+  left: 0;
+}
+
+.problem__btn--social-media-actions {
+  position: absolute;
+  right: 0;
 }
 
 .problem__owner-avatar {

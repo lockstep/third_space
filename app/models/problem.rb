@@ -4,6 +4,7 @@ class Problem < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :solution_likes
 
   scope :ordered_by_date, -> { order(created_at: :desc) }
   scope :in_company, -> (user) {
@@ -17,6 +18,11 @@ class Problem < ApplicationRecord
   def self.next_lens(current_lens)
     return LENSES.last if LENSES.last == current_lens
     LENSES[LENSES.index(current_lens) + 1]
+  end
+
+  def self.increase_likes_count(problem_id)
+    problem = Problem.find(problem_id)
+    problem.update(likes_count: problem.likes_count + 1)
   end
 
   def get_lens_value(lens_type)

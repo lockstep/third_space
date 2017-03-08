@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/review', to: 'problems#review', on: :member, as: :review
     put '/update_lens', to: 'problems#update_lens', on: :member, as: :update_lens
     post '/share_by_email', to: 'problems#share_by_email', on: :member
+    post '/upvote', to: 'solution_likes#create', on: :member
   end
   resources :comments, only: [:create, :edit, :update, :destroy]
   resource :users, only: [:show] do

@@ -1,0 +1,29 @@
+<div class="comment__group">
+  <h6 class="comment__title">COMMENTS</h6>
+  <% problem.comments.each do |comment| %>
+    <div class="comment__message">
+      <%= image_tag comment.user.avatar.url(:small),
+          class: 'comment__image d-inline' %>
+      <div class='comment__user-name'>
+        <%= comment.user.first_name %>
+        <span class='comment__comment-time'>
+          <%= remove_unwanted_words time_ago_in_words(comment.created_at) + ' ago' %>
+        </span>
+        <% if show_problem_actions?(comment.user) %>
+          <%= link_to comment_path(comment.id), method: :delete,
+            data: { confirm: 'Are you sure?'},
+            class: 'btn btn-sm problem__button comment__delete-icon link--white-action' do %>
+            <%= fa_icon('trash-o') %>
+          <% end %>
+
+          <button type="button" class="btn btn-sm problem__button comment__edit-icon"
+                  data-toggle="modal" data-target="#editModal"
+                  data-comment-id="<%= comment.id %>" >
+            <%= fa_icon('edit') %>
+          </button>
+        <% end %>
+      </div>
+      <span id="comment-id-<%= comment.id %>" ><%= comment.description %></span>
+    </div>
+  <% end %>
+</div>

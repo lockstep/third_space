@@ -1,0 +1,26 @@
+<div class='mb-2 problem__action-bar'>
+  <div class='problem__btn--basic-actions'>
+    <% if show_problem_actions?(problem.user) %>
+      <%= link_to edit_problem_path, class: 'btn problem__button problem__btn--edit' do %>
+        <%= fa_icon('edit') %>
+      <% end %>
+      <%= link_to problem_path, method: :delete,
+        data: { confirm: 'Are you sure?'},
+        class: 'btn problem__button problem__btn--destroy' do %>
+        <%= fa_icon('trash-o') %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class='problem__btn--social-media-actions'>
+    <%- if can_upvote?(current_user.id, problem.id) %>
+      <%= link_to upvote_problem_path(problem), method: :post,
+        class: 'btn problem__button' do %>
+        <%= fa_icon('thumbs-o-up') %> Like
+      <% end %>
+    <% end %>
+    <button type='button' class='btn problem__button' id='buttonShareModal'
+            data-toggle='modal' data-target='#shareModal'>
+      <%= fa_icon('share-alt') %> Share
+    </button>
+  </div>
+</div>
