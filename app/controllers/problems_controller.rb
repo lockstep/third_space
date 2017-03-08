@@ -97,7 +97,7 @@ class ProblemsController < ApplicationController
 
   def problem_params
     params.require(:problem).permit(:name, :public, :adaptability,
-      :cultural_competence, :empathy, :intellectual_curiosity, :thinking)
+      :cultural_competency, :empathy, :intellectual_curiosity, :thinking)
   end
 
   def assign_cookies

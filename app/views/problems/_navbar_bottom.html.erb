@@ -10,7 +10,7 @@
     </div>
     <div class="ace-it__button-col">
       <center>
-        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'cultural_competence') %>"
+        <a href="<%= lenses_problem_path(id: @problem.id, lens: 'cultural_competency') %>"
           class="ace-it__button ace-it__button
           <%= 'ace-it__button--active' if request.fullpath.include? 'cultural' %>
           <%= 'disabled-link' unless @problem.adaptability %> ">
@@ -23,7 +23,7 @@
         <a href="<%= lenses_problem_path(id: @problem.id, lens: 'empathy') %>"
          class="ace-it__button
          <%= 'ace-it__button--active' if request.fullpath.include? 'empathy' %>
-         <%= 'disabled-link' unless @problem.cultural_competence %>" >
+         <%= 'disabled-link' unless @problem.cultural_competency %>" >
          E
         </a>
       </center>

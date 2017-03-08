@@ -1,5 +1,5 @@
 class Problem < ApplicationRecord
-  LENSES = %w(adaptability cultural_competence empathy intellectual_curiosity thinking)
+  LENSES = %w(adaptability cultural_competency empathy intellectual_curiosity thinking)
   TYPES = %w(solution summary)
 
   belongs_to :user

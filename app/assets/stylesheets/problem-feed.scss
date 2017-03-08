@@ -21,7 +21,7 @@
 }
 
 .problem__adaptability,
-.problem__cultural_competence,
+.problem__cultural_competency,
 .problem__empathy,
 .problem__intellectual_curiosity,
 .problem__thinking {
@@ -30,27 +30,22 @@
 }
 
 .problem__adaptability {
-  background: image-url("adaptability.png") no-repeat center;
   outline-color: $adaptability;
 }
 
-.problem__cultural_competence {
-  background: image-url("cultural_competence.png") no-repeat center;
+.problem__cultural_competency {
   outline-color: $cultural;
 }
 
 .problem__empathy {
-  background: image-url("empathy.png") no-repeat center;
   outline-color: $empathy;
 }
 
 .problem__intellectual_curiosity {
-  background: image-url("intellectual_curiosity.png") no-repeat center;
   outline-color: $intellectual;
 }
 
 .problem__thinking {
-  background: image-url("thinking.png") no-repeat center;
   outline-color: $thinking;
 }
 
@@ -84,7 +79,7 @@
     background-color: $adaptability;
 
   }
-  &--cultural_competence {
+  &--cultural_competency {
     background-color: $cultural;
   }
   &--empathy {
