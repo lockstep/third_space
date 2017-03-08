@@ -13,7 +13,7 @@ feature 'Create Problem Spec' do
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
-      %w(adaptability cultural_competence empathy intellectual_curiosity thinking).each do |lens|
+      %w(adaptability cultural_competency empathy intellectual_curiosity thinking).each do |lens|
         find('#solution-head-input').trigger('click')
         expect(find('.lens__btn--submit')['disabled']).to eq true
         fill_in 'solution-input', with: "test #{lens}"
@@ -47,7 +47,7 @@ feature 'Create Problem Spec' do
       fill_in 'problem[name]', with: 'Hello'
       click_on 'Next'
 
-      %w(adaptability cultural_competence empathy ).each do |lens|
+      %w(adaptability cultural_competency empathy ).each do |lens|
         find('#solution-head-input').trigger('click')
         expect(find('.lens__btn--submit')['disabled']).to eq true
         fill_in 'solution-input', with: "test #{lens}"
@@ -70,7 +70,7 @@ feature 'Create Problem Spec' do
         click_on('Continue')
         click_on('Feed')
         click_on('Create New')
-        expect(page).to have_content 'Cultural Competence'
+        expect(page).to have_content 'Cultural Competency'
         expect(page).to have_content 'What is your solution through this lens?'
       end
     end
