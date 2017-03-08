@@ -16,6 +16,7 @@ feature 'View Problem', js: true do
 
       expect(page).to have_content 'Edit'
       expect(page).to have_content 'Delete'
+      expect(page).to have_content 'Share'
     end
   end
 
@@ -26,6 +27,7 @@ feature 'View Problem', js: true do
 
       expect(page).to_not have_content 'Edit'
       expect(page).to_not have_content 'Delete'
+      expect(page).to have_content 'Share'
     end
   end
 

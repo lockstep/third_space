@@ -19,8 +19,8 @@
                   </div>
                 </div>
               </div>
-              <% if show_problem_actions?(@problem.user) %>
-                <div class='text-xs-center mb-2'>
+              <div class='text-xs-center mb-2'>
+                <% if show_problem_actions?(@problem.user) %>
                   <%= link_to edit_problem_path, class: 'btn problem__button' do %>
                     <%= fa_icon('edit') %> Edit
                   <% end %>
@@ -29,12 +29,12 @@
                     class: 'btn problem__button' do %>
                     <%= fa_icon('trash-o') %> Delete
                   <% end %>
-                  <button type="button" class="btn problem__button" id="buttonShareModal"
-                          data-toggle="modal" data-target="#shareModal">
-                    <%= fa_icon('share-alt') %> Share
-                  </button>
-                </div>
-              <% end %>
+                <% end %>
+                <button type="button" class="btn problem__button" id="buttonShareModal"
+                        data-toggle="modal" data-target="#shareModal">
+                  <%= fa_icon('share-alt') %> Share
+                </button>
+              </div>
               <div class="comment__group">
                 <h6 class="comment-title">COMMENTS</h6>
                 <% @problem.comments.each do |comment| %>
