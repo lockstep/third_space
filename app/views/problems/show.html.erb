@@ -18,6 +18,15 @@
                     <p><%= @problem.thinking %></p>
                   </div>
                 </div>
+                <div>
+                  <div class='problem__owner-name'>
+                    By <%= @problem.user.full_name %>
+                  </div>
+                  <div class='problem__created_time'>
+                      <%= remove_unwanted_words time_ago_in_words(@problem.created_at) + ' ago' %>
+                  </div>
+                  <hr></hr>
+                </div>
               </div>
               <div class='text-xs-center mb-2'>
                 <% if show_problem_actions?(@problem.user) %>
@@ -36,28 +45,31 @@
                 </button>
               </div>
               <div class="comment__group">
-                <h6 class="comment-title">COMMENTS</h6>
+                <h6 class="comment__title">COMMENTS</h6>
                 <% @problem.comments.each do |comment| %>
                   <div class="comment__message">
                     <%= image_tag comment.user.avatar.url(:small),
                         class: 'comment__image d-inline' %>
-                    <span class="comment__user-name"><%= comment.user.first_name %>:</span>
-                    <span id="comment-id-<%= comment.id %>" ><%= comment.description %></span>
+                    <div class='comment__user-name'>
+                      <%= comment.user.first_name %>
+                      <span class='comment__comment-time'>
+                        <%= remove_unwanted_words time_ago_in_words(comment.created_at) + ' ago' %>
+                      </span>
+                      <% if show_problem_actions?(comment.user) %>
+                        <%= link_to comment_path(comment.id), method: :delete,
+                          data: { confirm: 'Are you sure?'},
+                          class: 'btn btn-sm problem__button comment__delete-icon link--white-action' do %>
+                          <%= fa_icon('trash-o') %>
+                        <% end %>
 
-                    <% if show_problem_actions?(comment.user) %>
-                      <%= link_to comment_path(comment.id), method: :delete,
-                        data: { confirm: 'Are you sure?'},
-                        class: 'btn btn-sm problem__button comment__delete-icon link--white-action' do %>
-                        <%= fa_icon('trash-o') %>
+                        <button type="button" class="btn btn-sm problem__button comment__edit-icon"
+                                data-toggle="modal" data-target="#editModal"
+                                data-comment-id="<%= comment.id %>" >
+                          <%= fa_icon('edit') %>
+                        </button>
                       <% end %>
-
-                      <button type="button" class="btn btn-sm problem__button comment__edit-icon"
-                              data-toggle="modal" data-target="#editModal"
-                              data-comment-id="<%= comment.id %>" >
-                        <%= fa_icon('edit') %>
-                      </button>
-                    <% end %>
-
+                    </div>
+                    <span id="comment-id-<%= comment.id %>" ><%= comment.description %></span>
                   </div>
                 <% end %>
               </div>

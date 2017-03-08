@@ -50,7 +50,7 @@ feature 'View Problem', js: true do
       fill_in 'comment_description', with: value
       expect(find('.comment__button--submit')['disabled']).to eq false
       click_on 'POST'
-      expect(page).to have_content("#{@user2.first_name}: #{value}")
+      expect(page).to have_content value
     end
 
     scenario "cannot post the comment" do
@@ -64,26 +64,26 @@ feature 'View Problem', js: true do
     scenario 'deletes the comment successfully' do
       visit problem_path(@problem.id)
 
-      expect(page).to have_content("#{@user2.first_name}: Hello, this is awesome.")
+      expect(page).to have_content 'Hello, this is awesome.'
 
       accept_confirm do
         find('.comment__delete-icon').trigger('click')
       end
-      expect(page).to_not have_content("#{@user2.first_name}: Hello, this is awesome.")
+      expect(page).to_not have_content 'Hello, this is awesome.'
     end
 
     scenario 'edit the comment successfully' do
       visit problem_path(@problem.id)
 
-      expect(page).to have_content("#{@user2.first_name}: Hello, this is awesome.")
+      expect(page).to have_content 'Hello, this is awesome.'
 
       find('.comment__edit-icon').trigger('click')
       expect(page).to have_content "Edit Comment"
       fill_in 'edit-comment-input', with: 'Edited comment'
       click_on 'Edit'
 
-      expect(page).to_not have_content("#{@user2.first_name}: Hello, this is awesome.")
-      expect(page).to have_content("#{@user2.first_name}: Edited comment")
+      expect(page).to_not have_content 'Hello, this is awesome.'
+      expect(page).to have_content 'Edited comment'
     end
   end
 

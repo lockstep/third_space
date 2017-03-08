@@ -12,4 +12,13 @@
       </div>
     </div>
   </a>
+  <div>
+    <div class='problem__owner-name'>
+      By <%= problem.user.full_name %>
+    </div>
+    <div class='problem__created_time'>
+        <%= remove_unwanted_words time_ago_in_words(problem.created_at) + ' ago' %>
+    </div>
+    <hr></hr>
+  </div>
 </div>

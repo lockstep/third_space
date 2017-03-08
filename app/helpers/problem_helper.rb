@@ -10,4 +10,15 @@ module ProblemHelper
   def show_problem_actions?(user)
     user == current_user
   end
+
+  def remove_unwanted_words string
+  bad_words = ["less than", "about"]
+
+  bad_words.each do |bad|
+    string.gsub!(bad + " ", '')
+  end
+
+  return string
+end
+
 end
