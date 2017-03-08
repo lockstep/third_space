@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-   if @comment.update(comment_params)
-      redirect_to problem_path(@comment.problem.id)
+    if @comment.update(comment_params)
+        redirect_to problem_path(@comment.problem.id)
     else
       redirect_back(fallback_location: problem_path(@comment.problem.id))
     end
