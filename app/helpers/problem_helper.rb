@@ -11,14 +11,15 @@ module ProblemHelper
     user == current_user
   end
 
-  def remove_unwanted_words string
-  bad_words = ["less than", "about"]
-
-  bad_words.each do |bad|
-    string.gsub!(bad + " ", '')
+  def remove_unwanted_words(string)
+    bad_words = ["less than", "about"]
+    bad_words.each do |bad|
+      string.gsub!(bad + " ", '')
+    end
+    string
   end
 
-  return string
-end
-
+  def can_upvote?(user_id, problem_id)
+    SolutionLike.can_create?(user_id, problem_id)
+  end
 end

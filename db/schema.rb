@@ -41,7 +41,15 @@ ActiveRecord::Schema.define(version: 20170308073840) do
     t.string   "intellectual_curiosity"
     t.string   "thinking"
     t.boolean  "public",                 default: false
+    t.integer  "likes_count",            default: 0
     t.index ["user_id"], name: "index_problems_on_user_id", using: :btree
+  end
+
+  create_table "solution_likes", force: :cascade do |t|
+    t.integer "problem_id"
+    t.integer "user_id"
+    t.index ["problem_id"], name: "index_solution_likes_on_problem_id", using: :btree
+    t.index ["user_id"], name: "index_solution_likes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,5 +83,7 @@ ActiveRecord::Schema.define(version: 20170308073840) do
   add_foreign_key "comments", "problems"
   add_foreign_key "comments", "users"
   add_foreign_key "problems", "users"
+  add_foreign_key "solution_likes", "problems"
+  add_foreign_key "solution_likes", "users"
   add_foreign_key "users", "companies"
 end

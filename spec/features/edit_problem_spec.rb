@@ -21,8 +21,7 @@ feature 'Edit Problem Spec', js: true do
   context 'in discussion page' do
     scenario 'edits a problem' do
       visit problem_path(@problem)
-      click_link 'Edit'
-
+      find('.problem__btn--edit').click
       fill_in 'problem[name]', with: 'Edited Problem Title'
       click_on 'Update'
       expect(page).to have_content 'Edited Problem Title'

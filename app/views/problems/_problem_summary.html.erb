@@ -1,0 +1,25 @@
+<div class="problem__discuss-group">
+  <div class="problem__box problem__<%= lens %>"
+    style="background: url(<%= asset_url "textures/#{image_index}.png"%>) ">
+    <div class="problem__title-wrapper">
+      <div class="problem__title">
+        <span class="problem__title--<%= lens %>"><%= problem.name.presence || 'Untitled' %></span>
+      </div>
+    </div>
+    <div class="problem__degree-thinking">
+      <p><%= problem.thinking %></p>
+    </div>
+  </div>
+  <div class='problem__additional-details'>
+    <div class='problem__owner-name'>
+      By <%= problem.user.full_name %>
+    </div>
+    <div class='problem__created_time'>
+        <%= remove_unwanted_words time_ago_in_words(problem.created_at) + ' ago' %>
+    </div>
+    <div class='problem__btn--like'>
+      <%= "#{pluralize(problem.likes_count, 'like')}" %>
+    </div>
+    <hr></hr>
+  </div>
+</div>

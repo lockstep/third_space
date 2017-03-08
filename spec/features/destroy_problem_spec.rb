@@ -11,7 +11,7 @@ feature 'Destroy Problem Spec', js: true do
     visit problem_path(@problem)
 
     accept_confirm do
-      click_on 'Delete'
+      find('.problem__btn--destroy').click
     end
     expect(page).to have_content 'My Feed'
   end
