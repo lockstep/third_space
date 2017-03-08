@@ -2,7 +2,8 @@
 <%= render 'layouts/shared/navbar_top', title: title %>
 <center>
   <div class="btn-group problem__filters" role="group" aria-label="Basic example">
-    <a href="<%= problems_path %>" class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] != 'all' %>">
+    <a href="<%= problems_path %>"
+       class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] != 'all' %>">
       <%= fa_icon('user-circle') %> My
     </a>
     <a href="<%= problems_path(stream: 'all') %>" class="btn btn-sm problem__select-feed-btn<%= '--active' if params[:stream] == 'all' %>">

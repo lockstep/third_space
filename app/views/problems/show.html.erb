@@ -30,12 +30,13 @@
               </div>
               <div class='text-xs-center mb-2'>
                 <% if show_problem_actions?(@problem.user) %>
-                  <%= link_to edit_problem_path, class: 'btn problem__button' do %>
+                  <%= link_to edit_problem_path,
+                      class: 'btn problem__button link--white-action' do %>
                     <%= fa_icon('edit') %> Edit
                   <% end %>
                   <%= link_to problem_path, method: :delete,
                     data: { confirm: 'Are you sure?'},
-                    class: 'btn problem__button' do %>
+                    class: 'btn problem__button link--white-action' do %>
                     <%= fa_icon('trash-o') %> Delete
                   <% end %>
                 <% end %>

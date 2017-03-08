@@ -126,14 +126,28 @@
   color: $logo-color;
   background: $white;
   border: 2px solid $logo-color;
-  box-sizing: border-box
+  box-sizing: border-box;
+
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $logo-color;
+  }
 }
 
 .problem__select-feed-btn--active {
   color: $white;
   background: $logo-color;
   border: 2px solid $logo-color;
-  box-sizing: border-box
+  box-sizing: border-box;
+
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+  }
 }
 
 .problem__filters {
