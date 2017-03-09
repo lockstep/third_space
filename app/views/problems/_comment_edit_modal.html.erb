@@ -1,27 +1,29 @@
-<div class='modal fade' id='editModal' tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
-  <div class='modal-dialog modal-sm' role='document'>
-    <div class='modal-content'>
-      <%= form_tag '/comments', method: :patch, id: 'edit-comment-form' do %>
-        <div class='modal-header'>
-          <h5 class='modal-title d-inline' id='editModalLabel'>Edit Comment</h5>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body'>
-            <%= text_area_tag 'comment[description]', '', placeholder: 'Add comment here',
-              id: 'edit-comment-input', class: 'form-control comment__input', rows: '5' %>
-            <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
-            <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
-            <%= hidden_field 'comment', 'id' %>
-        </div>
-        <div class='modal-footer'>
-          <div data-turbolinks-track='true'>
-            <button type='button' class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <%= submit_tag 'Edit', class: 'btn btn--third-space btn--radius-4'%>
+<% if current_user %>
+  <div class='modal fade' id='editModal' tabindex='-1' role='dialog' aria-labelledby='editModalLabel' aria-hidden='true'>
+    <div class='modal-dialog modal-sm' role='document'>
+      <div class='modal-content'>
+        <%= form_tag '/comments', method: :patch, id: 'edit-comment-form' do %>
+          <div class='modal-header'>
+            <h5 class='modal-title d-inline' id='editModalLabel'>Edit Comment</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
           </div>
-        </div>
-      <% end %>
+          <div class='modal-body'>
+              <%= text_area_tag 'comment[description]', '', placeholder: 'Add comment here',
+                id: 'edit-comment-input', class: 'form-control comment__input', rows: '5' %>
+              <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
+              <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
+              <%= hidden_field 'comment', 'id' %>
+          </div>
+          <div class='modal-footer'>
+            <div data-turbolinks-track='true'>
+              <button type='button' class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= submit_tag 'Edit', class: 'btn btn--third-space btn--radius-4'%>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
