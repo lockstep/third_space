@@ -33,6 +33,24 @@ feature 'View Problem', js: true do
     end
   end
 
+  context 'unauthenicated user' do
+    before do
+      @problem2 = create(:problem, public: true, user: @user)
+      visit problems_path
+      click_link 'Logout'
+    end
+
+    scenario 'can see public problem' do
+      visit problem_path(@problem2)
+      expect(page).to have_content @problem2.name.upcase
+    end
+
+    scenario 'cannot see unpublic problem' do
+      visit problem_path(@problem)
+      expect(page).to_not have_content @problem.name.upcase
+    end
+  end
+
   scenario 'sees problem page with comment' do
     visit problem_path(@problem.id)
     expect(page).to have_content(@problem.name.upcase)

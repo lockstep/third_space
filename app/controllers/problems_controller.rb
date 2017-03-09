@@ -1,4 +1,8 @@
 class ProblemsController < ApplicationController
+  # https://github.com/rails/rails/issues/9703
+  skip_before_action :authenticate_user!, raise: false,
+    if: -> { action_name == 'show' && public? }
+
   before_action :set_problem, only: [
     :edit, :update, :destroy, :show, :lens, :update_lens, :review,
     :share_by_email
@@ -93,6 +97,11 @@ class ProblemsController < ApplicationController
     all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"))
     @tips = all_tips[lens]["examples"]
     @intro_text = all_tips[lens]["intro_text"]
+  end
+
+  def public?
+    set_problem
+    @problem.present? && @problem.public
   end
 
   def problem_params

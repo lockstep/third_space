@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, raise: false
   before_action :get_comment, only: [ :edit, :update, :destroy ]
+
   def create
     comment = Comment.new(comment_params)
     if comment.save

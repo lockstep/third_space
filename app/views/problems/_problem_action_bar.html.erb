@@ -1,5 +1,10 @@
-<%- like_show_text = can_upvote?(current_user.id, problem.id) ? 'Like' : 'Liked' %>
-<%- like_css = can_upvote?(current_user.id, problem.id) ? '' : 'disabled-link' %>
+<%- like_show_text = 'Like' %>
+<%- like_css = 'disabled-link' %>
+<% if current_user %>
+  <%- like_show_text = can_upvote?(current_user.id, problem.id) ? 'Like' : 'Liked' %>
+  <%- like_css = can_upvote?(current_user.id, problem.id) ? '' : 'disabled-link' %>
+<% end %>
+
 <div class='mb-2 problem__action-group text-xs-center'>
   <% if show_problem_actions?(problem.user) %>
     <%= link_to edit_problem_path,
