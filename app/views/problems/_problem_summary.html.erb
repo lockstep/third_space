@@ -13,12 +13,12 @@
   <div class='problem__additional-details'>
     <div class='problem__owner-name'>
       By <%= problem.user.full_name %>
+      <span class='problem__like-number'>
+        <%= pluralize(problem.likes_count, 'like') %>
+      </span>
     </div>
     <div class='problem__created_time'>
         <%= remove_unwanted_words time_ago_in_words(problem.created_at) + ' ago' %>
-    </div>
-    <div class='problem__btn--like'>
-      <%= "#{pluralize(problem.likes_count, 'like')}" %>
     </div>
     <hr></hr>
   </div>

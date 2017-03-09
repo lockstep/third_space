@@ -64,6 +64,7 @@
   font-weight: 500;
   border-radius: 2rem;
   display: inline-block;
+  width: 100%;
 }
 
 .problem__created_time {
@@ -74,34 +75,26 @@
   color: $grey;
 }
 
-.problem__btn--like {
-  position: absolute;
-  top: 0;
-  right: 0;
-  a {
-    color: black;
-  }
-}
-
-.problem__action-bar {
-  position: relative;
-  height: 40px;
-}
-
-.problem__btn--basic-actions {
-  position: absolute;
-  left: 0;
-}
-
-.problem__btn--social-media-actions {
-  position: absolute;
-  right: 0;
+.problem__like-number {
+  float: right;
+  font-weight: 300;
+  font-size: 15px;
 }
 
 .problem__owner-avatar {
   border-radius: 2rem;
   display: inline-block;
   margin-right: 5px;
+}
+
+.problem__btn--edit,
+.problem__btn--destroy {
+  width: 15%;
+}
+
+.problem__btn--share,
+.problem__btn--like {
+  width: 30%;
 }
 
 .comment__group {

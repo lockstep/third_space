@@ -1,26 +1,26 @@
-<div class='mb-2 problem__action-bar'>
-  <div class='problem__btn--basic-actions'>
-    <% if show_problem_actions?(problem.user) %>
-      <%= link_to edit_problem_path, class: 'btn problem__button problem__btn--edit' do %>
-        <%= fa_icon('edit') %>
-      <% end %>
-      <%= link_to problem_path, method: :delete,
-        data: { confirm: 'Are you sure?'},
-        class: 'btn problem__button problem__btn--destroy' do %>
-        <%= fa_icon('trash-o') %>
-      <% end %>
+<%- like_show_text = can_upvote?(current_user.id, problem.id) ? 'Like' : 'Liked' %>
+<%- like_css = can_upvote?(current_user.id, problem.id) ? '' : 'disabled-link' %>
+<div class='mb-2 problem__action-group text-xs-center'>
+  <% if show_problem_actions?(problem.user) %>
+    <%= link_to edit_problem_path,
+        class: 'btn btn-sm problem__button problem__btn--edit link--white-action' do %>
+      <%= fa_icon('edit') %>
     <% end %>
-  </div>
-  <div class='problem__btn--social-media-actions'>
-    <%- if can_upvote?(current_user.id, problem.id) %>
-      <%= link_to upvote_problem_path(problem), method: :post,
-        class: 'btn problem__button' do %>
-        <%= fa_icon('thumbs-o-up') %> Like
-      <% end %>
+    <%= link_to problem_path, method: :delete,
+      data: { confirm: 'Are you sure?'},
+      class: 'btn btn-sm problem__button problem__btn--destroy link--white-action' do %>
+      <%= fa_icon('trash-o') %>
     <% end %>
-    <button type='button' class='btn problem__button' id='buttonShareModal'
-            data-toggle='modal' data-target='#shareModal'>
-      <%= fa_icon('share-alt') %> Share
-    </button>
-  </div>
+  <% end %>
+
+  <%= link_to upvote_problem_path(problem), method: :post,
+    class: "btn btn-sm problem__button problem__btn--like link--white-action #{like_css}" do %>
+    <%= fa_icon('thumbs-o-up') %> <%= like_show_text %>
+  <% end %>
+
+  <button type='button' id='buttonShareModal'
+          class='btn btn-sm problem__btn--share problem__button'
+          data-toggle='modal' data-target='#shareModal'>
+    <%= fa_icon('share-alt') %> Share
+  </button>
 </div>

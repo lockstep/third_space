@@ -14,10 +14,10 @@ feature 'Upvote Problem' do
       expect(page).to have_content '1 like'
     end
 
-    scenario 'hides like button' do
+    scenario 'change like button to liked after voted' do
       visit problem_path(@problem.id)
       click_on 'Like'
-      expect(page).to_not have_link 'Like'
+      expect(page).to have_link 'Liked'
     end
   end
 
