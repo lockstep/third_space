@@ -12,7 +12,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.touchswipe
-//= require swiper.min
+//= require swiper
 //= require turbolinks
 //= require tether
 //= require bootstrap
