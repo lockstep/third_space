@@ -83,7 +83,7 @@ class ProblemsController < ApplicationController
   def share_by_email
     UserMailer.problem_with_solution(
       @problem.id, params[:problem][:email]
-    ).deliver_later
+    ).deliver
     head :ok
   end
 
