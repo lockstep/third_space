@@ -19,7 +19,9 @@ module ProblemHelper
     string
   end
 
-  def can_upvote?(user_id, problem_id)
-    SolutionLike.can_create?(user_id, problem_id)
+  def voted?(user_id, problem_id)
+    solution_user_like = SolutionLike.find_by(user_id: user_id, problem_id: problem_id)
+    return true unless solution_user_like.present?
+    solution_user_like.liked
   end
 end

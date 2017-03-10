@@ -20,9 +20,10 @@ class Problem < ApplicationRecord
     LENSES[LENSES.index(current_lens) + 1]
   end
 
-  def self.increase_likes_count(problem_id)
+  def self.toggle_likes_count(problem_id, liked)
     problem = Problem.find(problem_id)
-    problem.update(likes_count: problem.likes_count + 1)
+    like_count = liked ? problem.likes_count + 1 : problem.likes_count - 1
+    problem.update(likes_count: like_count)
   end
 
   def get_lens_value(lens_type)

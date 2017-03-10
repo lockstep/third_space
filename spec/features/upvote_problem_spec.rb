@@ -40,4 +40,13 @@ feature 'Upvote Problem' do
       end
     end
   end
+
+  scenario 'unvote problem' do
+    visit problem_path(@problem.id)
+    click_on 'Like'
+    expect(page).to have_content '1 like'
+
+    click_on 'Liked'
+    expect(page).to have_content '0 likes'
+  end
 end
