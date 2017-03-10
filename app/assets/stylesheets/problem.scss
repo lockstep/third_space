@@ -93,8 +93,15 @@
 }
 
 .problem__btn--share,
-.problem__btn--like {
+.problem__btn--like,
+.problem__btn--liked {
   width: 30%;
+}
+
+.problem__btn--liked {
+  color: $logo-color !important;
+  border-color: $logo-color;
+  background: $white;
 }
 
 .comment__group {

@@ -1,8 +1,8 @@
 <%- like_show_text = 'Like' %>
-<%- like_css = 'disabled-link' %>
+<%- like_css = 'problem__btn--like disabled-link' %>
 <% if current_user %>
   <%- like_show_text = can_upvote?(current_user.id, problem.id) ? 'Like' : 'Liked' %>
-  <%- like_css = can_upvote?(current_user.id, problem.id) ? '' : 'disabled-link' %>
+  <%- like_css = can_upvote?(current_user.id, problem.id) ? 'problem__btn--like' : 'problem__btn--liked disabled-link' %>
 <% end %>
 
 <div class='mb-2 problem__action-group text-xs-center'>
@@ -19,7 +19,7 @@
   <% end %>
 
   <%= link_to upvote_problem_path(problem), method: :post,
-    class: "btn btn-sm problem__button problem__btn--like link--white-action #{like_css}" do %>
+    class: "btn btn-sm problem__button link--white-action #{like_css}" do %>
     <%= fa_icon('thumbs-o-up') %> <%= like_show_text %>
   <% end %>
 
