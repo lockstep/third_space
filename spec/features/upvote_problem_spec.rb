@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Upvote Problem' do
+feature 'Upvote Problem', js: true do
   background do
     @user = create(:user)
     @problem = create(:problem, user: @user)

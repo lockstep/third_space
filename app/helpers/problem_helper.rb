@@ -21,7 +21,7 @@ module ProblemHelper
 
   def voted?(user_id, problem_id)
     solution_user_like = SolutionLike.find_by(user_id: user_id, problem_id: problem_id)
-    return true unless solution_user_like.present?
+    return false unless solution_user_like.present?
     solution_user_like.liked
   end
 end
