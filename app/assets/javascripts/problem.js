@@ -35,6 +35,29 @@ function share_problem_by_email() {
   );
 }
 
+function toggle_like() {
+
+  $('#like-action').bind('ajax:success',
+    function(event, data, status, xhr) {
+      var liked = $('#like-action').data('liked');
+
+      if(liked){
+        $('#like-action').addClass('problem__btn--like').removeClass('problem__btn--liked');
+        likes = parseInt($('.problem__like-number').text()) - 1;
+        $('#like-status').text('Like');
+      } else {
+        $('#like-action').addClass('problem__btn--liked').removeClass('problem__btn--like');
+        likes = parseInt($('.problem__like-number').text()) + 1;
+        $('#like-status').text('Liked');
+      }
+      var show_text = likes == 1? likes + ' like' : likes + ' likes';
+      $('.problem__like-number').text(show_text);
+      $('#like-action').data('liked', !liked);
+
+    }
+  );
+}
+
 $.fn.mathSpace = function() {
   return $(this).each(function() {
     $(this).children('span').each(function() {
@@ -56,6 +79,7 @@ $(document).on('turbolinks:load', function() {
     show_edit_modal();
     listen_field_updating('#problem__share--receiver-email', '#problem__share-btn--email');
     share_problem_by_email();
+    toggle_like();
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
     listen_field_updating('.problem__name', '.problem__btn--submit');
