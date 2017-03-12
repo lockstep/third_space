@@ -7,9 +7,8 @@ feature 'Create Problem Spec' do
   end
 
   context 'creates a problem', js: true do
-    background { visit new_problem_path }
-
     scenario 'creates a problem successfull' do
+      visit new_problem_path
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
@@ -29,11 +28,13 @@ feature 'Create Problem Spec' do
     end
 
     scenario 'cannot post the problem' do
+      visit new_problem_path
       fill_in 'problem[name]', with: ''
       expect(find('.problem__btn--submit')['disabled']).to eq true
     end
 
     scenario 'cannot navigate to lens that do not have value' do
+      visit new_problem_path
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
@@ -44,6 +45,7 @@ feature 'Create Problem Spec' do
     end
 
     scenario 'can navigate to only lens that have value' do
+      visit new_problem_path
       fill_in 'problem[name]', with: 'Hello'
       click_on 'Next'
 
@@ -63,6 +65,7 @@ feature 'Create Problem Spec' do
 
     context 'user does not finish ACE-IT form' do
       scenario 'can comeback to update ACE-IT' do
+        visit new_problem_path
         fill_in 'problem[name]', with: 'global warming'
         click_on 'Next'
         find('#solution-head-input').trigger('click')
