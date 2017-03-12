@@ -26,8 +26,8 @@ describe UserMailer do
     end
 
     it 'renders content correctly' do
-      expect(@mail.body).to match(@user.full_name)
-      expect(@mail.body).to have_link('Check out my solution', href: problem_url(@problem))
+      expect(@mail.body.encoded).to match(@user.full_name)
+      expect(@mail.body.encoded).to have_link('Check out my solution', href: problem_url(@problem))
     end
   end
 end
