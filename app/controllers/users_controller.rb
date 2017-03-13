@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def show
+  before_action :authenticate_user!
+
+  def profile
   end
 
   def edit_password
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update_with_password(update_password_params)
       bypass_sign_in(@user)
-      redirect_to users_path
+      redirect_to profile_path
     else
       render 'edit_password'
     end

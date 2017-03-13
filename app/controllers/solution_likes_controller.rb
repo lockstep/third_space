@@ -1,4 +1,5 @@
 class SolutionLikesController < ApplicationController
+  before_action :authenticate_user!
 
   def toggle_like
     problem_id = params[:id]

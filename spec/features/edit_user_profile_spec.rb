@@ -7,7 +7,7 @@ feature 'Edit User Profile' do
   end
 
   scenario 'updates name successfully' do
-    visit users_path
+    visit profile_path
     click_on 'edit profile'
     fill_in 'user_first_name', with: 'Tom'
     fill_in 'user_last_name', with: 'Cruise'
@@ -17,7 +17,7 @@ feature 'Edit User Profile' do
   end
 
   scenario 'updates name unsuccessfully' do
-    visit users_path
+    visit profile_path
     click_on 'edit profile'
     fill_in 'user_first_name', with: ''
     fill_in 'user_last_name', with: ''
@@ -27,7 +27,7 @@ feature 'Edit User Profile' do
   end
 
   scenario 'updates password successfully' do
-    visit users_path
+    visit profile_path
     click_on 'edit profile'
     click_on 'Change your password'
     fill_in 'user_password', with: '123456'
@@ -40,7 +40,7 @@ feature 'Edit User Profile' do
   end
 
   scenario 'updates password unsuccessfully' do
-    visit users_path
+    visit profile_path
     click_on 'edit profile'
     click_on 'Change your password'
     fill_in 'user_password', with: '123456'
@@ -52,7 +52,7 @@ feature 'Edit User Profile' do
 
   context 'user is going to upload an avatar', js: true do
     scenario 'user can see default avatar before upload' do
-      visit users_path
+      visit profile_path
       click_on 'edit profile'
       expect(page).to have_css("img[src*='default_avatar']")
     end

@@ -7,7 +7,7 @@ feature 'View User Profile' do
   end
 
   scenario 'renders profile page correctly' do
-    visit users_path
+    visit profile_path
     expect(page).to have_content @user.first_name
     expect(page).to have_content @user.last_name
     expect(page).to have_content @user.email

@@ -1,8 +1,5 @@
 class ProblemsController < ApplicationController
-  # https://github.com/rails/rails/issues/9703
-  skip_before_action :authenticate_user!, raise: false,
-    if: -> { action_name == 'show' && public? }
-
+  before_action :authenticate_user!, unless: -> { action_name == 'show' && public? }
   before_action :set_problem, only: [
     :edit, :update, :destroy, :show, :lens, :update_lens, :review,
     :share_by_email
