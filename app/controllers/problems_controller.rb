@@ -4,6 +4,7 @@ class ProblemsController < ApplicationController
     :edit, :update, :destroy, :show, :lens, :update_lens, :review,
     :share_by_email
   ]
+  before_action :check_user_access, only: [:edit, :lens, :review]
 
   TEXTURE_IMAGE_AMOUNT = 10
 
@@ -103,6 +104,10 @@ class ProblemsController < ApplicationController
   def public_problem?
     set_problem
     @problem.present? && @problem.public
+  end
+
+  def check_user_access
+    redirect_to problems_path if current_user.id != @problem.user.id
   end
 
   def problem_params
