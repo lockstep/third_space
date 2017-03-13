@@ -13,7 +13,7 @@
             <div class='loading__piano-bar-2'></div>
             <div class='loading__piano-bar-3'></div>
           </div>
-          <%= form_tag(upload_avatar_users_path, id: 'avartar-form', method: :patch, multipart: true) do %>
+          <%= form_tag(upload_avatar_user_path(@user), id: 'avartar-form') do %>
             <div class='mb-1'>
               <%= label_tag 'user[avatar]', class: 'profile__avatar-label' do %>
                 <%= fa_icon('cloud-upload') %> Upload Avatar
@@ -21,6 +21,7 @@
               <%= file_field_tag 'user[avatar]', class: 'profile__file' %>
               <div class='avatar__error'></div>
             </div>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <% end %>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -38,7 +39,7 @@
 
             <div class='form-group mt-2'>
               <%= f.submit 'update', class: 'btn btn-outline-secondary text-uppercase' %>
-              <%= link_to 'Change your password', edit_password_users_path,
+              <%= link_to 'Change your password', edit_password_user_path(@user),
                 class: 'btn btn-outline-secondary mt-2' %>
             </div>
           <% end %>

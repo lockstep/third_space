@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   skip_before_action :verify_authenticity_token, raise: false
   before_action :get_comment, only: [ :edit, :update, :destroy ]
 

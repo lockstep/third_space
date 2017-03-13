@@ -2,9 +2,10 @@ $(document).on('turbolinks:load', function() {
   if ($('.registrations.edit').length > 0 ) {
     $(document).on('change', "#user_avatar", function() {
       var data = new FormData();
+      var formUrl = $('#avartar-form').attr('action');
       data.append('user[avatar]', $('#user_avatar')[0].files[0]);
       $.ajax({
-        url: '/users/upload_avatar',
+        url: formUrl,
         type: 'PATCH',
         data: data,
         cache: false,

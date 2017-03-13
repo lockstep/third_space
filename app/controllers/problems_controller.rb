@@ -1,8 +1,5 @@
 class ProblemsController < ApplicationController
-  # https://github.com/rails/rails/issues/9703
-  skip_before_action :authenticate_user!, raise: false,
-    if: -> { action_name == 'show' && public? }
-
+  before_action :authenticate_user!, unless: -> { public_action?  && public_problem? }
   before_action :set_problem, only: [
     :edit, :update, :destroy, :show, :lens, :update_lens, :review,
     :share_by_email
@@ -99,7 +96,11 @@ class ProblemsController < ApplicationController
     @intro_text = all_tips[lens]["intro_text"]
   end
 
-  def public?
+  def public_action?
+    action_name == 'show'
+  end
+
+  def public_problem?
     set_problem
     @problem.present? && @problem.public
   end
