@@ -23,8 +23,6 @@ feature 'Create Problem Spec' do
       expect(page).to have_content 'global warming'
       expect(page).to have_content 'test thinking'
       expect(page).to have_link 'View Feed'
-      expect(page).to have_link 'New Problem'
-      expect(page).to have_link 'Add Comment'
     end
 
     scenario 'cannot post the problem' do
