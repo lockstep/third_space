@@ -27,4 +27,29 @@ feature 'Edit Problem Spec', js: true do
       expect(page).to have_content 'Edited Problem Title'
     end
   end
+
+  context 'cannot edit other users problem' do
+     background do
+      @user_2 = create(:user)
+      login_as(@user_2, scope: :user)
+    end
+
+    scenario 'try to edit problem and redirect to problems path' do
+      visit edit_problem_path(@problem)
+      expect(current_path).to eq '/problems'
+      expect(page).to have_content 'My Feed'
+    end
+
+    scenario 'try to edit lense and redirect to problems path' do
+      visit lenses_problem_path(@problem, 'thinking')
+      expect(current_path).to eq '/problems'
+      expect(page).to have_content 'My Feed'
+    end
+
+    scenario 'try to access review problem and redirect to problems path' do
+      visit review_problem_path(@problem)
+      expect(current_path).to eq '/problems'
+      expect(page).to have_content 'My Feed'
+    end
+  end
 end
