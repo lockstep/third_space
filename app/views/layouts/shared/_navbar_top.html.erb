@@ -10,9 +10,14 @@
       </button>
       <div class='collapse navbar-toggleable-xs menu__col' id='navbarResponsive'>
         <ul class='nav navbar-nav navbar__menu'>
+        <% if current_user %>
           <li class='nav-item'><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
           <li class='nav-item'><a class='navbar__list link--white-action' href="<%= profile_path %>"><%= fa_icon('user-circle') %> Profile</a></li>
           <li class='nav-item'><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></li>
+        <% end %>
+        <% if !current_user %>
+          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= new_user_session_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
+        <% end %>
         </ul>
       </div>
     </div>
@@ -22,9 +27,11 @@
     </div>
 
     <div class='col-xs-3'>
-      <a class="btn btn-sm top-nav__button link--white-action" href="<%= problems_path %>">
-        Feed
-      </a>
+      <% if current_user %>
+        <a class="btn btn-sm top-nav__button link--white-action" href="<%= problems_path %>">
+          Feed
+        </a>
+      <% end %>
     </div>
   </div>
 </nav>

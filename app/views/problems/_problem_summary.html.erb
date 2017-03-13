@@ -20,6 +20,16 @@
     <div class='problem__created_time'>
         <%= remove_unwanted_words time_ago_in_words(problem.created_at) + ' ago' %>
     </div>
+
+    <% if !current_user %>
+      <div class='text-xs-center mt-1 unauthenticated-user__error '>
+        Please
+        <a class='link--error-action' href="<%= new_user_session_path  %>">Sign In </a>
+        or
+        <a class='link--error-action' href="<%= new_user_registration_path %>">Create Account </a>
+        to comment
+      </div>
+    <% end %>
     <hr></hr>
   </div>
 </div>

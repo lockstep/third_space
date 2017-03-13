@@ -43,11 +43,31 @@ feature 'View Problem', js: true do
     scenario 'can see public problem' do
       visit problem_path(@problem2)
       expect(page).to have_content @problem2.name.upcase
+      expect(page).to have_link 'Sign In'
+      expect(page).to have_link 'Create Account'
+      expect(page).to_not have_link 'Profile'
+      expect(page).to_not have_link 'Logout'
+      expect(page).to_not have_content 'Feed'
     end
 
     scenario 'cannot see unpublic problem' do
       visit problem_path(@problem)
       expect(page).to_not have_content @problem.name.upcase
+    end
+
+    context 'singin to comment problem' do
+      scenario 'redirects to problems show path' do
+        visit problem_path(@problem2)
+        click_on 'Sign In'
+        fill_in 'user[email]', with: @user2.email
+        fill_in 'user[password]', with: 'password'
+        click_on 'Sign in'
+        expect(page).to have_content @problem.name.upcase
+        expect(current_url).to "/problems/#{@problem2.id}"
+      end
+    end
+
+    context 'signup to comment problem' do
     end
   end
 
