@@ -55,19 +55,29 @@ feature 'View Problem', js: true do
       expect(page).to_not have_content @problem.name.upcase
     end
 
-    context 'singin to comment problem' do
-      scenario 'redirects to problems show path' do
-        visit problem_path(@problem2)
+    context 'user visit problem show page' do
+      before { visit problem_path(@problem2) }
+
+      scenario 'redirects to problems show path after sign-in' do
         click_on 'Sign In'
         fill_in 'user[email]', with: @user2.email
         fill_in 'user[password]', with: 'password'
         click_on 'Sign in'
-        expect(page).to have_content @problem.name.upcase
-        expect(current_url).to "/problems/#{@problem2.id}"
+        expect(page).to have_content @problem2.name.upcase
+        expect(current_url).to match "/problems/#{@problem2.id}"
       end
-    end
 
-    context 'signup to comment problem' do
+      scenario 'redirects to problems show path after sign-up' do
+        click_on 'Create Account'
+        fill_in 'user[first_name]', with: 'peter'
+        fill_in 'user[last_name]', with: 'thiel'
+        fill_in 'user[email]', with: 'peter.thiel@gmail.com'
+        fill_in 'user[password]', with: '123456'
+        fill_in 'user[password_confirmation]', with: '123456'
+        click_on 'Sign up'
+        expect(page).to have_content @problem2.name.upcase
+        expect(current_url).to match "/problems/#{@problem2.id}"
+      end
     end
   end
 
