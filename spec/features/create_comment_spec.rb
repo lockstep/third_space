@@ -8,6 +8,11 @@ feature 'Create Comment', js: true do
     login_as(@user2, scope: :user)
   end
 
+  scenario 'disables post button by default' do
+    visit problem_path(@problem.id)
+    expect(find('.comment__button--submit')['disabled']).to eq true
+  end
+  
   scenario 'creates comment successfully' do
     visit problem_path(@problem.id)
     value = 'hello world'

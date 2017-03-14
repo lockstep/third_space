@@ -12,6 +12,5 @@ class SolutionLikesController < ApplicationController
 
     Problem.toggle_likes_count(problem_id, solution_like.liked)
     head :ok
-    # redirect_to problem_path(problem_id)
   end
 end
