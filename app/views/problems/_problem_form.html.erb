@@ -1,13 +1,13 @@
 <%= form_for @problem, html: {id:'problem-form'} do |f| %>
   <div id='problem-container'>
     <div class='card-header lens__header' role='tab' id='new-problem-head'>
-      <span id='new-problem-head-input'>What is your problem name?</span>
+      <span id='new-problem-head-input'>Define your problem:</span>
     </div>
 
     <div id='new-problem-textarea' role='tabpanel' aria-labelledby='new-problem-head'>
       <div class='form-group'>
         <%= f.text_area :name, class: 'form-control problem__name',
-          rows:'7', placeholder:'Write problem name here' %>
+          rows:'7', placeholder:'Write problem statement' %>
       </div>
     </div>
 
