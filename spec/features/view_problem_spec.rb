@@ -5,8 +5,6 @@ feature 'View Problem', js: true do
     @user = create(:user)
     @user2 = create(:user)
     @problem = create(:problem, user: @user)
-    @comment = create(:comment, problem: @problem, user: @user2)
-    login_as(@user2, scope: :user)
   end
 
   context 'owner problem' do
@@ -37,8 +35,8 @@ feature 'View Problem', js: true do
 
   context 'other users' do
     context 'authenticated user' do
+      before { login_as(@user2, scope: :user) }
       scenario 'can not see problem actions' do
-        login_as(@user2, scope: :user)
         visit problem_path(@problem)
 
         expect(page).to_not have_css '.problem__btn--edit'
@@ -51,8 +49,6 @@ feature 'View Problem', js: true do
     context 'unauthenicated user' do
       before do
         @problem2 = create(:problem, public: true, user: @user)
-        visit problems_path
-        click_link 'Logout'
       end
 
       scenario 'can see public problem' do
