@@ -36,7 +36,6 @@ function share_problem_by_email() {
 }
 
 function toggle_like() {
-
   $('#like-action').bind('ajax:success',
     function(event, data, status, xhr) {
       var liked = $('#like-action').data('liked');
@@ -58,12 +57,20 @@ function toggle_like() {
   );
 }
 
-$.fn.mathSpace = function() {
-  return $(this).each(function() {
+function change_title_height() {
+  var wrapper_height = $('.problem__title-wrapper').height();
+  var title_height = $('.problem__title').height();
+  if (title_height > wrapper_height) {
+    $('.problem__title-wrapper').height(title_height+20);
+  }
+}
+
+function match_space(title_class, elipses) {
+  return $(title_class).each(function() {
     $(this).children('span').each(function() {
       var el = $(this);
       var text = el.text();
-      if(text.length > limited_length) {
+      if(elipses && text.length > limited_length) {
         text = text.substring(0, limited_length - ending.length) + ending;
       }
       el.text(
@@ -76,10 +83,12 @@ $.fn.mathSpace = function() {
 $(document).on('turbolinks:load', function() {
   if ($('.problems.show').length > 0 ) {
     listen_field_updating('.comment__input', '.comment__button--submit');
-    show_edit_modal();
+    match_space('.problem__title', false);
     listen_field_updating('#problem__share--receiver-email', '#problem__share-btn--email');
+    show_edit_modal();
     share_problem_by_email();
     toggle_like();
+    change_title_height();
   }
   if ($('.problems.new, .problems.edit').length > 0 ) {
     listen_field_updating('.problem__name', '.problem__btn--submit');
@@ -90,8 +99,8 @@ $(document).on('turbolinks:load', function() {
     listen_field_updating('.ace-it', '.lens__btn--submit');
     stopShakingTip(isTipClicked != undefined);
   }
-  if ($('.problems.index').length > 0 || $('.problems.show').length > 0) {
-    $('.problem__title').mathSpace();
+  if ($('.problems.index').length > 0) {
+    match_space('.problem__title', true);
   }
   if ($('.problems.lens').length > 0 ) {
     createSlider('.tip__swiper-container', '.tip__swiper-pagination');

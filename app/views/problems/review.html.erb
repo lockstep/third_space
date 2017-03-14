@@ -1,6 +1,6 @@
 <%= render 'layouts/shared/navbar_top', title: 'Review' %>
 
-<div class='px-2 py-2 mb-2'>
+<div class='p-2'>
   <div>
     <span class='review__title'>Problem</span>
     <a id='edit-problem' href="<%= edit_problem_path(@problem.id) %>">
@@ -10,7 +10,7 @@
   <p><%= @problem.name %></p>
 </div>
 
-<div class='px-2 mb-2'>
+<div class='px-2 pb-2'>
   <div>
     <span class='review__title'>360 Degree Thinking</span>
     <a id='edit-thinking' href="<%= lenses_problem_path(@problem.id, 'thinking') %>">

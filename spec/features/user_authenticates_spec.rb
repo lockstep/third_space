@@ -39,7 +39,7 @@ feature 'Authentication' do
       fill_in 'user_password_confirmation', with: 'password'
       click_on 'Sign up'
       expect(User.last.company).to eq @company
-      expect(page).to have_content('Skip')
+      expect(page).to have_content('Continue')
     end
     scenario 'gets redirected to login page' do
       visit '/problems'

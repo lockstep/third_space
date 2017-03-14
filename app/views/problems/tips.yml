@@ -1,6 +1,6 @@
 problem:
   intro_text: "State a COMMUNICATION CHALLENGE you would like to overcome. Keep
-    this to ~200 characters. Try to complete in less than 3 minutes."
+    this to ~200 characters. Try to complete in fewer than 3 minutes."
   examples: [
     "I need to retain more Millennial workers. I spend a lot of money training
       them but they typically leave the company after 6-8 months.",
@@ -66,7 +66,7 @@ intellectual_curiosity:
   ]
 thinking:
   intro_text: "Write a solution to your Communication Challenge that is informed
-    by all your answers from the previous lenses - e.g. Adaptability, Cultural
+    by all your answers from the previous lenses Adaptability, Cultural
     Competence, Empathy and Intellectual Curiosity. Are there themes or patterns?
     Do they combine to spark new ideas?"
   examples: [
