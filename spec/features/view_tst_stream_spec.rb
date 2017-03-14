@@ -77,12 +77,13 @@ feature 'View TST Stream' do
   scenario 'renders pagination correctly' do
     create_list(:problem, 31, user: @user)
     Problem.first.update(name: 'first problem')
+    Problem.last.update(name: 'last problem')
     visit problems_path
     click_link 'My'
-    expect(page).to have_content('My Problem 31')
+    expect(page).to have_content('last problem')
     expect(page).not_to have_content('first problem')
     click_on '2'
+    expect(page).to_not have_content('last problem')
     expect(page).to have_content('first problem')
-    expect(page).to_not have_content('My Problem 31')
   end
 end
