@@ -2,15 +2,14 @@ require 'rails_helper'
 
 feature 'View Problem', js: true do
   background do
-    @user = create(:user)
-    @user2 = create(:user)
-    @problem = create(:problem, user: @user)
+    @company = create(:company, name: 'Tesla', domain_name: '@tesla.com')
+    @owner = create(:user, email: 'donale@tesla.com', company: @company)
+    @problem = create(:problem, user: @owner)
   end
 
   context 'owner problem' do
-    before { login_as(@user, scope: :user) }
-
-    scenario 'can see problem actions' do
+    before { login_as(@owner, scope: :user) }
+    scenario 'sees problem with edit/destroy/social media actions' do
       visit problem_path(@problem)
       expect(page).to have_css '.problem__btn--edit'
       expect(page).to have_css '.problem__btn--destroy'
@@ -19,11 +18,10 @@ feature 'View Problem', js: true do
     end
 
     context 'uncompleted problem' do
-      before do
-        @uncompleted_problem = Problem.create(name: 'Hello World', user: @user)
-      end
       scenario 'can continue to fill_in ACE-IT form' do
+        @uncompleted_problem = Problem.create(name: 'Hello World', user: @owner)
         visit problem_path(@uncompleted_problem)
+
         expect(page).to have_content 'Continue'
         expect(page).to_not have_css '.problem__btn--edit'
         expect(page).to_not have_css '.problem__btn--destroy'
@@ -33,61 +31,115 @@ feature 'View Problem', js: true do
     end
   end
 
-  context 'other users' do
+  context 'another user' do
     context 'authenticated user' do
-      before { login_as(@user2, scope: :user) }
-      scenario 'can not see problem actions' do
-        visit problem_path(@problem)
+      context 'same domain name with owner problem' do
+        before do
+          another_user = create(:user, email: 'peter@tesla.com', company: @company)
+          login_as(another_user, scope: :user)
+        end
 
-        expect(page).to_not have_css '.problem__btn--edit'
-        expect(page).to_not have_css '.problem__btn--destroy'
-        expect(page).to have_link 'Like'
-        expect(page).to have_button 'Share'
+        scenario 'sees problem with some social media actions' do
+          visit problem_path(@problem)
+
+          expect(page).to have_content @problem.name.upcase
+          expect(page).to_not have_css '.problem__btn--edit'
+          expect(page).to_not have_css '.problem__btn--destroy'
+          expect(page).to have_link 'Like'
+          expect(page).to have_button 'Share'
+        end
+      end
+
+      context 'different domain name with owner problem' do
+        before do
+          company = create(:company, name: 'Oracle', domain_name: '@oracle.com')
+          another_user = create(:user, email: 'peter@oracle.com', company: company)
+          login_as(another_user, scope: :user)
+        end
+
+        context 'problem is published' do
+          before { @problem.update(public: true) }
+          scenario 'sees problem with some social media actions' do
+            visit problem_path(@problem)
+
+            expect(page).to have_content @problem.name.upcase
+            expect(page).to_not have_css '.problem__btn--edit'
+            expect(page).to_not have_css '.problem__btn--destroy'
+            expect(page).to have_link 'Like'
+            expect(page).to have_button 'Share'
+          end
+        end
+
+        context 'problem is not published' do
+          scenario 'cannot see problem' do
+            visit problem_path(@problem)
+            expect(page).to_not have_content @problem.name.upcase
+          end
+        end
       end
     end
 
     context 'unauthenicated user' do
-      before do
-        @problem2 = create(:problem, public: true, user: @user)
-      end
+      context 'problem is published' do
+        before { @problem.update(public: true) }
+        scenario 'can see public problem' do
+          visit problem_path(@problem)
 
-      scenario 'can see public problem' do
-        visit problem_path(@problem2)
-        expect(page).to have_content @problem2.name.upcase
-        expect(page).to have_link 'Sign In'
-        expect(page).to have_link 'Create Account'
-        expect(page).to_not have_link 'Profile'
-        expect(page).to_not have_link 'Logout'
-        expect(page).to_not have_content 'Feed'
-      end
+          expect(page).to have_content @problem.name.upcase
+          expect(page).to_not have_css '.problem__btn--edit'
+          expect(page).to_not have_css '.problem__btn--destroy'
+          expect(page).to_not have_link 'Like'
+          expect(page).to have_button 'Share'
 
-      scenario 'cannot see unpublic problem' do
-        visit problem_path(@problem)
-        expect(page).to_not have_content @problem.name.upcase
-      end
+          expect(page).to have_link 'Sign In'
+          expect(page).to have_link 'Create Account'
 
-      context 'user visit problem show page' do
-        before { visit problem_path(@problem2) }
-
-        scenario 'redirects to problems show path after sign-in' do
-          click_on 'Sign In'
-          fill_in 'user[email]', with: @user2.email
-          fill_in 'user[password]', with: 'password'
-          click_on 'Sign in'
-          expect(page).to have_content @problem2.name.upcase
-          expect(current_url).to match "/problems/#{@problem2.id}"
+          expect(page).to_not have_content 'Feed'
+          expect(page).to have_link 'ACE-IT'
+          expect(page).to_not have_link 'Profile'
+          expect(page).to_not have_link 'Logout'
         end
 
-        scenario 'redirects to problems show path after sign-up' do
-          click_on 'Create Account'
-          fill_in 'user[first_name]', with: 'peter'
-          fill_in 'user[last_name]', with: 'thiel'
-          fill_in 'user[email]', with: 'peter.thiel@gmail.com'
-          fill_in 'user[password]', with: '123456'
-          fill_in 'user[password_confirmation]', with: '123456'
-          click_on 'Sign up'
-          expect(page).to have_content @problem2.name.upcase
-          expect(current_url).to match "/problems/#{@problem2.id}"
+        context 'clicks on sign-in link' do
+          before do
+            @another_user = create(:user)
+            visit problem_path(@problem)
+            click_on 'Sign In'
+          end
+
+          scenario 'is brought to problem show path' do
+            fill_in 'user[email]', with: @another_user.email
+            fill_in 'user[password]', with: 'password'
+            click_on 'Sign in'
+
+            expect(page).to have_content @problem.name.upcase
+            expect(current_url).to match "/problems/#{@problem.id}"
+          end
+        end
+
+        context 'clicks on sign-up link' do
+          before do
+            visit problem_path(@problem)
+            click_on 'Create Account'
+          end
+
+          scenario 'is brought to problem show path' do
+            fill_in 'user[first_name]', with: 'peter'
+            fill_in 'user[last_name]', with: 'thiel'
+            fill_in 'user[email]', with: 'peter.thiel@gmail.com'
+            fill_in 'user[password]', with: '123456'
+            fill_in 'user[password_confirmation]', with: '123456'
+            click_on 'Sign up'
+            expect(page).to have_content @problem.name.upcase
+            expect(current_url).to match "/problems/#{@problem.id}"
+          end
+        end
+      end
+
+      context 'problem is not published' do
+        scenario 'cannot view unpublic problems' do
+          visit problem_path(@problem)
+          expect(page).to_not have_content @problem.name.upcase
         end
       end
     end

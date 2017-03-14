@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  before_action :authenticate_user!, unless: -> { public_action?  && public_problem? }
+  before_action :authenticate_user!, except: [:show]
   before_action :set_problem, only: [
     :edit, :update, :destroy, :show, :lens, :update_lens, :review,
     :share_by_email
@@ -47,6 +47,7 @@ class ProblemsController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless @problem.allow_visitor_to_see?(current_user)
     lens_index = params[:id].to_i % Problem::LENSES.length
     @lens = Problem::LENSES[lens_index]
     @image_index = (params[:id].to_i  % TEXTURE_IMAGE_AMOUNT) + 1
@@ -95,15 +96,6 @@ class ProblemsController < ApplicationController
     all_tips = YAML.load_file(File.open("#{Rails.root}/app/views/problems/tips.yml"))
     @tips = all_tips[lens]["examples"]
     @intro_text = all_tips[lens]["intro_text"]
-  end
-
-  def public_action?
-    action_name == 'show'
-  end
-
-  def public_problem?
-    set_problem
-    @problem.present? && @problem.public
   end
 
   def check_user_access

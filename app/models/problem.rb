@@ -37,4 +37,10 @@ class Problem < ApplicationRecord
   def completed_problem?
     thinking.present?
   end
+
+  def allow_visitor_to_see?(visitor)
+    return true if public
+    return false unless visitor
+    user.domain_name ==  visitor.domain_name
+  end
 end
