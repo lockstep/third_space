@@ -4,29 +4,34 @@
 <%end%>
 
 <div class='mb-2 problem__action-group text-xs-center'>
-  <% if show_problem_actions?(problem.user) %>
-    <%= link_to edit_problem_path,
-        class: 'btn btn-sm problem__button problem__btn--edit link--white-action' do %>
-      <%= fa_icon('edit') %>
+  <% if @problem.completed_problem? %>
+    <% if show_problem_actions?(problem.user) %>
+      <%= link_to edit_problem_path,
+          class: 'btn btn-sm problem__button problem__btn--edit link--white-action' do %>
+        <%= fa_icon('edit') %>
+      <% end %>
+      <%= link_to problem_path, method: :delete,
+        data: { confirm: 'Are you sure?'},
+        class: 'btn btn-sm problem__button problem__btn--destroy link--white-action' do %>
+        <%= fa_icon('trash-o') %>
+      <% end %>
     <% end %>
-    <%= link_to problem_path, method: :delete,
-      data: { confirm: 'Are you sure?'},
-      class: 'btn btn-sm problem__button problem__btn--destroy link--white-action' do %>
-      <%= fa_icon('trash-o') %>
-    <% end %>
-  <% end %>
 
-  <% if current_user %>
-    <%= link_to vote_problem_path(problem), method: :post, remote: true,
-      id: 'like-action', data: { liked: voted?(current_user.id, @problem.id) },
-      class: "btn btn-sm problem__button link--white-action #{like_css}" do %>
-      <%= fa_icon('thumbs-o-up') %> <span id='like-status'><%= like_show_text %></span>
+    <% if current_user %>
+      <%= link_to vote_problem_path(problem), method: :post, remote: true,
+        id: 'like-action', data: { liked: voted?(current_user.id, @problem.id) },
+        class: "btn btn-sm problem__button link--white-action #{like_css}" do %>
+        <%= fa_icon('thumbs-o-up') %> <span id='like-status'><%= like_show_text %></span>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <button type='button' id='buttonShareModal'
-          class='btn btn-sm problem__btn--share problem__button'
-          data-toggle='modal' data-target='#shareModal'>
-    <%= fa_icon('share-alt') %> Share
-  </button>
+    <button type='button' id='buttonShareModal'
+            class='btn btn-sm problem__btn--share problem__button'
+            data-toggle='modal' data-target='#shareModal'>
+      <%= fa_icon('share-alt') %> Share
+    </button>
+  <% else %>
+    <%= link_to 'Continue', new_problem_path,
+      class: 'btn btn-sm problem__button link--white-action' %>
+  <% end %>
 </div>

@@ -9,6 +9,8 @@ feature 'View TST Stream' do
   context 'TST stream' do
     background do
       microsoft = create(:company, name: 'microsoft', domain_name: 'microsoft.com')
+      oracle = create(:company, name: 'oracle', domain_name: 'oracle.com')
+
       @user.company = microsoft
       create(:problem, name: 'my problem', user: @user, created_at: Date.parse('/06/08/2015'))
       create(:problem, name: 'hungry', user: @user, created_at: Date.parse('/07/08/2015'))
@@ -16,7 +18,6 @@ feature 'View TST Stream' do
       user2 = create(:user, first_name: 'bill', last_name: 'gate', company: microsoft)
       create(:problem, name: "reduce bla...", user: user2, created_at: Date.parse('/08/08/2015'))
 
-      oracle = create(:company, name: 'oracle', domain_name: 'oracle.com')
       user3 = create(:user, first_name: 'larry', last_name: 'ellison', company: oracle)
       create(:problem, name: "global warming", user: user3, created_at: Date.parse('/09/08/2015'))
       create(:problem, name: "too cold", user: user3, public: true, created_at: Date.parse('/09/08/2015'))
@@ -49,6 +50,14 @@ feature 'View TST Stream' do
         expect(page).to have_content 'reduce bla...'
         expect(page).to have_content 'too cold'
         expect(page).to_not have_content 'global warming'
+      end
+
+      scenario 'not displays uncompleted problem' do
+        Problem.create(name: 'hello', user: @user)
+        visit problems_path
+        expect(page).to have_content 'hello'
+        click_link 'All'
+        expect(page).to_not have_content 'hello'
       end
 
       scenario 'displays latest problems first' do

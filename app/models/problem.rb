@@ -7,13 +7,16 @@ class Problem < ApplicationRecord
   has_many :solution_likes
 
   scope :ordered_by_date, -> { order(created_at: :desc) }
+  scope :be_completed, -> { where.not('thinking' => nil) }
   scope :in_company, -> (user) {
     return where(user: user) if user.company.nil?
     user_ids = User.where(company_id: user.company_id).pluck(:id)
     where(user_id: user_ids)
   }
-  scope :be_published, -> { where(public: true) }
-  scope :view_all, -> (user) { be_published.or(in_company(user)) }
+  scope :published, -> { where(public: true) }
+  scope :view_all, -> (user) {
+    (published.be_completed).or(in_company(user).be_completed)
+  }
 
   def self.next_lens(current_lens)
     return LENSES.last if LENSES.last == current_lens
@@ -29,5 +32,9 @@ class Problem < ApplicationRecord
   def get_lens_value(lens_type)
     lens = inputs.find_by(lens: lens_type)
     lens ? lens.input_text : ''
+  end
+
+  def completed_problem?
+    thinking.present?
   end
 end
