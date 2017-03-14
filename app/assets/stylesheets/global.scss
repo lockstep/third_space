@@ -222,3 +222,18 @@ a {
   color: white;
   width: 140px;
 }
+
+.unauthenticated-user__error {
+  color: $error;
+}
+
+.link--error-action {
+  text-decoration: underline;
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $error;
+  }
+}

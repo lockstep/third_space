@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'problems#index'
+    root 'problems#index', as: :authenticated_root
   end
 
   devise_scope :user do
