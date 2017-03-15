@@ -8,20 +8,21 @@
       <%= devise_error_messages! %>
       <%= f.hidden_field :reset_password_token %>
 
-      <div class='form-group'>
+      <div class="form-group <%= display_devise_has_danger(:password) %>">
         <%= fa_icon('lock', class: 'auth__icon') %>
         <%= f.password_field :password, autocomplete: 'off', placeholder: 'Password',
             class: 'form-control auth__input' %>
+        <%= display_devise_form_control_feedback(:password) %>
       </div>
 
-      <div class="form-group <%= display_devise_has_danger(:password) %>">
+      <div class="form-group <%= display_devise_has_danger(:password_confirmation) %>">
         <%= fa_icon('lock', class: 'auth__icon') %>
-        <%= f.password_field :password, autocomplete: 'off',
-            placeholder: "Password", class: 'form-control auth__input' %>
+        <%= f.password_field :password_confirmation, autocomplete: 'off',
+            placeholder: "Password Confirmation", class: 'form-control auth__input' %>
           <div class="auth__help-text">
             *at least 6 characters
           </div>
-        <%= display_devise_form_control_feedback(:password) %>
+        <%= display_devise_form_control_feedback(:password_confirmation) %>
       </div>
       <%= f.submit "Change my password", class: 'btn btn--third-space btn-block'%>
     <% end %>
