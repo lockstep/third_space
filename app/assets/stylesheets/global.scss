@@ -76,6 +76,11 @@ a {
   border-radius: 4px;
 }
 
+.btn--center {
+  margin: 0 auto;
+  display: block;
+}
+
 .menu__col {
   min-width: 75px;
 }
@@ -237,3 +242,4 @@ a {
     color: $error;
   }
 }
+
