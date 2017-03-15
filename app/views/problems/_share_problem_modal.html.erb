@@ -8,26 +8,37 @@
         </button>
       </div>
       <div class='modal-body'>
-        <div class='shared__title'>Via Email:</div>
-        <%= form_tag(share_by_email_problem_path(problem), method: :post, remote: true, id: 'problem-form__share--email') do %>
-          <input type='email' name='problem[email]' id='problem__share--receiver-email' class='form-control'></input>
-          <%= submit_tag 'Send', disabled: true,
-            class: 'btn btn--third-space btn--radius-4 shared__button',
-            id: 'problem__share-btn--email', data: { disable_with: 'Sharing' } %>
+        <% if problem.public %>
+          <div class='shared__title'>Via Email:</div>
+          <%= form_tag(share_by_email_problem_path(problem), method: :post, remote: true, id: 'problem-form__share--email') do %>
+            <input type='email' name='problem[email]' id='problem__share--receiver-email' class='form-control'></input>
+            <%= submit_tag 'Send', disabled: true,
+              class: 'btn btn--third-space btn--radius-4 shared__button',
+              id: 'problem__share-btn--email', data: { disable_with: 'Sharing' } %>
+          <% end %>
+
+          <div class='shared__title'>Via Facebook:</div>
+          <div class='btn btn--facebook' data-dismiss='modal'
+               onclick="shareToFacebook('<%= problem_url(problem) %>', '<%= problem.name%>',
+                                        '<%= problem.thinking %>')">
+            <%= fa_icon('facebook') %> Facebook
+          </div>
+
+          <div class='shared__title'>Via Twitter:</div>
+          <div class='btn btn--twitter' data-dismiss='modal'
+               onclick="shareToTwitter('<%= problem_url(problem) %>', '<%= problem.name %>')">
+            <%= fa_icon('twitter') %> Twitter
+          </div>
+        <% else %>
+          <div class='shared__title'>
+            Your solution is not public and cannot be shared.
+            <br/>Click below to make it public:
+          </div>
+          <%= form_tag problem_path(problem, redirect_to_current_page: true), method: :patch do %>
+            <%= hidden_field 'problem', 'public', value: true %>
+            <%= submit_tag 'Change problem to be public', class:'btn btn--third-space btn--radius-4 btn--center'%>
+          <% end %>
         <% end %>
-
-        <div class='shared__title'>Via Facebook:</div>
-        <div class='btn btn--facebook' data-dismiss='modal'
-             onclick="shareToFacebook('<%= problem_url(@problem) %>', '<%=@problem.name%>',
-                                      '<%=@problem.thinking%>')">
-          <%= fa_icon('facebook') %> Facebook
-        </div>
-
-        <div class='shared__title'>Via Twitter:</div>
-        <div class='btn btn--twitter' data-dismiss='modal'
-             onclick="shareToTwitter('<%= problem_url(@problem) %>', '<%=@problem.name%>')">
-          <%= fa_icon('twitter') %> Twitter
-        </div>
       </div>
     </div>
   </div>

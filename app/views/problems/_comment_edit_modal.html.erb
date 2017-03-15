@@ -12,7 +12,7 @@
           <div class='modal-body'>
               <%= text_area_tag 'comment[description]', '', placeholder: 'Add comment here',
                 id: 'edit-comment-input', class: 'form-control comment__input', rows: '5' %>
-              <%= hidden_field 'comment', 'problem_id', :value => @problem.id %>
+              <%= hidden_field 'comment', 'problem_id', :value => problem.id %>
               <%= hidden_field 'comment', 'user_id', :value => current_user.id %>
               <%= hidden_field 'comment', 'id' %>
           </div>

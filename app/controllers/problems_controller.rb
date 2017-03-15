@@ -5,6 +5,7 @@ class ProblemsController < ApplicationController
     :share_by_email
   ]
   before_action :check_user_access, only: [:edit, :lens, :review]
+  before_action :set_redirect_path, only: [:update]
 
   TEXTURE_IMAGE_AMOUNT = 10
 
@@ -40,7 +41,7 @@ class ProblemsController < ApplicationController
 
   def update
     if @problem.update(problem_params)
-      redirect_to review_problem_path(@problem.id)
+      redirect_to @redirect_path
     else
       redirect_back(fallback_location: problems_path)
     end
@@ -115,6 +116,11 @@ class ProblemsController < ApplicationController
   def destroy_cookies
     cookies.delete :problem_id
     cookies.delete :lens
+  end
+
+  def set_redirect_path
+    @redirect_path = review_problem_path(@problem.id)
+    @redirect_path = problem_path(@problem) if params[:redirect_to_current_page]
   end
 
   def visit_ace_it_form
