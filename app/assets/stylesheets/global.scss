@@ -252,10 +252,6 @@ a {
   }
 }
 
-.btn--desktop {
-  max-width: 400px;
-}
-
 .no-radious {
   border-radius: 0;
 }
@@ -283,6 +279,7 @@ a {
 
   .btn--desktop{
     bottom: 75px;
+    max-width: 400px;
   }
 
   .ace-it__navbar--button {
