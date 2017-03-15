@@ -10,6 +10,11 @@
   </head>
 
   <body class='<%= "#{controller_name} #{action_name}" %>'>
-    <%= yield %>
+    <div class='desktop__intruction'>
+      Use mobile browser for better experience
+    </div>
+    <div class='desktop__container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,24 +1,22 @@
-<nav class='navbar navbar-light top-navbar'>
+<nav class='navbar navbar-light top-navbar no-radious'>
   <div class='row'>
     <div class='col-xs-3 top-nav__icon'>
-      <button class='navbar-toggler hidden-lg-up'
-              type='button' data-toggle='collapse'
-              data-target="#navbarResponsive"
-              aria-controls='navbarResponsive'
-              aria-expanded='false' aria-label='Toggle navigation'>
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class='collapse navbar-toggleable-xs menu__col' id='navbarResponsive'>
-        <ul class='nav navbar-nav navbar__menu'>
-        <% if current_user %>
-          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
-          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= profile_path %>"><%= fa_icon('user-circle') %> Profile</a></li>
-          <li class='nav-item'><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></li>
-        <% end %>
-        <% if !current_user %>
-          <li class='nav-item'><a class='navbar__list link--white-action' href="<%= new_user_session_path %>"><%= fa_icon('link') %> ACE-IT</a></li>
-        <% end %>
-        </ul>
+      <nav class="navbar p-0">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <div class="collapse menu__col" id="navbarResponsive">
+        <div>
+          <% if current_user %>
+            <div><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></div>
+            <div><a class='navbar__list link--white-action' href="<%= profile_path %>"><%= fa_icon('user-circle') %> Profile</a></div>
+            <div><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></div>
+          <% end %>
+          <% if !current_user %>
+            <div><a class='navbar__list link--white-action' href="<%= new_user_session_path %>"><%= fa_icon('link') %> ACE-IT</a></div>
+          <% end %>
+        </div>
       </div>
     </div>
 

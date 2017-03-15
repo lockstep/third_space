@@ -1,5 +1,5 @@
 html, body {
-  height:100%;
+  background: $light-grey;;
 }
 
 a {
@@ -18,6 +18,15 @@ a {
       color: $white;
     }
   }
+}
+
+.desktop__container {
+  position: relative;
+}
+
+.desktop__intruction {
+  display: none;
+  color: $white;
 }
 
 .navbar__list {
@@ -82,7 +91,7 @@ a {
 }
 
 .menu__col {
-  min-width: 75px;
+  min-width: 90px;
 }
 
 .ace-it__navbar--button {
@@ -243,3 +252,43 @@ a {
   }
 }
 
+.btn--desktop {
+  max-width: 400px;
+}
+
+.no-radious {
+  border-radius: 0;
+}
+
+@media(min-width: 440px) {
+  .desktop__container {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background: $light-grey;
+    margin-top: 25px;
+    margin-bottom: 75px;
+    height: 650px;
+    overflow-y: scroll;
+  }
+
+  .desktop__intruction {
+    display: block;
+    margin: 20px 0;
+    text-align: center;
+    background: $medium-grey;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .btn--desktop{
+    bottom: 75px;
+  }
+
+  .ace-it__navbar--button {
+    bottom: 80px;
+    width: 400px;
+    left: initial;
+    right: initial;
+  }
+}

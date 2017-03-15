@@ -38,7 +38,7 @@ feature 'Create Problem Spec' do
 
       expect(page).to have_content 'Adaptability'
 
-      click_on 'C'
+      find('.ace-it__button', text: 'C').trigger('click')
       expect(page).to have_content 'Adaptability'
     end
 
@@ -54,10 +54,10 @@ feature 'Create Problem Spec' do
         click_on 'Continue'
       end
 
-      click_on 'C'
+      find('.ace-it__button', text: 'C').trigger('click')
       expect(page).to have_content 'Cultural'
 
-      click_on 'T'
+      find('.ace-it__button', text: 'T').trigger('click')
       expect(page).to have_content 'Cultural'
     end
 

@@ -95,6 +95,7 @@ feature 'View Problem', js: true do
           expect(page).to have_link 'Create Account'
 
           expect(page).to_not have_content 'Feed'
+          find('.navbar-toggler').trigger('click')
           expect(page).to have_link 'ACE-IT'
           expect(page).to_not have_link 'Profile'
           expect(page).to_not have_link 'Logout'
