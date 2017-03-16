@@ -33,8 +33,7 @@
   </div>
   <%= will_paginate @problems, renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
     class: 'pagination__button'%>
-  <%= link_to "Create New", new_problem_path('new'),
-  class: 'btn btn-block btn--third-space btn--fixed-bottom btn--desktop' %>
 </section>
 
-
+<%= link_to "Create New", new_problem_path('new'),
+  class: 'btn btn-block btn--third-space btn--fixed-bottom btn--desktop' %>

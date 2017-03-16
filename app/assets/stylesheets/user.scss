@@ -4,6 +4,7 @@
 .registrations.edit,
 .registrations.update {
   background: #191B30;
+  height: 100%;
   .profile {
     &__card {
       height: 100%;
@@ -42,5 +43,20 @@
     color: $error;
     text-align: center;
     padding: 10px 5px;
+  }
+}
+
+.user__container {
+  background: #191B30;
+  height: 100%;
+}
+
+@media(min-width: 440px) {
+  .users.profile,
+  .users.edit_password,
+  .users.update_password,
+  .registrations.edit,
+  .registrations.update {
+    background: none;
   }
 }

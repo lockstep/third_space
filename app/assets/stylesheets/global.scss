@@ -1,5 +1,5 @@
-html, body {
-  background: $light-grey;;
+body {
+  background: $light-grey;
 }
 
 a {
@@ -22,6 +22,7 @@ a {
 
 .desktop__container {
   position: relative;
+  height: 100%;
 }
 
 .desktop__intruction {
@@ -257,6 +258,9 @@ a {
 }
 
 @media(min-width: 440px) {
+  html, body {
+    background: $medium-grey;
+  }
   .desktop__container {
     max-width: 400px;
     margin-left: auto;
@@ -278,12 +282,14 @@ a {
   }
 
   .btn--desktop{
-    bottom: 75px;
+    top: 685px;
+    bottom: initial;
+    // position: absolute;
     max-width: 400px;
   }
 
   .ace-it__navbar--button {
-    bottom: 80px;
+    position: absolute;
     width: 400px;
     left: initial;
     right: initial;
