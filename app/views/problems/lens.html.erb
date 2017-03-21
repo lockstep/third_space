@@ -1,6 +1,6 @@
 <%= render 'layouts/shared/navbar_top', title: "#{@lens.to_s.humanize}" %>
 
-<div class='pb-3'>
+<div class='lens__container'>
   <div class='lens__banner'>
     <div class='lens__banner-text'>
       <%= @intro_text %>
@@ -11,21 +11,18 @@
   </div>
 
   <%= form_tag update_lens_problem_path(@problem), method: :put do %>
-    <a class='toggle-link collapsed' data-toggle='collapse' href='#solution-textarea' aria-expanded='false' aria-controls='solution-textarea'>
-      <div class='card-header' role='tab' id='solution-head'>
-        <span class='pull-right'><%= fa_icon 'chevron-down', id: 'solution-icon' %></span>
-        <span id='solution-head-input' class='problem__question-header'>
-          <%= @lens == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
-        </span>
-      </div>
-    </a>
-    <div id='solution-textarea' class='input-textarea collapse' role='tabpanel' aria-labelledby='solution-head'>
+    <div class='card-header' role='tab' id='solution-head'>
+      <span id='solution-head-input' class='problem__question-header'>
+        <%= @lens == 'thinking'? 'What is your final 360 Degree Thinking solution?': 'What is your solution through this lens?' %>
+      </span>
+    </div>
+    <div id='solution-textarea' class='input-textarea'>
       <div>
         <textarea id='solution-input'
                   name='problem[<%= @lens %>]'
                   class='form-control ace-it'
                   placeholder='Keep this to ~200 characters. Try to complete in fewer than 3 minutes.'
-                  rows='15'><%= @problem.send(@lens) %></textarea>
+                  rows='8'><%= @problem.send(@lens) %></textarea>
       </div>
     </div>
     <div>
@@ -33,7 +30,7 @@
       <%= hidden_field 'problem', 'lens', value: @lens %>
       <%= submit_tag get_lens_submit_text(@lens), id: 'next-bar',
         class: 'btn btn-block btn-lg btn--third-space lens__btn--submit',
-        disabled: true, style: 'display: none;'%>
+        disabled: true %>
     </div>
   <% end %>
 </div>

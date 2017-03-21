@@ -1,7 +1,7 @@
 var limited_length = 100;
 var ending = "...";
 
-function enable_disable_subit_btn(input_class, submit_btn_class) {
+function enable_disable_submit_btn(input_class, submit_btn_class) {
   var inputValue = $(input_class).val();
   if($.trim(inputValue).length > 0) {
     $(submit_btn_class).removeAttr('disabled');
@@ -10,10 +10,10 @@ function enable_disable_subit_btn(input_class, submit_btn_class) {
   }
 }
 
-function  listen_field_updating(input_class, submit_btn_class) {
-  enable_disable_subit_btn(input_class, submit_btn_class);
+function listen_field_updating(input_class, submit_btn_class) {
+  enable_disable_submit_btn(input_class, submit_btn_class);
   $(input_class).on('input', function() {
-    enable_disable_subit_btn(input_class, submit_btn_class)
+    enable_disable_submit_btn(input_class, submit_btn_class)
   });
 }
 

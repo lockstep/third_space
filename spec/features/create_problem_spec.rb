@@ -12,13 +12,12 @@ feature 'Create Problem Spec' do
       fill_in 'problem[name]', with: 'global warming'
       click_on 'Next'
 
-      %w(adaptability cultural_competency empathy intellectual_curiosity thinking).each do |lens|
-        find('#solution-head-input').trigger('click')
+      %w(adaptability cultural_competency empathy intellectual_curiosity thinking).each do |lense|
+        sleep(1)
         expect(find('.lens__btn--submit')['disabled']).to eq true
-        fill_in 'solution-input', with: "test #{lens}"
-        lens == 'thinking' ? click_on('Complete') : click_on('Continue')
+        fill_in 'solution-input', with: "test #{lense}"
+        find('#next-bar').trigger('click')
       end
-
       expect(page).to have_content 'Review'
       expect(page).to have_content 'global warming'
       expect(page).to have_content 'test thinking'
@@ -47,11 +46,9 @@ feature 'Create Problem Spec' do
       fill_in 'problem[name]', with: 'Hello'
       click_on 'Next'
 
-      %w(adaptability cultural_competency empathy ).each do |lens|
-        find('#solution-head-input').trigger('click')
-        expect(find('.lens__btn--submit')['disabled']).to eq true
-        fill_in 'solution-input', with: "test #{lens}"
-        click_on 'Continue'
+      %w(adaptability cultural_competency empathy ).each do |lense|
+        fill_in 'solution-input', with: "test #{lense}"
+        find('#next-bar').trigger('click')
       end
 
       find('.ace-it__button', text: 'C').trigger('click')

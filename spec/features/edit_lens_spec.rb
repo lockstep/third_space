@@ -12,9 +12,8 @@ feature 'Edit Lens Spec', js: true do
       visit review_problem_path(@problem)
 
       find('#edit-thinking').trigger('click')
-      find('#solution-head-input').trigger('click')
       fill_in 'solution-input', with: "This is awesome solution"
-      click_on('Complete')
+      find('#next-bar').trigger('click')
       expect(page).to have_content 'This is awesome solution'
     end
   end
