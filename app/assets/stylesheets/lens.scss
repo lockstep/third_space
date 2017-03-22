@@ -22,7 +22,7 @@
 .lens__banner {
   min-height: 180px;
   position: relative;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background: $black;
 }
 .lens__banner-text {
   padding: 10px 10px 50px;

@@ -295,3 +295,8 @@ a {
     right: initial;
   }
 }
+
+.navbar-light .navbar-toggler {
+  background-image: asset-url('hamburger-menu.svg');
+  border-color: $white;
+}
