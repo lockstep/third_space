@@ -17,6 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 bin/
+/ssl
 
 # Ignore Byebug command history file.
 .byebug_history
