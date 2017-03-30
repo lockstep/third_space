@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
   end
 
   def new
-    visit_ace_it_form
+    visit_ace_it_form and return if has_unfinish_problem?
     @problem = Problem.new
     load_tips('problem')
   end
@@ -27,8 +27,7 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params.merge(user_id: current_user.id))
     if @problem.save(problem_params)
-      assign_cookies
-      visit_ace_it_form
+      redirect_to lenses_problem_path(id: @problem.id, lens: 'adaptability')
     else
       load_tips('problem')
       render :new
@@ -110,7 +109,7 @@ class ProblemsController < ApplicationController
 
   def assign_cookies
     cookies[:problem_id] = @problem.id
-    cookies[:lens] = "adaptability"
+    cookies[:lens] = 'adaptability'
   end
 
   def destroy_cookies
@@ -123,11 +122,23 @@ class ProblemsController < ApplicationController
     @redirect_path = problem_path(@problem) if params[:redirect_to_current_page]
   end
 
+  def has_unfinish_problem?
+    problem = current_user.problems.ordered_by_date.first
+    return false if !problem.present? || problem.thinking.present?
+
+    Problem::LENSES.each do |lens|
+      unless problem[lens].present?
+        @unfinish_problem = { id: problem.id, lens: lens }
+        return true
+      end
+    end
+  end
+
   def visit_ace_it_form
     # redirect to lens form if user didn't complete creating problem workflow
     redirect_to lenses_problem_path(
-      id: cookies[:problem_id], lens: cookies[:lens]
-    ) and return if cookies[:problem_id]
+      id: @unfinish_problem[:id], lens: @unfinish_problem[:lens]
+    ) if @unfinish_problem
   end
 
   def done_lens_form?(lens)
@@ -141,7 +152,6 @@ class ProblemsController < ApplicationController
 
   def visit_next_lens_form(lens)
     new_lens = "#{Problem.next_lens(lens)}"
-    cookies[:lens] = new_lens
     redirect_to lenses_problem_path(id: @problem.id, lens: new_lens)
   end
 end
