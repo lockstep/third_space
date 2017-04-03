@@ -7,6 +7,7 @@ class Problem < ApplicationRecord
   has_many :solution_likes
 
   scope :ordered_by_date, -> { order(created_at: :desc) }
+  scope :unfinish_problem, -> {where('thinking' => nil).order(created_at: :desc) }
   scope :be_completed, -> { where.not('thinking' => nil) }
   scope :in_company, -> (user) {
     return where(user: user) if user.company.nil?

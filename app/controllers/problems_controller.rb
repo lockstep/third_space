@@ -107,28 +107,17 @@ class ProblemsController < ApplicationController
       :cultural_competency, :empathy, :intellectual_curiosity, :thinking)
   end
 
-  def assign_cookies
-    cookies[:problem_id] = @problem.id
-    cookies[:lens] = 'adaptability'
-  end
-
-  def destroy_cookies
-    cookies.delete :problem_id
-    cookies.delete :lens
-  end
-
   def set_redirect_path
     @redirect_path = review_problem_path(@problem.id)
     @redirect_path = problem_path(@problem) if params[:redirect_to_current_page]
   end
 
   def has_unfinish_problem?
-    problem = current_user.problems.ordered_by_date.first
-    return false if !problem.present? || problem.thinking.present?
-
+    unfinish_problems = current_user.problems.unfinish_problem.first
+    return false unless unfinish_problems.present?
     Problem::LENSES.each do |lens|
-      unless problem[lens].present?
-        @unfinish_problem = { id: problem.id, lens: lens }
+      unless unfinish_problems[lens].present?
+        @unfinish_problem = { id: unfinish_problems.id, lens: lens }
         return true
       end
     end
@@ -146,7 +135,6 @@ class ProblemsController < ApplicationController
   end
 
   def finish_lens_form
-    destroy_cookies
     redirect_to review_problem_path(@problem.id)
   end
 
