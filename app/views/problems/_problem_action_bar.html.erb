@@ -31,7 +31,12 @@
       <%= fa_icon('share-alt') %> Share
     </button>
   <% else %>
-    <%= link_to 'Continue', new_problem_path,
+    <%= link_to 'Continue', new_problem_path(id: @problem.id, unfinish_problem: true),
       class: 'btn btn-sm problem__button link--white-action' %>
+    <%= link_to problem_path, method: :delete,
+        data: { confirm: 'Are you sure?'},
+        class: 'btn btn-sm problem__button link--white-action' do %>
+      <%= fa_icon('trash-o') %> Delete
+    <% end %>
   <% end %>
 </div>

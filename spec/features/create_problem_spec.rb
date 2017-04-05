@@ -67,9 +67,25 @@ feature 'Create Problem Spec' do
         fill_in 'solution-input', with: "test adaptability"
         click_on('Continue')
         click_on('Feed')
-        click_on('Create New')
+        visit problem_path(Problem.last)
+        click_on('Continue')
+        expect(page).to have_content 'GLOBAL WARMING'
         expect(page).to have_content 'Cultural Competency'
         expect(page).to have_content 'What is your solution through this lens?'
+      end
+
+      scenario 'can comeback to delete it' do
+        visit new_problem_path
+        fill_in 'problem[name]', with: 'Deleted Problem'
+        click_on 'Next'
+        find('#solution-head-input').trigger('click')
+        fill_in 'solution-input', with: "test adaptability"
+        click_on('Continue')
+        click_on('Feed')
+        visit problem_path(Problem.last)
+        click_on('Delete')
+        expect(page).to have_content 'LATEST PROBLEMS'
+        expect(page).to_not have_content 'DELETED PROBLEM'
       end
     end
   end

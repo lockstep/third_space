@@ -195,6 +195,9 @@ a {
 .top-nav__title {
   padding: .5rem 0;
   font-weight: bold;
+  @media(max-width: 370px) {
+    font-size: 14px;
+  }
 }
 
 .top-nav__button {

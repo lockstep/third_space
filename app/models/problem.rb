@@ -4,7 +4,7 @@ class Problem < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :solution_likes
+  has_many :solution_likes, dependent: :destroy
 
   scope :ordered_by_date, -> { order(created_at: :desc) }
   scope :unfinish_problem, -> {where('thinking' => nil).order(created_at: :desc) }

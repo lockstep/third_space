@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
   end
 
   def new
-    visit_ace_it_form and return if has_unfinish_problem?
+    visit_ace_it_form and return if params[:unfinish_problem].present?
     @problem = Problem.new
     load_tips('problem')
   end
@@ -112,22 +112,18 @@ class ProblemsController < ApplicationController
     @redirect_path = problem_path(@problem) if params[:redirect_to_current_page]
   end
 
-  def has_unfinish_problem?
-    unfinish_problems = current_user.problems.unfinish_problem.first
-    return false unless unfinish_problems.present?
+  def visit_ace_it_form
+    # redirect to lens form if user didn't complete creating problem workflow
+    set_problem
     Problem::LENSES.each do |lens|
-      unless unfinish_problems[lens].present?
-        @unfinish_problem = { id: unfinish_problems.id, lens: lens }
+      unless @problem[lens].present?
+        redirect_to lenses_problem_path(
+          id: @problem.id, lens: lens
+        )
         return true
       end
     end
-  end
 
-  def visit_ace_it_form
-    # redirect to lens form if user didn't complete creating problem workflow
-    redirect_to lenses_problem_path(
-      id: @unfinish_problem[:id], lens: @unfinish_problem[:lens]
-    ) if @unfinish_problem
   end
 
   def done_lens_form?(lens)
