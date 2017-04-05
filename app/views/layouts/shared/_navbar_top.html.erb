@@ -21,7 +21,9 @@
     </div>
 
     <div class='col-xs-6 text-xs-center px-0'>
-      <span class='top-nav__title ellipsis-text'><%= title.titleize %></span>
+      <span class='top-nav__title ellipsis-text'>
+        <%= title == 'Thinking' ? '360° Thinking' : title.titleize %>
+      </span>
     </div>
 
     <div class='col-xs-3'>
