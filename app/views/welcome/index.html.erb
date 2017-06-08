@@ -1,23 +1,10 @@
 <div class="swiper-container welcome__swiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <%= image_tag("welcome1.jpg", class: 'w-100') %>
-      <div class="welcom__slider-caption">
-        Welcome to TST intro wizard...#1
+    <% 1.upto(5) do |n| %>
+      <div class="swiper-slide">
+        <%= image_tag("onboarding_#{n}.png", class: 'w-100') %>
       </div>
-    </div>
-     <div class="swiper-slide">
-      <%= image_tag("welcome1.jpg", class: 'w-100') %>
-      <div class="welcom__slider-caption">
-        Welcome to TST intro wizard...#2
-      </div>
-    </div>
-     <div class="swiper-slide">
-      <%= image_tag("welcome1.jpg", class: 'w-100') %>
-      <div class="welcom__slider-caption">
-        Welcome to TST intro wizard...#3
-      </div>
-    </div>
+    <% end %>
   </div>
   <div class="swiper-pagination welcome__swiper-pagination"></div>
 </div>
