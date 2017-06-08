@@ -1,6 +1,6 @@
 .welcome__swiper {
   .swiper-pagination-bullets {
-    bottom: 100px;
+    bottom: 44px;
   }
   .alert {
     margin-bottom: 0;
@@ -16,13 +16,8 @@
 }
 
 .welcome__swiper-pagination {
-
-  .swiper-pagination-bullet {
-    background: $white;
-  }
-
   .swiper-pagination-bullet-active {
     opacity: 1;
-    background: $white;
+    background: black;
   }
 }
