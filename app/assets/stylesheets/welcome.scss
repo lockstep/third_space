@@ -1,7 +1,20 @@
-.welcome__swiper {
-  .swiper-pagination-bullets {
-    bottom: 44px;
+@include media-breakpoint-up(xs) {
+  .welcome__swiper {
+    .swiper-pagination-bullets {
+      bottom: 44px;
+    }
   }
+}
+
+@include media-breakpoint-up(md) {
+  .welcome__swiper {
+    .swiper-pagination-bullets {
+      bottom: 100px;
+    }
+  }
+}
+
+.welcome__swiper {
   .alert {
     margin-bottom: 0;
   }
