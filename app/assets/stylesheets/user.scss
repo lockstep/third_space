@@ -3,14 +3,12 @@
 .users.update_password,
 .registrations.edit,
 .registrations.update {
-  background: #191B30;
   height: 100%;
   .profile {
     &__card {
       height: 100%;
       background-color: initial;
       border: 0;
-      color: $white;
     }
     &__img {
       width: 160px;
@@ -47,7 +45,7 @@
 }
 
 .user__container {
-  background: #191B30;
+  background: $white;
   height: 100%;
 }
 

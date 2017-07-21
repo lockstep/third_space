@@ -26,13 +26,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap', '4.0.0.alpha5'
 gem 'tether-rails'
 gem 'font-awesome-rails'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk'
 gem "administrate", "~> 0.3.0"
-gem 'bourbon'
+gem 'bourbon', '4.2.7'
 gem 'will_paginate-bootstrap4'
 
 gem 'sidekiq'

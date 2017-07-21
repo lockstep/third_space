@@ -8,11 +8,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    session["user_return_to"] || wizard_path
+    session["user_return_to"] || new_problem_path
   end
 
   def after_inactive_sign_up_path_for(resource)
-    session["user_return_to"] || wizard_path
+    session["user_return_to"] || new_problem_path
   end
 
   def update_resource(resource, params)

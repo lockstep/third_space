@@ -9,12 +9,18 @@
       <div class="collapse menu__col" id="navbarResponsive">
         <div>
           <% if current_user %>
-            <div><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link') %> ACE-IT</a></div>
-            <div><a class='navbar__list link--white-action' href="<%= profile_path %>"><%= fa_icon('user-circle') %> Profile</a></div>
-            <div><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out'></i> Logout</a></div>
+            <div><a class='navbar__list link--white-action' href="<%= new_problem_path %>"><%= fa_icon('link fw') %> ACE-IT</a></div>
+            <div><a class='navbar__list link--white-action' href="<%= profile_path %>"><%= fa_icon('user-circle fw') %> Profile</a></div>
+            <div>
+              <a class='navbar__list link--white-action'
+                href="http://uscthirdspace.com/" target="_blank">
+                <%= fa_icon('info-circle fw') %> About
+              </a>
+            </div>
+            <div><a class='navbar__list link--white-action' rel='nofollow' data-method='delete' href='/users/sign_out'><i class='fa fa-sign-out fa-fw'></i> Logout</a></div>
           <% end %>
           <% if !current_user %>
-            <div><a class='navbar__list link--white-action' href="<%= new_user_session_path %>"><%= fa_icon('link') %> ACE-IT</a></div>
+            <div><a class='navbar__list link--white-action' href="<%= new_user_session_path %>"><%= fa_icon('link fw') %> ACE-IT</a></div>
           <% end %>
         </div>
       </div>

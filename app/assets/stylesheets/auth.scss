@@ -26,6 +26,12 @@
   width: 100%;
   color: $white;
   padding: 20px;
+  background-color: $logo-color;
+
+  .btn--third-space {
+    border-radius: 1000rem;
+    border: 2px solid $yellow;
+  }
 }
 
 .auth__form-background {
@@ -50,9 +56,10 @@
 .auth__input,
 .auth__input:focus {
   padding-left: 40px;
-  border: 0;
-  border-bottom: 1px solid;
-  border-bottom-color: $white;
+  // border: 0;
+  // border-bottom: 1px solid;
+  // border-bottom-color: $white;
+  border-color: $logo-color;
   background: transparent;
   color: $white;
 
@@ -75,6 +82,15 @@
     -webkit-text-fill-color: $white !important;
   }
 }
+
+.edit_user {
+  .auth__input,
+  .auth__input:focus {
+    color: black;
+    padding-left: 5px;
+  }
+}
+
 
 .auth__icon {
   position: absolute;

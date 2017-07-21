@@ -1,5 +1,6 @@
 body {
-  background: $light-grey;
+  background: $white;
+  color: #2b2e34;
 }
 
 a {
@@ -69,9 +70,9 @@ a {
 .btn--third-space {
   background-color: $logo-color;
   color: $white;
-  border-radius: 0;
   z-index: 11;
   font-size: 16px;
+  border-radius: 0;
 
   &:link,
   &:visited,
@@ -79,6 +80,17 @@ a {
   &:focus,
   &:active {
     color: $white;
+  }
+}
+
+.btn-outline-secondary {
+  color: #2b2e34;
+  border: 2px solid #2b2e34;
+  border-radius: 1000rem;
+  &:hover {
+    background-color: $white;
+    color: #2b2e34;
+    border: 2px solid #2b2e34;
   }
 }
 
@@ -201,8 +213,8 @@ a {
 }
 
 .top-nav__button {
-  border: 1px solid $white;
-  border-radius: 4px;
+  border: 2px solid $white;
+  border-radius: 1000rem;
   color: $white;
   position: absolute;
   right: 10px;
@@ -268,7 +280,7 @@ a {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    background: $light-grey;
+    background: $white;
     margin-top: 25px;
     margin-bottom: 75px;
     height: 650px;
@@ -301,5 +313,6 @@ a {
 
 .navbar-light .navbar-toggler {
   background-image: asset-url('hamburger-menu.svg');
-  border-color: $white;
+  border: solid 2px $white;
+  border-radius: 1000rem;
 }
