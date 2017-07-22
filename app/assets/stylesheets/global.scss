@@ -3,6 +3,10 @@ body {
   color: #2b2e34;
 }
 
+body.sessions, body.passwords {
+  background-color: $logo-color;
+}
+
 a {
   &:hover, &:active, &:visited, &:focus {
     text-decoration: none;
